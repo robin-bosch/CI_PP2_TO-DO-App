@@ -40,28 +40,56 @@ function createTask() {
 
 }
 
-function getTask() {
+function showTask(taskId) {
+    document.getElementById("taskId").classList.add("active")
+    document.getElementById("task-details").innerHTML = `
+        <h2>${testTasks[taskId].title}</h2>
+        <p>${testTasks[taskId].description}</p>
 
+        <p>Due: ${testTasks[taskId].due}</p>
+        <div>
+            <p>Bell</p>
+            <p>Alert: ${testTasks[taskId].alert}</p>
+        </div>
+        <div>
+            <button onclick="deleteTask('${taskId}')">Delete</button>
+            <button>Mark as done</button>
+        </div>
+    `;
 }
+showTask("task1");
+
+
+function showHome() {
+    document.getElementById("task-details").innerHTML = `
+        <h2>Select one task</h2>
+    `;
+}
+
 
 function updateTask() {
 
 }
 
-function deleteTask() {
-    if(prompt("Do you want to remove the task?")) {
-
+function deleteTask(taskId) {
+    // console.log(document.getElementById(this));
+    if(confirm("Do you want to remove the task?")) {
+        console.log(testTasks[taskId]);
+        testTasks[taskId] = undefined;
+        delete testTasks[taskId];
     } 
+    generateList();
+    showHome();
 }
 
 function generateList() {
     let taskHtml = "";
     for(let key of Object.keys(testTasks)) {
-        console.log(testTasks[key].title)
+        // console.log(testTasks[key].title)
         taskHtml += `
         <div id="${key}" class="task">
-            <input type="checkbox" checked class="task-checkbox"/>
-            <div>
+            <input type="checkbox" ${testTasks[key].done ? "checked" : ""} class="task-checkbox"/>
+            <div onclick="showTask('${key}')">
                 <h3>${testTasks[key].title}</h3>
                 <p>${testTasks[key].description.slice(0, 60)}${testTasks[key].description.length > 60 ? "..." : ""}</p>
             </div>
