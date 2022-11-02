@@ -40,7 +40,7 @@ h2 {
 }
 
 p, figcaption {
-    font-size: clamp(1rem, 1vw, 1.25rem);
+    font-size: clamp(0.75rem, 1vw, 1rem);
 }
 
 main {
