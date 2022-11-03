@@ -144,3 +144,60 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+
+#task-create-modal-container {
+    position:absolute;
+    top:0;
+    left:0;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    width:100vw;
+    height: 100vh;
+    z-index:98;
+}
+
+.modal-close-btn {
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    font-size:3rem;
+    transition: 0.3s;
+}
+.modal-close-btn:hover {
+    transition: 0.3s;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#task-create-modal {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    z-index:99;
+    background-color: white;
+    padding:5rem;
+    width:max(100rem, 50vw);
+}
+
+.disabled-text {
+    text-decoration: line-through;
+    color:gray;
+}
+.fa-toggle-on {
+    color:green;
+}
+.fa-toggle-off {
+    color:red;
+}
+
+#create-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#task-create-modal-container.open {
+    display:flex;
+}

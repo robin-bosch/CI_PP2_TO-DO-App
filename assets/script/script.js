@@ -38,8 +38,49 @@ let testTasks = {
 
 let activeTaskElement;
 
-function createTask() {
+function toggleCreateTaskModal() {
+    if(document.querySelector("#task-create-modal-container").classList.contains("open")) {
+        document.querySelector("#task-create-modal-container").classList.remove("open");
+    }
+    else {
+        document.querySelector("#task-create-modal-container").classList.add("open");
+    }  
+}
 
+
+
+function toggleTaskAlertDateEnabler() {
+    if(document.querySelector("#task-alert-date-enabler").classList.contains("enabled")) {
+        document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+        document.querySelector("#task-alert-date-label").classList.add("disabled-text");
+        document.querySelector("#task-alert-date").disabled = true;
+        document.querySelector("#task-alert-date-enabler").classList.remove("enabled");
+    }
+    else {
+        document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
+        document.querySelector("#task-alert-date-label").classList.remove("disabled-text");
+        document.querySelector("#task-alert-date").disabled = false;
+        document.querySelector("#task-alert-date-enabler").classList.add("enabled");
+    } 
+}
+
+function toggleTaskDueDateEnabler() {
+    if(document.querySelector("#task-due-date-enabler").classList.contains("enabled")) {
+        document.querySelector("#task-due-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+        document.querySelector("#task-due-date-label").classList.add("disabled-text");
+        document.querySelector("#task-due-date").disabled = true;
+        document.querySelector("#task-due-date-enabler").classList.remove("enabled");
+    }
+    else {
+        document.querySelector("#task-due-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
+        document.querySelector("#task-due-date-label").classList.remove("disabled-text");
+        document.querySelector("#task-due-date").disabled = false;
+        document.querySelector("#task-due-date-enabler").classList.add("enabled");
+    } 
+}
+
+function createTask() {
+    alert("create task");
 }
 
 function updateTaskStatus(taskId) {
@@ -90,7 +131,7 @@ function showHome() {
 
 
 function updateTask() {
-    
+
 }
 
 function deleteTask(taskId) {
