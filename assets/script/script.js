@@ -44,7 +44,14 @@ function createTask() {
 
 function updateTaskStatus(taskId) {
     testTasks[taskId].done = testTasks[taskId].done ? false : true;
-    document.getElementById(`${taskId}-checkbox`).checked = testTasks[taskId].done;
+    if(testTasks[taskId].done) {
+        document.querySelector(`#${taskId}-checkbox`).classList.add("checked");
+        document.querySelector(`#${taskId}-checkbox`).innerHTML = '<i class="fa-solid fa-check"></i>';
+    }
+    else {
+        document.querySelector(`#${taskId}-checkbox`).classList.remove("checked");
+        document.querySelector(`#${taskId}-checkbox`).innerHTML = "";
+    }
     document.querySelector("#task-done-btn").innerHTML = testTasks[taskId].done ? "Unmark" : "Mark as done";
 
 }
@@ -83,7 +90,7 @@ function showHome() {
 
 
 function updateTask() {
-
+    
 }
 
 function deleteTask(taskId) {
@@ -103,8 +110,8 @@ function generateList() {
         // console.log(testTasks[key].title)
         taskHtml += `
         <div id="${key}" class="task">
-            <input type="checkbox" id="${key}-checkbox" ${testTasks[key].done ? "checked" : ""} class="task-checkbox" onclick="updateTaskStatus('${key}')"/>
-            <div onclick="showTask('${key}')">
+            <div id="${key}-checkbox" class="task-checkbox ${testTasks[key].done ? "checked" : ""}" onclick="updateTaskStatus('${key}')" >${testTasks[key].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
+            <div class="task-text" onclick="showTask('${key}')">
                 <h3>${testTasks[key].title}</h3>
                 <p>${testTasks[key].description.slice(0, 60)}${testTasks[key].description.length > 60 ? "..." : ""}</p>
             </div>
