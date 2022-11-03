@@ -74,6 +74,13 @@ main {
     display:flex;
     padding:1rem;
 }
+.task:hover {
+    cursor: pointer;
+}
+
+.task.active {
+    background-color: lightgray;
+}
 
 #task-overview {
     width:80%;

@@ -36,12 +36,18 @@ let testTasks = {
     }
 }
 
+let activeTaskElement;
+
 function createTask() {
 
 }
 
 function showTask(taskId) {
-    document.getElementById("taskId").classList.add("active")
+    if(activeTaskElement != undefined) {
+        activeTaskElement.classList.remove("active");
+    }
+    activeTaskElement = document.getElementById(taskId);
+    activeTaskElement.classList.add("active")
     document.getElementById("task-details").innerHTML = `
         <h2>${testTasks[taskId].title}</h2>
         <p>${testTasks[taskId].description}</p>
@@ -57,6 +63,8 @@ function showTask(taskId) {
         </div>
     `;
 }
+
+generateList();
 showTask("task1");
 
 
@@ -100,4 +108,3 @@ function generateList() {
     document.getElementById("task-list").innerHTML = taskHtml;
 }
 
-generateList();
