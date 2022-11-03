@@ -42,6 +42,13 @@ function createTask() {
 
 }
 
+function updateTaskStatus(taskId) {
+    testTasks[taskId].done = testTasks[taskId].done ? false : true;
+    document.getElementById(`${taskId}-checkbox`).checked = testTasks[taskId].done;
+    document.querySelector("#task-done-btn").innerHTML = testTasks[taskId].done ? "Unmark" : "Mark as done";
+
+}
+
 function showTask(taskId) {
     if(activeTaskElement != undefined) {
         activeTaskElement.classList.remove("active");
@@ -59,7 +66,7 @@ function showTask(taskId) {
         </div>
         <div>
             <button onclick="deleteTask('${taskId}')">Delete</button>
-            <button>Mark as done</button>
+            <button id="task-done-btn" onclick="updateTaskStatus('${taskId}')">${testTasks[taskId].done ? "Unmark" : "Mark as done"}</button>
         </div>
     `;
 }
@@ -96,7 +103,7 @@ function generateList() {
         // console.log(testTasks[key].title)
         taskHtml += `
         <div id="${key}" class="task">
-            <input type="checkbox" ${testTasks[key].done ? "checked" : ""} class="task-checkbox"/>
+            <input type="checkbox" id="${key}-checkbox" ${testTasks[key].done ? "checked" : ""} class="task-checkbox" onclick="updateTaskStatus('${key}')"/>
             <div onclick="showTask('${key}')">
                 <h3>${testTasks[key].title}</h3>
                 <p>${testTasks[key].description.slice(0, 60)}${testTasks[key].description.length > 60 ? "..." : ""}</p>
