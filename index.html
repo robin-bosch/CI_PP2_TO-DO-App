@@ -48,9 +48,9 @@
                     <div id="task-modal-close-btn" onclick="toggleCreateTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
                     <h2>Create task</h2>
 
-                    <form action="createTask()" id="create-task-form">
+                    <form action="" id="create-task-form">
                         <label for="task-title">Title:</label>
-                        <input type="text" id="taks-title" name="task-description">
+                        <input type="text" id="task-title" name="task-description" required>
 
                         <label for="task-description">Description:</label>
                         <textarea name="task-description" id="task-description" cols="30" rows="10"></textarea>
@@ -59,16 +59,16 @@
                             <i class="fa-solid fa-toggle-on"></i>
                         </div>
                         <label for="task-due-date" id="task-due-date-label">Due:</label>
-                        <input type="date" id="task-due-date" name="taks-due-date">
+                        <input type="datetime-local" id="task-due-date" name="taks-due-date" required>
 
                         <div id="task-alert-date-enabler" class="enabled" onclick="toggleTaskAlertDateEnabler()">
                             <i class="fa-solid fa-toggle-on"></i>
                         </div>
                         <label for="task-alert-date" id="task-alert-date-label" class="">Alert:</label>
-                        <input type="date" id="task-alert-date">
+                        <input type="datetime-local" id="task-alert-date" required>
 
                         <input type="reset" value="Reset">
-                        <input type="submit" value="Create task" onclick="createTask()">
+                        <input type="submit" value="Create task" id="create-task-submit">
 
                     </form>
                     

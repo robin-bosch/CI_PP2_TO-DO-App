@@ -70,6 +70,10 @@ function toggleTaskDueDateEnabler() {
         document.querySelector("#task-due-date-label").classList.add("disabled-text");
         document.querySelector("#task-due-date").disabled = true;
         document.querySelector("#task-due-date-enabler").classList.remove("enabled");
+        document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+        document.querySelector("#task-alert-date-label").classList.add("disabled-text");
+        document.querySelector("#task-alert-date").disabled = true;
+        document.querySelector("#task-alert-date-enabler").classList.remove("enabled");
     }
     else {
         document.querySelector("#task-due-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
@@ -79,9 +83,38 @@ function toggleTaskDueDateEnabler() {
     } 
 }
 
-function createTask() {
-    alert("create task");
-}
+
+document.querySelector("#create-task-submit").addEventListener ('click', function(event) {
+    event.preventDefault();
+
+    if(document.querySelector("#task-title").value == "") {
+        alert("Title please")
+    }
+    else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
+        alert("due empty");
+    }
+    else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
+        alert("alert empty");
+    }
+    else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
+        alert("the alert cant be in the future");
+    }
+    else {
+        let newTaskId = `task${Object.keys(testTasks).length+1}`;
+        testTasks[newTaskId] = {
+            title: document.querySelector("#task-title").value,
+            description: document.querySelector("#task-description").value,
+            due: document.querySelector("#task-due-date").value,
+            alert: document.querySelector("#task-alert-date").value,
+            done: false
+        };
+
+        generateList();
+        showTask(newTaskId);
+    }
+
+    
+ });
 
 function updateTaskStatus(taskId) {
     testTasks[taskId].done = testTasks[taskId].done ? false : true;
