@@ -33,6 +33,27 @@ let testTasks = {
         due: new Date(2022, 11, 2, 10, 33, 30, 0),
         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
         done: false
+    },
+    task6: {
+        title:"Task6",
+        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+        due: new Date(2022, 11, 2, 10, 33, 30, 0),
+        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+        done: false
+    },
+    task7: {
+        title:"Task7",
+        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+        due: new Date(2022, 11, 2, 10, 33, 30, 0),
+        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+        done: false
+    },
+    task8: {
+        title:"Task8",
+        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+        due: new Date(2022, 11, 2, 10, 33, 30, 0),
+        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+        done: false
     }
 }
 
@@ -140,10 +161,10 @@ function showTask(taskId) {
         <h2>${testTasks[taskId].title}</h2>
         <p>${testTasks[taskId].description}</p>
 
-        <p>Due: ${testTasks[taskId].due}</p>
+        <p>Due: ${testTasks[taskId].due.toLocaleString()}</p>
         <div>
             <p>Bell</p>
-            <p>Alert: ${testTasks[taskId].alert}</p>
+            <p>Alert: ${testTasks[taskId].alert.toLocaleString()}</p>
         </div>
         <div>
             <button onclick="deleteTask('${taskId}')">Delete</button>
