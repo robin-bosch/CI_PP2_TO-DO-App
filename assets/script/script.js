@@ -59,12 +59,49 @@ let testTasks = {
 
 let activeTaskElement;
 
-function toggleCreateTaskModal() {
+console.log(document.querySelector("#form-control-container"));
+
+function toggleTaskModal(taskId = 0) {
+    console.log(document.querySelector("#form-control-container"));
     if(document.querySelector("#task-create-modal-container").classList.contains("open")) {
         document.querySelector("#task-create-modal-container").classList.remove("open");
     }
     else {
         document.querySelector("#task-create-modal-container").classList.add("open");
+        if(taskId != 0) {
+            document.querySelector("#task-heading").innerHTML = "Edit task";
+            document.querySelector("#task-title").value = testTasks[taskId].title;
+            document.querySelector("#task-description").value = testTasks[taskId].description;
+            // document.querySelector("#task-due-date").value = testTasks[taskId].description;
+
+            console.log(document.querySelector("#form-control-container"));
+            console.log("was here")
+
+            document.querySelector("#form-control-container").innerHTML = `
+                <input type="reset" value="Reset" class="btn">
+                <input type="submit" value="Save task" id="edit-task-submit" class="btn">
+            `;
+
+            console.log(document.querySelector("#form-control-container"));
+            document.querySelector("#edit-task-submit").addEventListener ('click', function(event) {
+                event.preventDefault();
+                updateTask(taskId);
+            });
+        }
+        else {
+            document.querySelector("#task-heading").innerHTML = "Create task";
+
+            document.querySelector("#form-control-container").innerHTML = `
+                <input type="reset" value="Reset" class="btn">
+                <input type="submit" value="Create task" id="create-task-submit" class="btn">
+            `;
+
+            console.log(document.querySelector("#form-control-container"));
+            document.querySelector("#create-task-submit").addEventListener ('click', function(event) {
+                event.preventDefault();
+                createTask();
+            });
+        }
     }  
 }
 
@@ -105,9 +142,9 @@ function toggleTaskDueDateEnabler() {
 }
 
 
-document.querySelector("#create-task-submit").addEventListener ('click', function(event) {
-    event.preventDefault();
 
+
+function createTask() {
     if(document.querySelector("#task-title").value == "") {
         alert("Title please")
     }
@@ -132,10 +169,39 @@ document.querySelector("#create-task-submit").addEventListener ('click', functio
 
         generateList();
         showTask(newTaskId);
+        toggleTaskModal();
     }
+ };
 
-    
- });
+function updateTask(taskId) {
+    if(document.querySelector("#task-title").value == "") {
+        alert("Title please")
+    }
+    else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
+        alert("due empty");
+    }
+    else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
+        alert("alert empty");
+    }
+    else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
+        alert("the alert cant be in the future");
+    }
+    else {
+        testTasks[taskId] = {
+            title: document.querySelector("#task-title").value,
+            description: document.querySelector("#task-description").value,
+            due: document.querySelector("#task-due-date").value,
+            alert: document.querySelector("#task-alert-date").value,
+            done: false
+        };
+
+        generateList();
+        showTask(taskId);
+        toggleTaskModal();
+    }
+};
+
+
 
 function updateTaskStatus(taskId) {
     testTasks[taskId].done = testTasks[taskId].done ? false : true;
@@ -158,6 +224,7 @@ function showTask(taskId) {
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active")
     document.getElementById("task-details").innerHTML = `
+        <button onclick="toggleTaskModal('${taskId}')"><i class="fa-solid fa-pen-to-square"></i></button>
         <h2>${testTasks[taskId].title}</h2>
         <p>${testTasks[taskId].description}</p>
 
@@ -166,7 +233,7 @@ function showTask(taskId) {
             <p>Bell</p>
             <p>Alert: ${testTasks[taskId].alert.toLocaleString()}</p>
         </div>
-        <div id="form-control-container">
+        <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
             <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${testTasks[taskId].done ? "Unmark" : "Mark as done"}</button>
         </div>
@@ -174,18 +241,13 @@ function showTask(taskId) {
 }
 
 generateList();
-showTask("task1");
+showHome();
 
 
 function showHome() {
     document.getElementById("task-details").innerHTML = `
         <h2>Select one task</h2>
     `;
-}
-
-
-function updateTask() {
-
 }
 
 function deleteTask(taskId) {
