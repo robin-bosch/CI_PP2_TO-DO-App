@@ -166,9 +166,9 @@ function showTask(taskId) {
             <p>Bell</p>
             <p>Alert: ${testTasks[taskId].alert.toLocaleString()}</p>
         </div>
-        <div>
-            <button onclick="deleteTask('${taskId}')">Delete</button>
-            <button id="task-done-btn" onclick="updateTaskStatus('${taskId}')">${testTasks[taskId].done ? "Unmark" : "Mark as done"}</button>
+        <div id="form-control-container">
+            <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
+            <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${testTasks[taskId].done ? "Unmark" : "Mark as done"}</button>
         </div>
     `;
 }
@@ -194,9 +194,10 @@ function deleteTask(taskId) {
         console.log(testTasks[taskId]);
         testTasks[taskId] = undefined;
         delete testTasks[taskId];
+        generateList();
+        showHome();
     } 
-    generateList();
-    showHome();
+    
 }
 
 function generateList() {

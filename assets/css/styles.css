@@ -267,3 +267,25 @@ main {
 #task-create-modal-container.open {
     display:flex;
 }
+
+#form-control-container {
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+}
+
+.btn {
+    background-color:#0B409C;
+    padding:1rem;
+    font-size: 1.25rem;
+    border:none;
+    color:white;
+    border-radius:5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
