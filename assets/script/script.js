@@ -1,3 +1,8 @@
+//Global scope vars
+let taskList;
+let activeTaskElement;
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // window.localStorage.setItem("taskList", JSON.stringify([
     //     {
@@ -66,33 +71,52 @@ document.addEventListener("DOMContentLoaded", function() {
     //     }
     // ]));
 
+    taskList = JSON.parse(window.localStorage.getItem("taskList"));
+
     generateList();
     showHome();
 
 })
 
+//Save function
+function saveList() {
+    window.localStorage.setItem("taskList", JSON.stringify(taskList));
+}
 
 
-let activeTaskElement;
-
-
-
+/**
+ * Fetches one specific task by its given id
+ * @param {} taskId 
+ * @returns task as JSON or empty string
+ */
 function getTask(taskId) {
-    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
     for(let i = 0; i < taskList.length; i++) {
         if(taskList[i].id == taskId) {
             return taskList[i];
         }
     }
+
+    //Spawn notification here
     alert("not in the list")
+    return "";
+    
 }
 
+/**
+ * Opens or closes task modal
+ * @param {} taskId default = 0 if not defined
+ */
 function toggleTaskModal(taskId = 0) {
-    if(document.querySelector("#task-create-modal-container").classList.contains("open")) {
-        document.querySelector("#task-create-modal-container").classList.remove("open");
+    let modalContainer = document.querySelector("#task-create-modal-container");
+
+
+    if(modalContainer.classList.contains("open")) {
+        modalContainer.classList.remove("open");
     }
     else {
-        document.querySelector("#task-create-modal-container").classList.add("open");
+        modalContainer.classList.add("open");
+
+        //Switch between add or edit modal
         if(taskId != 0) {
             let task = getTask(taskId);
             document.querySelector("#task-heading").innerHTML = "Edit task";
@@ -101,15 +125,12 @@ function toggleTaskModal(taskId = 0) {
             document.querySelector("#task-due-date").value = task.due.toISOString();
             document.querySelector("#task-alert-date").value = task.alert;
 
-            console.log(document.querySelector("#form-control-container"));
-            console.log("was here")
 
             document.querySelector("#form-control-container").innerHTML = `
                 <input type="reset" value="Reset" class="btn">
                 <input type="submit" value="Save task" id="edit-task-submit" class="btn">
             `;
 
-            console.log(document.querySelector("#form-control-container"));
             document.querySelector("#edit-task-submit").addEventListener ('click', function(event) {
                 event.preventDefault();
                 updateTask(taskId);
@@ -151,6 +172,7 @@ function toggleTaskAlertDateEnabler() {
 
 function toggleTaskDueDateEnabler() {
     let dueDateSwitch = document.querySelector("#task-due-date-enabler");
+
     if(dueDateSwitch.classList.contains("enabled")) {
         dueDateSwitch.innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
         document.querySelector("#task-due-date-label").classList.add("disabled-text");
@@ -173,20 +195,7 @@ function toggleTaskDueDateEnabler() {
 // function validateTask
 
 function createTask() {
-    if(document.querySelector("#task-title").value == "") {
-        alert("Title please")
-    }
-    else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
-        alert("due empty");
-    }
-    else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
-        alert("alert empty");
-    }
-    else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
-        alert("the alert cant be in the future");
-    }
-    else {
-        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+    if(validateForm()) {
         let newTaskId = `task${taskList.length+1}`;
 
         
@@ -198,31 +207,45 @@ function createTask() {
             alert: ocument.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
             done: false
         });
-        window.localStorage.setItem("taskList", JSON.stringify(taskList));
+        
+        saveList();
 
         generateList();
         showTask(newTaskId);
         toggleTaskModal();
     }
+    else {
+
+    }
  };
 
-function updateTask(taskId) {
+function validateForm() {
+    //TODO: Spawn alert notifications
     if(document.querySelector("#task-title").value == "") {
+
         alert("Title please")
+        return false;
     }
     else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
         alert("due empty");
+        return false;
     }
     else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
         alert("alert empty");
+        return false;
     }
     else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
         alert("the alert cant be in the future");
+        return false;
     }
     else {
+        return true;
+    }
+}
 
-        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
 
+function updateTask(taskId) {
+    if(validateForm()) {
         for(let i = 0; i < taskList.length; i++) {
             if(taskList[i].id == taskId) {
                 taskList[i] = {
@@ -235,12 +258,13 @@ function updateTask(taskId) {
             }
         }
 
-        window.localStorage.setItem("taskList", JSON.stringify(taskList));
-
-
+        saveList();
         generateList();
         showTask(taskId);
         toggleTaskModal();
+    }
+    else {
+        
     }
 };
 
@@ -257,7 +281,8 @@ function updateTaskStatus(taskId) {
             break;
         }
     }
-    window.localStorage.setItem("taskList", JSON.stringify(taskList));
+    
+    saveList();
 
     if(task.done) {
         document.querySelector(`#${taskId}-checkbox`).classList.add("checked");
