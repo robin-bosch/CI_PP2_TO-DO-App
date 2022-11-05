@@ -164,11 +164,17 @@ main {
 
 #task-header {
     width:100%;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
     height:5rem;
     color:white;
     background-color:var(--main-color);
+}
+
+#task-header > h1 {
+    margin:0 auto;
 }
 
 #task-details {
@@ -224,13 +230,46 @@ main {
     position:absolute;
     top:0;
     left:0;
-    display:none;
+    display:flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.6);
     width:100vw;
     height: 100vh;
     z-index:98;
+    opacity:0;
+    visibility: hidden;
+    transition:1s visibility 0s, 0.5s opacity 0.3s;
+}
+
+#task-create-modal-container.open {
+    display:flex;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s, opacity 0.3s;
+}
+
+#task-create-modal-container > #task-create-modal {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    
+    z-index:99;
+    background-color: white;
+    border-radius:10px;
+    padding:5rem;
+    transition:0.3s;
+    width:max(100rem, 50vw);
+
+    opacity: 1;
+    visibility: hidden;
+    transition: 0.5s visibility 0s, opacity 0.3s;
+}
+
+#task-create-modal-container.open > #task-create-modal{
+    opacity: 1;
+    visibility: visible;
+    transition:0.5s visibility 0s, 0.5s opacity 0.3s;
 }
 
 .modal-close-btn {
@@ -240,7 +279,7 @@ main {
     right:2rem;
     padding:0;
     font-size:3rem;
-    transition: 0.3s;
+    transition:0.3s;
 }
 .modal-close-btn:hover {
     transition: 0.3s;
@@ -248,17 +287,9 @@ main {
     cursor: pointer;
 }
 
-#task-create-modal {
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    
-    z-index:99;
-    background-color: white;
-    border-radius:10px;
-    padding:5rem;
-    width:max(100rem, 50vw);
-}
+
+
+
 
 .disabled-text {
     text-decoration: line-through;
@@ -277,9 +308,7 @@ main {
     flex-direction: column;
 }
 
-#task-create-modal-container.open {
-    display:flex;
-}
+
 
 #task-control-container {
     display: flex;
@@ -310,6 +339,21 @@ main {
     border:none;
     border-radius:5px;
     transition: 0.3s;
+}
+
+.icon-btn {
+    background-color: white;
+    padding:1rem;
+    font-size: 2rem;
+    border:none;
+    border-radius:5px;
+    transition: 0.3s;
+}
+
+.icon-btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.05);
 }
 
 #edit-btn:hover {
@@ -343,4 +387,25 @@ main {
 #form-control-container {
     display: flex;
     justify-content: space-between;
+}
+
+
+
+#user-settings-container {
+    position: absolute;
+    margin-left: auto;
+    right:1rem;
+}
+
+#user-settings-container > .btn {
+    font-size: 2rem;
+    background-color: transparent;
+    border:none;
+    transition: 0.3s;
+}
+
+#user-settings-container > .btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.1);
 }

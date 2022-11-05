@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
     //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
     //         alert: new Date(2022, 11, 1, 10, 33, 30, 0),
+    //         activeAlert: true,
     //         done: false
     //     },
     //     {
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Etiam varius vehicula mi sit amet mollis. Nullam mattis ultrices eros id varius. Donec quam neque, facilisis id tincidunt vel, suscipit in tellus. Quisque faucibus diam non condimentum laoreet.",
     //         due: new Date(2022, 12, 2, 10, 33, 30, 0),
     //         alert: new Date(2022, 12, 1, 10, 33, 30, 0),
+    //         activeAlert: false,
     //         done: true
     //     },
     //     {
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Fusce vulputate, augue a lacinia feugiat, quam dui molestie mi, id commodo orci neque at magna. Suspendisse ut metus diam. Vestibulum quis dolor nec nisl elementum posuere. Sed eleifend lorem urna, eget dictum nunc congue quis. Integer blandit, nulla sit amet dapibus faucibus, neque tellus semper neque, non bibendum est mauris in magna. Suspendisse at ante ut ex fringilla consequat non a diam. Nulla at aliquam arcu.",
     //         due: new Date(2022, 11, 6, 10, 33, 30, 0),
     //         alert: new Date(2022, 11, 5, 10, 33, 30, 0),
+    //         activeAlert: false,
     //         done: false
     //     },
     //     {
@@ -35,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
     //         due: new Date(2023, 04, 2, 10, 33, 30, 0),
     //         alert: new Date(2023, 04, 1, 10, 33, 30, 0),
+    //         activeAlert: true,
     //         done: false
     //     },
     //     {
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
     //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
     //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         activeAlert: true,
     //         done: false
     //     },
     //     {
@@ -51,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
     //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
     //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         activeAlert: false,
     //         done: false
     //     },
     //     {
@@ -59,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
     //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
     //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         activeAlert: true,
     //         done: false
     //     },
     //     {
@@ -67,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
     //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
     //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         activeAlert: true,
     //         done: false
     //     }
     // ]));
@@ -99,6 +107,21 @@ function getTask(taskId) {
     alert("not in the list")
     return "";
     
+}
+
+function queryTask(taskId) {
+    for(let i = 0; i < taskList.length; i++) {
+        if(taskList[i].id == taskId) {
+            return {
+                index: i,
+                task: taskList[i]
+            };
+        }
+    }
+
+    //Spawn notification here
+    alert("not in the list")
+    return "";
 }
 
 /**
@@ -310,21 +333,44 @@ function showTask(taskId) {
     }
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active")
+
+    let alertHtml = task.activeAlert ? `
+        <div id="toggle-alert-container">
+            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
+            <p id="alert-text">Alert: ${task.alert.toLocaleString()}</p>
+        </div>
+    ` : `
+        <div id="toggle-alert-container">
+            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
+            <p id="alert-text" class="disabled-text">Alert: ${task.alert.toLocaleString()}</p>
+        </div>
+        `;
     document.getElementById("task-details").innerHTML = `
         <button onclick="toggleTaskModal('${taskId}')" id="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
         <p>Due: ${task.due.toLocaleString()}</p>
-        <div>
-            <p>Bell</p>
-            <p>Alert: ${task.alert.toLocaleString()}</p>
-        </div>
+        ${alertHtml}
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
             <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${task.done ? "Unmark" : "Mark as done"}</button>
         </div>
     `;
+}
+
+function toggleAlert(taskId) {
+    let taskItem = queryTask(taskId);
+
+    taskList[taskItem.index].activeAlert = taskList[taskItem.index].activeAlert ? false : true;
+    document.querySelector("#toggle-alert-container").innerHTML = taskItem.task.activeAlert ? `
+        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
+        <p id="alert-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+    ` : `
+        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
+        <p id="alert-text" class="disabled-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+    `;  
+    saveList();  
 }
 
 
