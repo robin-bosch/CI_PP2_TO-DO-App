@@ -84,6 +84,14 @@ main {
     background-color: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);
 }
 
+#task-due-date-enabler, #task-alert-date-enabler {
+    font-size: 2rem;
+}
+
+#task-due-date-enabler:hover, #task-alert-date-enabler:hover {
+    cursor: pointer;
+}
+
 .task-checkbox {
     display: flex;
     flex-shrink:0;
@@ -226,9 +234,11 @@ main {
 }
 
 .modal-close-btn {
+    display: flex;
     position:absolute;
-    top:1rem;
-    right:1rem;
+    top:2rem;
+    right:2rem;
+    padding:0;
     font-size:3rem;
     transition: 0.3s;
 }
@@ -242,8 +252,10 @@ main {
     position:relative;
     display: flex;
     flex-direction: column;
+    
     z-index:99;
     background-color: white;
+    border-radius:10px;
     padding:5rem;
     width:max(100rem, 50vw);
 }
@@ -261,6 +273,7 @@ main {
 
 #create-task-form {
     display: flex;
+    gap:1rem;
     flex-direction: column;
 }
 
@@ -312,4 +325,22 @@ main {
 .list-category-heading {
     padding:0.25rem 2rem;
     border-bottom: 2px solid black;
+}
+
+.form-row {
+    display:flex;
+    gap:2rem;
+    width:100%;
+    align-items: center;
+}
+
+.form-col {
+    display:flex;
+    flex-direction: column;
+}
+
+
+#form-control-container {
+    display: flex;
+    justify-content: space-between;
 }
