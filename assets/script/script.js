@@ -1,78 +1,105 @@
-let testTasks = {
-    task1: {
-        title:"Task1",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
-        due: new Date(2022, 11, 2, 10, 33, 30, 0),
-        alert: new Date(2022, 11, 1, 10, 33, 30, 0),
-        done: false
-    },
-    task2: {
-        title:"Task2",
-        description: "Etiam varius vehicula mi sit amet mollis. Nullam mattis ultrices eros id varius. Donec quam neque, facilisis id tincidunt vel, suscipit in tellus. Quisque faucibus diam non condimentum laoreet.",
-        due: new Date(2022, 12, 2, 10, 33, 30, 0),
-        alert: new Date(2022, 12, 1, 10, 33, 30, 0),
-        done: true
-    },
-    task3: {
-        title:"Task3",
-        description: "Fusce vulputate, augue a lacinia feugiat, quam dui molestie mi, id commodo orci neque at magna. Suspendisse ut metus diam. Vestibulum quis dolor nec nisl elementum posuere. Sed eleifend lorem urna, eget dictum nunc congue quis. Integer blandit, nulla sit amet dapibus faucibus, neque tellus semper neque, non bibendum est mauris in magna. Suspendisse at ante ut ex fringilla consequat non a diam. Nulla at aliquam arcu.",
-        due: new Date(2022, 11, 6, 10, 33, 30, 0),
-        alert: new Date(2022, 11, 5, 10, 33, 30, 0),
-        done: false
-    },
-    task4: {
-        title:"Task4",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
-        due: new Date(2023, 04, 2, 10, 33, 30, 0),
-        alert: new Date(2023, 04, 1, 10, 33, 30, 0),
-        done: false
-    },
-    task5: {
-        title:"Task5",
-        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-        due: new Date(2022, 11, 2, 10, 33, 30, 0),
-        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-        done: false
-    },
-    task6: {
-        title:"Task6",
-        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-        due: new Date(2022, 11, 2, 10, 33, 30, 0),
-        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-        done: false
-    },
-    task7: {
-        title:"Task7",
-        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-        due: new Date(2022, 11, 2, 10, 33, 30, 0),
-        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-        done: false
-    },
-    task8: {
-        title:"Task8",
-        description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-        due: new Date(2022, 11, 2, 10, 33, 30, 0),
-        alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-        done: false
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    // window.localStorage.setItem("taskList", JSON.stringify([
+    //     {
+    //         id: "task1",
+    //         title:"Task1",
+    //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
+    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
+    //         alert: new Date(2022, 11, 1, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task2",
+    //         title:"Task2",
+    //         description: "Etiam varius vehicula mi sit amet mollis. Nullam mattis ultrices eros id varius. Donec quam neque, facilisis id tincidunt vel, suscipit in tellus. Quisque faucibus diam non condimentum laoreet.",
+    //         due: new Date(2022, 12, 2, 10, 33, 30, 0),
+    //         alert: new Date(2022, 12, 1, 10, 33, 30, 0),
+    //         done: true
+    //     },
+    //     {
+    //         id: "task3",
+    //         title:"Task3",
+    //         description: "Fusce vulputate, augue a lacinia feugiat, quam dui molestie mi, id commodo orci neque at magna. Suspendisse ut metus diam. Vestibulum quis dolor nec nisl elementum posuere. Sed eleifend lorem urna, eget dictum nunc congue quis. Integer blandit, nulla sit amet dapibus faucibus, neque tellus semper neque, non bibendum est mauris in magna. Suspendisse at ante ut ex fringilla consequat non a diam. Nulla at aliquam arcu.",
+    //         due: new Date(2022, 11, 6, 10, 33, 30, 0),
+    //         alert: new Date(2022, 11, 5, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task4",
+    //         title:"Task4",
+    //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
+    //         due: new Date(2023, 04, 2, 10, 33, 30, 0),
+    //         alert: new Date(2023, 04, 1, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task5",
+    //         title:"Task5",
+    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
+    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task6",
+    //         title:"Task6",
+    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
+    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task7",
+    //         title:"Task7",
+    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
+    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         done: false
+    //     },
+    //     {
+    //         id: "task8",
+    //         title:"Task8",
+    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
+    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
+    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
+    //         done: false
+    //     }
+    // ]));
+
+    generateList();
+    showHome();
+
+})
+
+
 
 let activeTaskElement;
 
-console.log(document.querySelector("#form-control-container"));
+
+
+function getTask(taskId) {
+    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+    for(let i = 0; i < taskList.length; i++) {
+        if(taskList[i].id == taskId) {
+            return taskList[i];
+        }
+    }
+    alert("not in the list")
+}
 
 function toggleTaskModal(taskId = 0) {
-    console.log(document.querySelector("#form-control-container"));
     if(document.querySelector("#task-create-modal-container").classList.contains("open")) {
         document.querySelector("#task-create-modal-container").classList.remove("open");
     }
     else {
         document.querySelector("#task-create-modal-container").classList.add("open");
         if(taskId != 0) {
+            let task = getTask(taskId);
             document.querySelector("#task-heading").innerHTML = "Edit task";
-            document.querySelector("#task-title").value = testTasks[taskId].title;
-            document.querySelector("#task-description").value = testTasks[taskId].description;
-            // document.querySelector("#task-due-date").value = testTasks[taskId].description;
+            document.querySelector("#task-title").value = task.title;
+            document.querySelector("#task-description").value = task.description;
+            document.querySelector("#task-due-date").value = task.due.toISOString();
+            document.querySelector("#task-alert-date").value = task.alert;
 
             console.log(document.querySelector("#form-control-container"));
             console.log("was here")
@@ -123,26 +150,27 @@ function toggleTaskAlertDateEnabler() {
 }
 
 function toggleTaskDueDateEnabler() {
-    if(document.querySelector("#task-due-date-enabler").classList.contains("enabled")) {
-        document.querySelector("#task-due-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+    let dueDateSwitch = document.querySelector("#task-due-date-enabler");
+    if(dueDateSwitch.classList.contains("enabled")) {
+        dueDateSwitch.innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
         document.querySelector("#task-due-date-label").classList.add("disabled-text");
         document.querySelector("#task-due-date").disabled = true;
-        document.querySelector("#task-due-date-enabler").classList.remove("enabled");
+        dueDateSwitch.classList.remove("enabled");
         document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
         document.querySelector("#task-alert-date-label").classList.add("disabled-text");
         document.querySelector("#task-alert-date").disabled = true;
         document.querySelector("#task-alert-date-enabler").classList.remove("enabled");
     }
     else {
-        document.querySelector("#task-due-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
+        dueDateSwitch.innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
         document.querySelector("#task-due-date-label").classList.remove("disabled-text");
         document.querySelector("#task-due-date").disabled = false;
-        document.querySelector("#task-due-date-enabler").classList.add("enabled");
+        dueDateSwitch.classList.add("enabled");
     } 
 }
 
 
-
+// function validateTask
 
 function createTask() {
     if(document.querySelector("#task-title").value == "") {
@@ -158,14 +186,19 @@ function createTask() {
         alert("the alert cant be in the future");
     }
     else {
-        let newTaskId = `task${Object.keys(testTasks).length+1}`;
-        testTasks[newTaskId] = {
+        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+        let newTaskId = `task${taskList.length+1}`;
+
+        
+        taskList.push({
+            id: newTaskId,
             title: document.querySelector("#task-title").value,
             description: document.querySelector("#task-description").value,
-            due: document.querySelector("#task-due-date").value,
-            alert: document.querySelector("#task-alert-date").value,
+            due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
+            alert: ocument.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
             done: false
-        };
+        });
+        window.localStorage.setItem("taskList", JSON.stringify(taskList));
 
         generateList();
         showTask(newTaskId);
@@ -187,13 +220,23 @@ function updateTask(taskId) {
         alert("the alert cant be in the future");
     }
     else {
-        testTasks[taskId] = {
-            title: document.querySelector("#task-title").value,
-            description: document.querySelector("#task-description").value,
-            due: document.querySelector("#task-due-date").value,
-            alert: document.querySelector("#task-alert-date").value,
-            done: false
-        };
+
+        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+
+        for(let i = 0; i < taskList.length; i++) {
+            if(taskList[i].id == taskId) {
+                taskList[i] = {
+                    title: document.querySelector("#task-title").value,
+                    description: document.querySelector("#task-description").value,
+                    due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
+                    alert: document.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
+                    done: false
+                };
+            }
+        }
+
+        window.localStorage.setItem("taskList", JSON.stringify(taskList));
+
 
         generateList();
         showTask(taskId);
@@ -204,8 +247,19 @@ function updateTask(taskId) {
 
 
 function updateTaskStatus(taskId) {
-    testTasks[taskId].done = testTasks[taskId].done ? false : true;
-    if(testTasks[taskId].done) {
+    let task;
+    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+    
+    for(let i = 0; i < taskList.length; i++) {
+        if(taskList[i].id == taskId) {
+            taskList[i].done = taskList[i].done ? false : true;
+            task = taskList[i];
+            break;
+        }
+    }
+    window.localStorage.setItem("taskList", JSON.stringify(taskList));
+
+    if(task.done) {
         document.querySelector(`#${taskId}-checkbox`).classList.add("checked");
         document.querySelector(`#${taskId}-checkbox`).innerHTML = '<i class="fa-solid fa-check"></i>';
     }
@@ -213,11 +267,14 @@ function updateTaskStatus(taskId) {
         document.querySelector(`#${taskId}-checkbox`).classList.remove("checked");
         document.querySelector(`#${taskId}-checkbox`).innerHTML = "";
     }
-    document.querySelector("#task-done-btn").innerHTML = testTasks[taskId].done ? "Unmark" : "Mark as done";
+    document.querySelector("#task-done-btn").innerHTML = currentTask.done ? "Unmark" : "Mark as done";
+
+    generateList();
 
 }
 
 function showTask(taskId) {
+    let task = getTask(taskId)
     if(activeTaskElement != undefined) {
         activeTaskElement.classList.remove("active");
     }
@@ -225,23 +282,22 @@ function showTask(taskId) {
     activeTaskElement.classList.add("active")
     document.getElementById("task-details").innerHTML = `
         <button onclick="toggleTaskModal('${taskId}')"><i class="fa-solid fa-pen-to-square"></i></button>
-        <h2>${testTasks[taskId].title}</h2>
-        <p>${testTasks[taskId].description}</p>
+        <h2>${task.title}</h2>
+        <p>${task.description}</p>
 
-        <p>Due: ${testTasks[taskId].due.toLocaleString()}</p>
+        <p>Due: ${task.due.toLocaleString()}</p>
         <div>
             <p>Bell</p>
-            <p>Alert: ${testTasks[taskId].alert.toLocaleString()}</p>
+            <p>Alert: ${task.alert.toLocaleString()}</p>
         </div>
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
-            <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${testTasks[taskId].done ? "Unmark" : "Mark as done"}</button>
+            <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${task.done ? "Unmark" : "Mark as done"}</button>
         </div>
     `;
 }
 
-generateList();
-showHome();
+
 
 
 function showHome() {
@@ -253,9 +309,16 @@ function showHome() {
 function deleteTask(taskId) {
     // console.log(document.getElementById(this));
     if(confirm("Do you want to remove the task?")) {
-        console.log(testTasks[taskId]);
-        testTasks[taskId] = undefined;
-        delete testTasks[taskId];
+        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+
+        for(let i = 0; i < taskList.length; i++) {
+            if(taskList[i].id = taskId) {
+                taskList.splice(i, 1);
+                break;
+            }
+        }
+        window.localStorage.setItem("taskList", JSON.stringify(taskList));
+
         generateList();
         showHome();
     } 
@@ -263,20 +326,42 @@ function deleteTask(taskId) {
 }
 
 function generateList() {
-    let taskHtml = "";
-    for(let key of Object.keys(testTasks)) {
-        // console.log(testTasks[key].title)
-        taskHtml += `
-        <div id="${key}" class="task">
-            <div id="${key}-checkbox" class="task-checkbox ${testTasks[key].done ? "checked" : ""}" onclick="updateTaskStatus('${key}')" >${testTasks[key].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
-            <div class="task-text" onclick="showTask('${key}')">
-                <h3>${testTasks[key].title}</h3>
-                <p>${testTasks[key].description.slice(0, 60)}${testTasks[key].description.length > 60 ? "..." : ""}</p>
-            </div>
-        </div>
-        
-        `
+    let taskUndoneHtml = "";
+    let taskDoneHtml = "";
+    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
+    console.log(taskList);
+
+    for(let i = 0; i < taskList.length; i++) {
+
+        if(taskList[i].done) {
+            taskDoneHtml += `
+                <div id="${taskList[i].id}" class="task">
+                    <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" >${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
+                    <div class="task-text" onclick="showTask('${taskList[i].id}')">
+                        <h3>${taskList[i].title}</h3>
+                        <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
+                    </div>
+                </div>
+                `
+        }
+        else {
+            taskUndoneHtml += `
+                <div id="${taskList[i].id}" class="task">
+                    <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" >${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
+                    <div class="task-text" onclick="showTask('${taskList[i].id}')">
+                        <h3>${taskList[i].title}</h3>
+                        <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
+                    </div>
+                </div>
+            `
+        }
     }
-    document.getElementById("task-list").innerHTML = taskHtml;
+    document.getElementById("task-list").innerHTML = `
+        <p>Active</p>
+        ${taskUndoneHtml}
+
+        <p>Done</p>
+        ${taskDoneHtml}
+    `;
 }
 
