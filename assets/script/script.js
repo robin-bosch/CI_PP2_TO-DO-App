@@ -1,4 +1,4 @@
-//Global scope vars
+//Global scope vars to keep the state between functions
 let taskList;
 let activeTaskElement;
 
@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
     taskList = JSON.parse(window.localStorage.getItem("taskList"));
 
     generateList();
-    showHome();
 
 })
 
@@ -306,7 +305,7 @@ function showTask(taskId) {
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active")
     document.getElementById("task-details").innerHTML = `
-        <button onclick="toggleTaskModal('${taskId}')"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button onclick="toggleTaskModal('${taskId}')" id="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
@@ -382,11 +381,17 @@ function generateList() {
         }
     }
     document.getElementById("task-list").innerHTML = `
-        <p>Active</p>
-        ${taskUndoneHtml}
+        <div class="list-category">
+            <h3 class="list-category-heading">Active</h3>
+            ${taskUndoneHtml}
+        </div>
+        
+        
 
-        <p>Done</p>
-        ${taskDoneHtml}
+        <div class="list-category">
+            <h3 class="list-category-heading">Done</h3>
+            ${taskDoneHtml}
+        </div>
     `;
 }
 
