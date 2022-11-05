@@ -271,27 +271,33 @@ function updateTask(taskId) {
 
 function updateTaskStatus(taskId) {
     let task;
-    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
     
     for(let i = 0; i < taskList.length; i++) {
         if(taskList[i].id == taskId) {
             taskList[i].done = taskList[i].done ? false : true;
             task = taskList[i];
+
+            if(activeTaskElement != undefined && task.id == activeTaskElement.id) {
+                document.querySelector("#task-done-btn").innerHTML = taskList[i].done ? "Unmark" : "Mark as done";
+            }
             break;
         }
     }
     
     saveList();
 
+    let checkBoxElement = document.querySelector(`#${taskId}-checkbox`);
+
     if(task.done) {
-        document.querySelector(`#${taskId}-checkbox`).classList.add("checked");
-        document.querySelector(`#${taskId}-checkbox`).innerHTML = '<i class="fa-solid fa-check"></i>';
+        checkBoxElement.classList.add("checked");
+        checkBoxElement.innerHTML = '<i class="fa-solid fa-check"></i>';
     }
     else {
-        document.querySelector(`#${taskId}-checkbox`).classList.remove("checked");
-        document.querySelector(`#${taskId}-checkbox`).innerHTML = "";
+        checkBoxElement.classList.remove("checked");
+        checkBoxElement.innerHTML = "";
     }
-    document.querySelector("#task-done-btn").innerHTML = currentTask.done ? "Unmark" : "Mark as done";
+    
+    
 
     generateList();
 
@@ -333,7 +339,6 @@ function showHome() {
 function deleteTask(taskId) {
     // console.log(document.getElementById(this));
     if(confirm("Do you want to remove the task?")) {
-        let taskList = JSON.parse(window.localStorage.getItem("taskList"));
 
         for(let i = 0; i < taskList.length; i++) {
             if(taskList[i].id = taskId) {
@@ -341,7 +346,7 @@ function deleteTask(taskId) {
                 break;
             }
         }
-        window.localStorage.setItem("taskList", JSON.stringify(taskList));
+        saveList();
 
         generateList();
         showHome();
@@ -352,8 +357,6 @@ function deleteTask(taskId) {
 function generateList() {
     let taskUndoneHtml = "";
     let taskDoneHtml = "";
-    let taskList = JSON.parse(window.localStorage.getItem("taskList"));
-    console.log(taskList);
 
     for(let i = 0; i < taskList.length; i++) {
 
