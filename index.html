@@ -17,7 +17,7 @@
         <section id="task-list-container">
             <div id="task-list-header">
                 <h2>Tasks</h2>
-                <button onclick="toggleTaskModal()" class="round-btn"><i class="fa-solid fa-plus"></i></i></button>
+                <button onclick="toggleTaskModal()" class="round-btn" alt="New button"><i class="fa-solid fa-plus"></i></i></button>
             </div>
             <div id="task-list">
             </div>
@@ -26,8 +26,8 @@
             <div id="task-header">
                 <h1>ToDoApp</h1>
                 <div id="user-settings-container">
-                    <button class="btn"><i class="fa-solid fa-bell-slash"></i></button>
-                    <button class="btn"><i class="fa-solid fa-gear"></i></button>
+                    <button class="btn" onclick="createNotification('Test notification', NOTIFICATION_TYPES.warning)"><i class="fa-solid fa-bell-slash"></i></button>
+                    <button class="btn" onclick="toggleSettingsModal()"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
             </div>
@@ -77,7 +77,6 @@
                             </div>
                             
                         </div>
-                        
 
                         <div id="form-control-container">
                         </div>
@@ -90,8 +89,41 @@
 
             </div>
 
+            <div id="settings-modal-container" class="modal-container">
+                <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+                <div id="settings-modal" class="modal">
+                    <h2>User Settings</h2>
+                    
+                    <div>
+                        <h3>Select your theme color</h3>
+                        <div>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Notifications</h3>
+                        <div>
+                            <p>Switch</p>
+                            <h4>Off</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
         </section>
     </main>
+    <div id="notification-container">
+
+    </div>
 
     <script src="assets/script/script.js"></script>
 </body>

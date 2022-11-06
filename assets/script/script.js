@@ -104,7 +104,7 @@ function getTask(taskId) {
     }
 
     //Spawn notification here
-    alert("not in the list")
+    createNotification("Task was not found", NOTIFICATION_TYPES.warning);
     return "";
     
 }
@@ -120,7 +120,7 @@ function queryTask(taskId) {
     }
 
     //Spawn notification here
-    alert("not in the list")
+    createNotification("Task was not found", NOTIFICATION_TYPES.warning);
     return "";
 }
 
@@ -173,6 +173,19 @@ function toggleTaskModal(taskId = 0) {
             });
         }
     }  
+}
+
+
+function toggleSettingsModal() {
+    let modalContainer = document.querySelector("#settings-modal-container");
+
+
+    if(modalContainer.classList.contains("open")) {
+        modalContainer.classList.remove("open");
+    }
+    else {
+        modalContainer.classList.add("open");
+    } 
 }
 
 
@@ -245,19 +258,19 @@ function validateForm() {
     //TODO: Spawn alert notifications
     if(document.querySelector("#task-title").value == "") {
 
-        alert("Title please")
+        createNotification("The title of the task cannot be empty", NOTIFICATION_TYPES.warning);
         return false;
     }
     else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
-        alert("due empty");
+        createNotification("Due date was not set", NOTIFICATION_TYPES.warning);
         return false;
     }
     else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
-        alert("alert empty");
+        createNotification("Alert was not set", NOTIFICATION_TYPES.warning);
         return false;
     }
     else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
-        alert("the alert cant be in the future");
+        createNotification("The alert date cannot be after the due date", NOTIFICATION_TYPES.warning);
         return false;
     }
     else {
@@ -266,20 +279,22 @@ function validateForm() {
 }
 
 
+/**
+ * Updates the task with the given elements
+ * @param {} taskId 
+ */
 function updateTask(taskId) {
     if(validateForm()) {
-        for(let i = 0; i < taskList.length; i++) {
-            if(taskList[i].id == taskId) {
-                taskList[i] = {
-                    title: document.querySelector("#task-title").value,
-                    description: document.querySelector("#task-description").value,
-                    due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
-                    alert: document.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
-                    done: false
-                };
-            }
-        }
+        taskList[queryTask(taskId).index] = {
+            title: document.querySelector("#task-title").value,
+            description: document.querySelector("#task-description").value,
+            due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
+            activeAlert: document.querySelector("#task-alert-date").disabled ? false : true,
+            alert: document.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
+            done: false
+        };
 
+        //Save list -> Update tasklist -> Set the updated task to show -> Close the modal 
         saveList();
         generateList();
         showTask(taskId);
@@ -375,37 +390,43 @@ function toggleAlert(taskId) {
 
 
 
-
+/**
+ * Loads and displays the homescreen
+ */
 function showHome() {
     document.getElementById("task-details").innerHTML = `
         <h2>Select one task</h2>
     `;
 }
 
+
+/**
+ * Deletes the task with given id from the list
+ * This action is not reversible!
+ * @param {*} taskId 
+ */
 function deleteTask(taskId) {
-    // console.log(document.getElementById(this));
+    //Ask for confirmation to delete task
     if(confirm("Do you want to remove the task?")) {
 
-        for(let i = 0; i < taskList.length; i++) {
-            if(taskList[i].id = taskId) {
-                taskList.splice(i, 1);
-                break;
-            }
-        }
-        saveList();
+        //Get index from queryTask and delete item from array
+        taskList.splice(queryTask(taskId).index, 1);
 
+        //Save -> Update task list -> Switch to homescreen
+        saveList();
         generateList();
         showHome();
-    } 
-    
+    }
 }
 
+/**
+ * Generates HTML for all tasks and categorizes them into done and active tasks
+ */
 function generateList() {
     let taskUndoneHtml = "";
     let taskDoneHtml = "";
 
     for(let i = 0; i < taskList.length; i++) {
-
         if(taskList[i].done) {
             taskDoneHtml += `
                 <div id="${taskList[i].id}" class="task">
@@ -434,13 +455,61 @@ function generateList() {
             <h3 class="list-category-heading">Active</h3>
             ${taskUndoneHtml}
         </div>
-        
-        
-
         <div class="list-category">
             <h3 class="list-category-heading">Done</h3>
             ${taskDoneHtml}
         </div>
     `;
+}
+
+const NOTIFICATION_TYPES = {
+    warning: "warning",
+    reminder: "reminder",
+}
+let num = 1;
+function createNotification(text, type) {
+    let iconHtml;
+
+    switch(type) {
+        case NOTIFICATION_TYPES.warning:
+            iconHtml = `<div class="notification-warning-icon notification-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>`;
+            break;
+        case NOTIFICATION_TYPES.reminder:
+            iconHtml = `<div class="notification-reminder-icon notification-icon"><i class="fa-solid fa-bell"></i></div>`;
+        default:
+            iconHtml = `<div class="notification-default-icon notification-icon"><i class="fa-solid fa-exclamation"></i></div>`;
+    }
+    let notificationId = Math.random().toString(16).slice(2);
+    let notificationHtml = `
+        <div class="notification" id="notification-${notificationId}">
+            <div class="notification-content">
+                ${iconHtml}
+                <p>${text == "" ? "Unknown notification" : text + num}</p>
+                <button class="close-notification-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
+            </div>
+            <div class="notification-timer">
+                <div style="animation: roundtime 5s linear forwards"></div>
+            </div>
+        </div>
+    `
+    document.querySelector("#notification-container").innerHTML += notificationHtml;
+
+    document.querySelector(`#close-${notificationId}-btn`).addEventListener("click", () => {removeNotification(notificationId)});
+
+    setTimeout(function(){ 
+        removeNotification(notificationId);
+    }, 5000);
+}
+
+function removeNotification(notificationId) {
+    let removeElement = document.querySelector(`#notification-${notificationId}`);
+    if(removeElement != null) {
+        removeElement.style.opacity = "0";
+
+        setTimeout(function(){ 
+            removeElement.remove();
+        }, 400);
+    }
+    
 }
 

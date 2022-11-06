@@ -45,9 +45,11 @@ p, figcaption {
 
 main {
     display:flex;
-    height: 60vh;
+    height:80vh;
     width:80vw;
-    border:2px solid black;
+    border:1px solid gray;
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
+    border-radius:5px;
 }
 
 #task-list-container {
@@ -226,7 +228,7 @@ main {
 }
 
 
-#task-create-modal-container {
+.modal-container {
     position:absolute;
     top:0;
     left:0;
@@ -242,14 +244,14 @@ main {
     transition:1s visibility 0s, 0.5s opacity 0.3s;
 }
 
-#task-create-modal-container.open {
+.modal-container.open {
     display:flex;
     opacity: 1;
     visibility: visible;
     transition: visibility 0s, opacity 0.3s;
 }
 
-#task-create-modal-container > #task-create-modal {
+.modal-container > .modal {
     position:relative;
     display: flex;
     flex-direction: column;
@@ -266,7 +268,7 @@ main {
     transition: 0.5s visibility 0s, opacity 0.3s;
 }
 
-#task-create-modal-container.open > #task-create-modal{
+.modal-container.open > .modal{
     opacity: 1;
     visibility: visible;
     transition:0.5s visibility 0s, 0.5s opacity 0.3s;
@@ -293,7 +295,7 @@ main {
 
 .disabled-text {
     text-decoration: line-through;
-    color:gray;
+    color:darkgray;
 }
 .fa-toggle-on {
     color:green;
@@ -408,4 +410,86 @@ main {
     cursor: pointer;
     transition: 0.3s;
     transform: scale(1.1);
+}
+
+#notification-container {
+    visibility: hidden;
+    position:absolute;
+    right:0;
+    height:0;
+    height:100vh;
+    width:30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap:1rem;
+    padding:4rem 1rem;
+}
+
+.notification {
+    visibility: visible;
+    z-index:100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color:black;
+    font-size:1.5rem;
+    border-radius: 10px;
+    /* padding:1rem; */
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+
+    transition: opacity 0.3s;
+    opacity: 1;
+    animation-name: notificationEnter;
+    animation-duration: 0.3s;
+}
+.notification-content {
+    padding:1rem;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification-timer {
+    width:100%; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;   
+}
+
+.notification-timer div {
+    background-color:#0B409C;
+    height:5px;
+    /* animation: ; */
+    transform-origin: left center;
+}
+@keyframes roundtime {
+    to {
+      /* More performant than animating `width` */
+      transform: scaleX(0);
+    }
+  }
+.close-notification-btn {
+    border: none;
+    background-color:white;
+    transition: 0.3s;
+}
+
+.close-notification-btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+@keyframes notificationEnter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
