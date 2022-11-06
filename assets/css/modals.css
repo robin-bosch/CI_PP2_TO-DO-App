@@ -1,0 +1,212 @@
+.sound-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:2rem;
+    gap:1rem;
+}
+
+
+.sound-container i {
+    font-size: 5rem;
+}
+
+.sound-label {
+    height:200px;
+    width:200px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sound-container > input[type="radio"]:checked + label {
+    border:3px solid black;
+}
+
+.sound-container > input[type="radio"] {
+    display: none;
+}
+
+.music-btn, .select-music-btn {
+    font-size: 1rem;
+    padding:0.5rem;
+}
+
+#notification-active-control {
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+    font-size: 1.5rem;
+}
+
+#notification-active-control:hover {
+    cursor: pointer;
+}
+
+#theme-color-container {
+    display: flex;
+    gap:2vw;
+}
+
+.theme-color {
+    display: flex;
+    width:100px;
+    height:100px;
+}
+
+.theme-color > label {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    color:white;
+}
+
+#theme-color-red > label {
+    
+    background-color: red;
+}
+
+#theme-color-blue > label {
+    background-color: blue;
+}
+
+#theme-color-green > label {
+    background-color: green;
+}
+
+#theme-color-orange > label {
+    background-color: orange;
+}
+
+.theme-color > label:hover {
+    cursor: pointer;
+}
+.theme-color > input[type="radio"]:checked + label {
+    border:5px solid black;
+}
+
+.theme-color > input[type="radio"] {
+    display:none;
+}
+
+.form-row {
+    display:flex;
+    gap:2rem;
+    width:100%;
+    align-items: center;
+}
+
+.form-col {
+    display:flex;
+    flex-direction: column;
+}
+
+
+#form-control-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+#user-settings-container {
+    position: absolute;
+    margin-left: auto;
+    right:1rem;
+}
+
+#user-settings-container > .btn {
+    font-size: 2rem;
+    background-color: transparent;
+    border:none;
+    transition: 0.3s;
+}
+
+#user-settings-container > .btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+.fa-toggle-on {
+    color:green;
+}
+.fa-toggle-off {
+    color:red;
+}
+
+.modal-container {
+    position:absolute;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    width:100vw;
+    height: 100vh;
+    z-index:98;
+    opacity:0;
+    visibility: hidden;
+    transition:1s visibility 0s, 0.5s opacity 0.3s;
+}
+
+.modal-container.open {
+    display:flex;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s, opacity 0.3s;
+}
+
+.modal-container > .modal {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    
+    z-index:99;
+    background-color: white;
+    border-radius:10px;
+    padding:5rem;
+    transition:0.3s;
+    width:max(100rem, 50vw);
+
+    opacity: 1;
+    visibility: hidden;
+    transition: 0.5s visibility 0s, opacity 0.3s;
+}
+
+.modal-container.open > .modal{
+    opacity: 1;
+    visibility: visible;
+    transition:0.5s visibility 0s, 0.5s opacity 0.3s;
+}
+
+.modal-close-btn {
+    display: flex;
+    position:absolute;
+    top:2rem;
+    right:2rem;
+    padding:0;
+    font-size:3rem;
+    transition:0.3s;
+}
+.modal-close-btn:hover {
+    transition: 0.3s;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#task-due-date-enabler, #task-alert-date-enabler {
+    font-size: 2rem;
+}
+
+#task-due-date-enabler:hover, #task-alert-date-enabler:hover {
+    cursor: pointer;
+}

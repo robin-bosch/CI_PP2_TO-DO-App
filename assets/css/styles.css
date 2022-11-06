@@ -1,19 +1,13 @@
 @import url("reset.css");
+@import url("modals.css");
+@import url("notifications.css");
 
+/* Themes are loaded in seperately */
 /*
 #
 # General styling
 #
 */
-
-/* Set variables */
-/* :root {
-    --text-color: black;
-    --main-color: #0B409C;
-    --secondary-color: #10316B;
-    --inverted-color: #FDBE34;
-} */
-
 body {
     display: flex;
     justify-content: center;
@@ -86,13 +80,7 @@ main {
     background-color: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);
 }
 
-#task-due-date-enabler, #task-alert-date-enabler {
-    font-size: 2rem;
-}
 
-#task-due-date-enabler:hover, #task-alert-date-enabler:hover {
-    cursor: pointer;
-}
 
 .task-checkbox {
     display: flex;
@@ -142,22 +130,6 @@ main {
     transition: 0.3s;
     position: relative;
     background-color: lightgray;
-}
-
-.task.active::before {
-    position: absolute;
-    overflow-x: visible;
-    /* right:-30px; */
-    margin-left:252px;
-    /* margin-top:30px; */
-    transform: rotate(55deg) skew(15deg);
-    /* top:0; */
-    width:160px;
-    height:160px;
-    background-color: blue;
-    transform-origin: 0.3s;
-    content:"";
-    z-index: -1;  
 }
 
 #task-overview {
@@ -228,66 +200,7 @@ main {
 }
 
 
-.modal-container {
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    width:100vw;
-    height: 100vh;
-    z-index:98;
-    opacity:0;
-    visibility: hidden;
-    transition:1s visibility 0s, 0.5s opacity 0.3s;
-}
 
-.modal-container.open {
-    display:flex;
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 0s, opacity 0.3s;
-}
-
-.modal-container > .modal {
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    
-    z-index:99;
-    background-color: white;
-    border-radius:10px;
-    padding:5rem;
-    transition:0.3s;
-    width:max(100rem, 50vw);
-
-    opacity: 1;
-    visibility: hidden;
-    transition: 0.5s visibility 0s, opacity 0.3s;
-}
-
-.modal-container.open > .modal{
-    opacity: 1;
-    visibility: visible;
-    transition:0.5s visibility 0s, 0.5s opacity 0.3s;
-}
-
-.modal-close-btn {
-    display: flex;
-    position:absolute;
-    top:2rem;
-    right:2rem;
-    padding:0;
-    font-size:3rem;
-    transition:0.3s;
-}
-.modal-close-btn:hover {
-    transition: 0.3s;
-    transform: scale(1.05);
-    cursor: pointer;
-}
 
 
 
@@ -297,12 +210,7 @@ main {
     text-decoration: line-through;
     color:darkgray;
 }
-.fa-toggle-on {
-    color:green;
-}
-.fa-toggle-off {
-    color:red;
-}
+
 
 #create-task-form {
     display: flex;
@@ -373,228 +281,6 @@ main {
     border-bottom: 2px solid black;
 }
 
-.form-row {
-    display:flex;
-    gap:2rem;
-    width:100%;
-    align-items: center;
-}
-
-.form-col {
-    display:flex;
-    flex-direction: column;
-}
-
-
-#form-control-container {
-    display: flex;
-    justify-content: space-between;
-}
 
 
 
-#user-settings-container {
-    position: absolute;
-    margin-left: auto;
-    right:1rem;
-}
-
-#user-settings-container > .btn {
-    font-size: 2rem;
-    background-color: transparent;
-    border:none;
-    transition: 0.3s;
-}
-
-#user-settings-container > .btn:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.1);
-}
-
-#notification-container {
-    visibility: hidden;
-    position:absolute;
-    right:0;
-    height:0;
-    height:100vh;
-    width:30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap:1rem;
-    padding:4rem 1rem;
-}
-
-.notification {
-    visibility: visible;
-    z-index:100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    color:black;
-    font-size:1.5rem;
-    border-radius: 10px;
-    /* padding:1rem; */
-
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
-
-    transition: opacity 0.3s;
-    opacity: 1;
-    animation-name: notificationEnter;
-    animation-duration: 0.3s;
-}
-.notification-content {
-    padding:1rem;
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.notification-timer {
-    width:100%; 
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    overflow: hidden;   
-}
-
-.notification-timer div {
-    background-color:#0B409C;
-    height:5px;
-    /* animation: ; */
-    transform-origin: left center;
-}
-@keyframes roundtime {
-    to {
-      /* More performant than animating `width` */
-      transform: scaleX(0);
-    }
-  }
-.close-notification-btn {
-    border: none;
-    background-color:white;
-    transition: 0.3s;
-}
-
-.close-notification-btn:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.1);
-}
-
-@keyframes notificationEnter {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-#notification-sounds {
-    display:flex;
-    
-    justify-content: space-between;
-    
-}
-
-.sound-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:2rem;
-    gap:1rem;
-}
-
-
-.sound-container i {
-    font-size: 5rem;
-}
-
-.sound-label {
-    height:200px;
-    width:200px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.sound-container > input[type="radio"]:checked + label {
-    border:3px solid black;
-}
-
-.sound-container > input[type="radio"] {
-    display: none;
-}
-
-.music-btn, .select-music-btn {
-    font-size: 1rem;
-    padding:0.5rem;
-}
-
-#notification-active-control {
-    display: flex;
-    align-items: center;
-    gap:0.5rem;
-    font-size: 1.5rem;
-}
-
-#notification-active-control:hover {
-    cursor: pointer;
-}
-
-#theme-color-container {
-    display: flex;
-    gap:2vw;
-}
-
-.theme-color {
-    display: flex;
-    width:100px;
-    height:100px;
-}
-
-.theme-color > label {
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    font-size: 1.25rem;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-    height:100%;
-    color:white;
-}
-
-#theme-color-red > label {
-    
-    background-color: red;
-}
-
-#theme-color-blue > label {
-    background-color: blue;
-}
-
-#theme-color-green > label {
-    background-color: green;
-}
-
-#theme-color-orange > label {
-    background-color: orange;
-}
-
-.theme-color > label:hover {
-    cursor: pointer;
-}
-.theme-color > input[type="radio"]:checked + label {
-    border:5px solid black;
-}
-
-.theme-color > input[type="radio"] {
-    display:none;
-}
