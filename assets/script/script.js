@@ -80,12 +80,12 @@ document.addEventListener("DOMContentLoaded", function() {
     //     }
     // ]));
 
-    window.localStorage.setItem("settings", JSON.stringify({
-        themeColor: THEME_COLORS.green,
-        notificationsOn: true,
-        sound: NOTIFICATION_SOUNDS.sound1,
-        volume: 0.80
-    }));
+    // window.localStorage.setItem("settings", JSON.stringify({
+    //     themeColor: THEME_COLORS.green,
+    //     notificationsOn: true,
+    //     sound: NOTIFICATION_SOUNDS.sound1,
+    //     volume: 0.80
+    // }));
 
     
     taskList = JSON.parse(window.localStorage.getItem("taskList"));
@@ -226,13 +226,13 @@ function toggleTaskModal(taskId = 0) {
 
 function toggleSettingsModal() {
     //Get settings
-    let settings = JSON.parse(window.localStorage.getItem("settings"));
+    // let settings = JSON.parse(window.localStorage.getItem("settings"));
 
-    console.log(settings);
 
     document.querySelector("#volume-slider").value = settings.volume * 100;
 
     let modalContainer = document.querySelector("#settings-modal-container");
+
 
 
     const sound1 = new Audio("./assets/audio/got-it-done.mp3");
@@ -248,6 +248,12 @@ function toggleSettingsModal() {
 
     document.querySelector(`#theme-${settings.themeColor}`).checked = true;
 
+    document.querySelector(`#sound-${settings.sound}`).checked = true;
+
+    document.querySelector("#volume-slider").addEventListener("change", function() {
+        settings.volume = document.querySelector("#volume-slider").value / 100;
+    });
+
     document.querySelector("#notification-active-control").addEventListener("click", toggleNotificationSwitch)
 
     document.querySelector("#notification-active-control").innerHTML = settings.notificationsOn ? `
@@ -260,23 +266,49 @@ function toggleSettingsModal() {
     `
 
     document.querySelector("#sound-btn-1").addEventListener("click", function() {
+        sound1.volume = settings.volume;
         sound1.play()
     });
 
     document.querySelector("#sound-btn-2").addEventListener("click", function() {
+        sound2.volume = settings.volume;
         sound2.play()
     })
 
     document.querySelector("#sound-btn-3").addEventListener("click", function() {
+        sound3.volume = settings.volume;
         sound3.play()
     })
 
     document.querySelector("#sound-btn-4").addEventListener("click", function() {
+        sound4.volume = settings.volume;
         sound4.play()
     })
 
     document.querySelector("#sound-btn-5").addEventListener("click", function() {
+        sound5.volume = settings.volume;
         sound5.play()
+    })
+
+    document.querySelector("#sound-btn-5").addEventListener("click", function() {
+        sound5.volume = settings.volume;
+        sound5.play()
+    })
+
+    document.querySelector("#theme-settings-save-btn").addEventListener("click", function() {
+        settings = {
+            themeColor: document.querySelector('input[name="theme-selection"]:checked').value,
+            notificationsOn: document.querySelector("#notification-active-control").classList.contains("enabled") ? true : false,
+            sound: document.querySelector('input[name="sound-selection"]:checked').value,
+            volume: document.querySelector("#volume-slider").value / 100,
+        }
+
+        console.log(settings);
+
+        
+        saveSettings();
+        setTheme();
+        toggleSettingsModal();
     })
 
 
