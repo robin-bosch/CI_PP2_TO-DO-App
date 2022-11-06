@@ -7,12 +7,12 @@
 */
 
 /* Set variables */
-:root {
+/* :root {
     --text-color: black;
     --main-color: #0B409C;
     --secondary-color: #10316B;
     --inverted-color: #FDBE34;
-}
+} */
 
 body {
     display: flex;

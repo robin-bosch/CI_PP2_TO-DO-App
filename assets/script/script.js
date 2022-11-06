@@ -94,7 +94,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     generateList();
 
+    setTheme();
+
 });
+
+/**
+ * Update theme
+ */
+function setTheme() {
+    document.querySelector("#theme-link").setAttribute("href", `assets/css/themes/${settings.themeColor}.css`);
+}
 
 const THEME_COLORS = {
     green: "green",
