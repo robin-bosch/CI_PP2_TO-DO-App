@@ -99,6 +99,14 @@ main {
     /* width:20rem; */
 }
 
+#toggle-alert-container {
+    display:flex;
+    align-items: center;
+}
+
+.task-date-text {
+    font-size:2rem;
+}
 
 .task-checkbox.checked {
     transition: 0.5s;
@@ -204,7 +212,9 @@ main {
 
 
 
-
+.overdue-text {
+    color:red;
+}
 
 .disabled-text {
     text-decoration: line-through;
