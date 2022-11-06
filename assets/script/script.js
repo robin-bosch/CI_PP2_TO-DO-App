@@ -276,6 +276,13 @@ function toggleSettingsModal() {
     } 
 }
 
+/**
+ * Saves settings to local storage
+ */
+function saveSettings() {
+    window.localStorage.setItem("settings", JSON.stringify(settings));
+}
+
 function toggleNotificationSwitch() {
     if(document.querySelector("#notification-active-control").classList.contains("enabled")) {
         document.querySelector("#notification-active-control").classList.remove("enabled")
