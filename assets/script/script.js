@@ -1,4 +1,5 @@
 //Global scope vars to keep the state between functions
+let settings;
 let taskList;
 let activeTaskElement;
 
@@ -88,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     taskList = JSON.parse(window.localStorage.getItem("taskList"));
+
+    settings = JSON.parse(window.localStorage.getItem("settings"))
 
     generateList();
 
@@ -228,9 +231,16 @@ function toggleSettingsModal() {
     const sound4 = new Audio("./assets/audio/you-would-be-glad-to-know.mp3");
     const sound5 = new Audio("./assets/audio/so-proud.mp3");
 
+    if(!document.querySelector("#notification-active-control").classList.contains("enabled")) {
+        document.querySelector("#notification-active-control").classList.add("enabled")
+    };
+
+
+    document.querySelector("#notification-active-control").addEventListener("click", toggleNotificationSwitch)
+
     document.querySelector("#notification-active-control").innerHTML = settings.notificationsOn ? `
         <i class="fa-solid fa-toggle-on"></i>
-        <h4>Off</h4>
+        <h4>On</h4>
     ` :
     `
         <i class="fa-solid fa-toggle-off"></i>
@@ -264,6 +274,25 @@ function toggleSettingsModal() {
     else {
         modalContainer.classList.add("open");
     } 
+}
+
+function toggleNotificationSwitch() {
+    if(document.querySelector("#notification-active-control").classList.contains("enabled")) {
+        document.querySelector("#notification-active-control").classList.remove("enabled")
+    } 
+    else {
+        document.querySelector("#notification-active-control").classList.add("enabled")
+    }
+    settings.notificationsOn = settings.notificationsOn ? false : true;
+
+    document.querySelector("#notification-active-control").innerHTML = settings.notificationsOn ? `
+        <i class="fa-solid fa-toggle-on"></i>
+        <h4>On</h4>
+    ` :
+    `
+        <i class="fa-solid fa-toggle-off"></i>
+        <h4>Off</h4>
+    `
 }
 
 
