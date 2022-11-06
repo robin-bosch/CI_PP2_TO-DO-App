@@ -98,13 +98,23 @@
                     
                     <div>
                         <h3>Select your theme color</h3>
-                        <div>
-                            <ul>
-                                <li>Red</li>
-                                <li>Blue</li>
-                                <li>Green</li>
-                                <li>Dark</li>
-                            </ul>
+                        <div id="theme-color-container">
+                            <div class="theme-color" id="theme-color-red">
+                                <input type="radio" name="theme-selection" id="theme-red" value="red">
+                                <label for="theme-red">Red</label>
+                            </div>
+                            <div class="theme-color" id="theme-color-blue">
+                                <input type="radio" name="theme-selection" id="theme-blue" value="blue">
+                                <label for="theme-blue">Blue</label>
+                            </div>
+                            <div class="theme-color" id="theme-color-green">
+                                <input type="radio" name="theme-selection" id="theme-green" value="green">
+                                <label for="theme-green">Green</label>
+                            </div>
+                            <div class="theme-color" id="theme-color-orange">
+                                <input type="radio" name="theme-selection" id="theme-orange" value="orange">
+                                <label for="theme-orange">Orange</label>
+                            </div>
                         </div>
                     </div>
 
@@ -161,7 +171,8 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div id="theme-form-control">
+                        <input type="submit" name="" id="" value="Save settings">
 
                     </div>
                 </div>

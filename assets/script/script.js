@@ -234,6 +234,7 @@ function toggleSettingsModal() {
 
     let modalContainer = document.querySelector("#settings-modal-container");
 
+
     const sound1 = new Audio("./assets/audio/got-it-done.mp3");
     const sound2 = new Audio("./assets/audio/ill-make-it-possible.mp3");
     const sound3 = new Audio("./assets/audio/relax-message.mp3");
@@ -244,6 +245,8 @@ function toggleSettingsModal() {
         document.querySelector("#notification-active-control").classList.add("enabled")
     };
 
+
+    document.querySelector(`#theme-${settings.themeColor}`).checked = true;
 
     document.querySelector("#notification-active-control").addEventListener("click", toggleNotificationSwitch)
 
