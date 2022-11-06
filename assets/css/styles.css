@@ -493,3 +493,33 @@ main {
         opacity: 1;
     }
 }
+
+#notification-sounds {
+    display:flex;
+    
+    justify-content: space-between;
+    
+}
+
+.sound-container {
+    border:5px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:2rem;
+    gap:1rem;
+}
+.sound-container i {
+    font-size: 5rem;
+}
+
+.sound-control {
+    display: flex;
+    justify-content: space-between;
+}
+
+.music-btn, .select-music-btn {
+    font-size: 1rem;
+    padding:0.5rem;
+}

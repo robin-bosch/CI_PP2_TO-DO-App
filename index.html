@@ -90,27 +90,73 @@
             </div>
 
             <div id="settings-modal-container" class="modal-container">
-                <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+                
                 <div id="settings-modal" class="modal">
+                    <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
                     <h2>User Settings</h2>
                     
                     <div>
                         <h3>Select your theme color</h3>
                         <div>
                             <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
+                                <li>Red</li>
+                                <li>Blue</li>
+                                <li>Green</li>
+                                <li>Dark</li>
                             </ul>
                         </div>
                     </div>
 
                     <div>
                         <h3>Notifications</h3>
-                        <div>
+                        <div id="notification-active-control">
                             <p>Switch</p>
                             <h4>Off</h4>
+                        </div>
+                        <label for="volume-slider">Volume:</label>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
+                    </div>
+                    <div id="notification-sounds">
+                        <div class="sound-container">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>Got it done</h4>
+                            <div class="sound-control">
+                                <button id="sound-btn-1" class="music-btn btn">Listen</button>
+                                <button id="sound-select-btn-1" class="select-music-btn btn">Select</button>
+                            </div>
+                            
+                        </div>
+                        <div class="sound-container">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>I'll make it possible</h4>
+                            <div class="sound-control">
+                                <button id="sound-btn-2" class="music-btn btn">Listen</button>
+                                <button id="sound-select-btn-2" class="select-music-btn btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="sound-container">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>Relax message</h4>
+                            <div class="sound-control">
+                                <button id="sound-btn-3" class="music-btn btn">Listen</button>
+                                <button id="sound-select-btn-3" class="select-music-btn btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="sound-container">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>Ringtone you would be glad to know</h4>
+                            <div class="sound-control">
+                                <button id="sound-btn-4" class="music-btn btn">Listen</button>
+                                <button id="sound-select-btn-4" class="select-music-btn btn">Select</button>
+                            </div>
+                        </div>
+                        <div class="sound-container">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>So proud</h4>
+                            <div class="sound-control">
+                                <button id="sound-btn-5" class="music-btn btn">Listen</button>
+                                <button id="sound-select-btn-5" class="select-music-btn btn">Select</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -79,11 +79,47 @@ document.addEventListener("DOMContentLoaded", function() {
     //     }
     // ]));
 
+    window.localStorage.setItem("settings", JSON.stringify({
+        themeColor: THEME_COLORS.green,
+        notificationsOn: true,
+        sound: NOTIFICATION_SOUNDS.sound1,
+        volume: 0.80
+    }));
+
+    
     taskList = JSON.parse(window.localStorage.getItem("taskList"));
 
     generateList();
 
-})
+});
+
+const THEME_COLORS = {
+    green: "green",
+    blue: "blue",
+    red: "red"
+}
+
+const NOTIFICATION_SOUNDS = {
+    sound1: "got-it-done",
+    sound2: "ill-make-it-possible",
+    sound2: "relax-message",
+    sound2: "you-would-be-glad-to-know",
+    sound2: "so-proud"
+}
+
+// function setAlerts() {
+//     for(let i = 0; i < taskList.length; i++) {
+//         if(!taskList[i].done && taskList[i].activeAlert && taskList[i].alert < Date.now()) {
+//             var eta_ms = taskList[i].alert - Date.now();
+//             let timeout = setTimeout(function(){}, taskList[i].alert - Date.now());
+//         }
+//     }
+    
+// }
+
+// function playAlert() {
+
+// }
 
 //Save function
 function saveList() {
@@ -177,7 +213,49 @@ function toggleTaskModal(taskId = 0) {
 
 
 function toggleSettingsModal() {
+    //Get settings
+    let settings = JSON.parse(window.localStorage.getItem("settings"));
+
+    console.log(settings);
+
+    document.querySelector("#volume-slider").value = settings.volume * 100;
+
     let modalContainer = document.querySelector("#settings-modal-container");
+
+    const sound1 = new Audio("./assets/audio/got-it-done.mp3");
+    const sound2 = new Audio("./assets/audio/ill-make-it-possible.mp3");
+    const sound3 = new Audio("./assets/audio/relax-message.mp3");
+    const sound4 = new Audio("./assets/audio/you-would-be-glad-to-know.mp3");
+    const sound5 = new Audio("./assets/audio/so-proud.mp3");
+
+    document.querySelector("#notification-active-control").innerHTML = settings.notificationsOn ? `
+        <i class="fa-solid fa-toggle-on"></i>
+        <h4>Off</h4>
+    ` :
+    `
+        <i class="fa-solid fa-toggle-off"></i>
+        <h4>Off</h4>
+    `
+
+    document.querySelector("#sound-btn-1").addEventListener("click", function() {
+        sound1.play()
+    });
+
+    document.querySelector("#sound-btn-2").addEventListener("click", function() {
+        sound2.play()
+    })
+
+    document.querySelector("#sound-btn-3").addEventListener("click", function() {
+        sound3.play()
+    })
+
+    document.querySelector("#sound-btn-4").addEventListener("click", function() {
+        sound4.play()
+    })
+
+    document.querySelector("#sound-btn-5").addEventListener("click", function() {
+        sound5.play()
+    })
 
 
     if(modalContainer.classList.contains("open")) {
@@ -187,6 +265,7 @@ function toggleSettingsModal() {
         modalContainer.classList.add("open");
     } 
 }
+
 
 
 
@@ -255,7 +334,6 @@ function createTask() {
  };
 
 function validateForm() {
-    //TODO: Spawn alert notifications
     if(document.querySelector("#task-title").value == "") {
 
         createNotification("The title of the task cannot be empty", NOTIFICATION_TYPES.warning);
@@ -466,7 +544,6 @@ const NOTIFICATION_TYPES = {
     warning: "warning",
     reminder: "reminder",
 }
-let num = 1;
 function createNotification(text, type) {
     let iconHtml;
 
@@ -484,7 +561,7 @@ function createNotification(text, type) {
         <div class="notification" id="notification-${notificationId}">
             <div class="notification-content">
                 ${iconHtml}
-                <p>${text == "" ? "Unknown notification" : text + num}</p>
+                <p>${text == "" ? "Unknown notification" : text}</p>
                 <button class="close-notification-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
             </div>
             <div class="notification-timer">
