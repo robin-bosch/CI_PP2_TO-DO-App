@@ -260,12 +260,12 @@ function showTask(taskId) {
     let alertHtml = task.activeAlert ? `
         <div id="toggle-alert-container">
             <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-            <p id="alert-text" class="task-date-text">Alert: ${task.alert.toLocaleString()}</p>
+            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : task.alert.toLocaleString()}</p>
         </div>
     ` : `
         <div id="toggle-alert-container">
             <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert.toLocaleString()}</p>
+            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : task.alert.toLocaleString()}</p>
         </div>
         `;
     document.getElementById("task-details").innerHTML = `
@@ -273,7 +273,7 @@ function showTask(taskId) {
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
-        <p class="task-date-text">Due: ${task.due.toLocaleString()}</p>
+        <p class="task-date-text">Due: ${task.due == "" ? "---" : task.due.toLocaleString()}</p>
         ${alertHtml}
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
@@ -288,10 +288,10 @@ function toggleAlert(taskId) {
     taskList[taskItem.index].activeAlert = taskList[taskItem.index].activeAlert ? false : true;
     document.querySelector("#toggle-alert-container").innerHTML = taskItem.task.activeAlert ? `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : taskItem.task.alert.toLocaleString()}</p>
     ` : `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : taskItem.task.alert.toLocaleString()}</p>
     `;  
     saveList();  
 }
