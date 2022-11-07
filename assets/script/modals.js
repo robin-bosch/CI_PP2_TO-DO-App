@@ -1,6 +1,7 @@
+/**
+ * Switches the task alert date input on or off
+ */
 function toggleTaskAlertDateEnabler() {
-
-    
     if(document.querySelector("#task-alert-date-enabler").classList.contains("enabled")) {
         document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
         document.querySelector("#task-alert-date-label").classList.add("disabled-text");
@@ -15,6 +16,9 @@ function toggleTaskAlertDateEnabler() {
     } 
 }
 
+/**
+ * Switches the task due date input on or off
+ */
 function toggleTaskDueDateEnabler() {
     let dueDateSwitch = document.querySelector("#task-due-date-enabler");
     let dueDateActive = dueDateSwitch.classList.contains("enabled");
@@ -197,9 +201,6 @@ function toggleSettingsModal() {
             sound: document.querySelector('input[name="sound-selection"]:checked').value,
             volume: document.querySelector("#volume-slider").value / 100,
         }
-
-        console.log(settings);
-
         
         saveSettings();
         setTheme();

@@ -1,11 +1,37 @@
 //Global scope vars to keep the state between functions
+//Keeps usersettings to prevent frequent loading from the localstorage
 let settings;
+
+//Sets an empty taskList that can be overriden on load by the localstorage
 let taskList = [];
+
+//Keeps the active HTML element of the task in the taskList
+//Faster than iterating over them every time a different task is selected
 let activeTaskElement;
 
+//List of available theme colors
+const THEME_COLORS = {
+    green: "green",
+    blue: "blue",
+    red: "red",
+    orange: "orange"
+}
 
+//List of all available notification sounds
+const NOTIFICATION_SOUNDS = {
+    sound1: "got-it-done",
+    sound2: "ill-make-it-possible",
+    sound2: "relax-message",
+    sound2: "you-would-be-glad-to-know",
+    sound2: "so-proud"
+}
+
+/**
+ * Fetches data on load or creates new one if the user is new
+ */
 document.addEventListener("DOMContentLoaded", function() {
-    console.log(window.localStorage.getItem("settings"));
+
+    //Creates basic settings
     if(window.localStorage.getItem("settings") == undefined) {
         window.localStorage.setItem("settings", JSON.stringify({
             themeColor: THEME_COLORS.blue,
@@ -14,93 +40,27 @@ document.addEventListener("DOMContentLoaded", function() {
             volume: 0.80
         }));
     }
-    // window.localStorage.setItem("taskList", JSON.stringify([
-    //     {
-    //         id: "task1",
-    //         title:"Task1",
-    //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
-    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
-    //         alert: new Date(2022, 11, 1, 10, 33, 30, 0),
-    //         activeAlert: true,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task2",
-    //         title:"Task2",
-    //         description: "Etiam varius vehicula mi sit amet mollis. Nullam mattis ultrices eros id varius. Donec quam neque, facilisis id tincidunt vel, suscipit in tellus. Quisque faucibus diam non condimentum laoreet.",
-    //         due: new Date(2022, 12, 2, 10, 33, 30, 0),
-    //         alert: new Date(2022, 12, 1, 10, 33, 30, 0),
-    //         activeAlert: false,
-    //         done: true
-    //     },
-    //     {
-    //         id: "task3",
-    //         title:"Task3",
-    //         description: "Fusce vulputate, augue a lacinia feugiat, quam dui molestie mi, id commodo orci neque at magna. Suspendisse ut metus diam. Vestibulum quis dolor nec nisl elementum posuere. Sed eleifend lorem urna, eget dictum nunc congue quis. Integer blandit, nulla sit amet dapibus faucibus, neque tellus semper neque, non bibendum est mauris in magna. Suspendisse at ante ut ex fringilla consequat non a diam. Nulla at aliquam arcu.",
-    //         due: new Date(2022, 11, 6, 10, 33, 30, 0),
-    //         alert: new Date(2022, 11, 5, 10, 33, 30, 0),
-    //         activeAlert: false,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task4",
-    //         title:"Task4",
-    //         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper venenatis ultrices. Nullam condimentum nisi ac elit consectetur, non laoreet leo faucibus. In nec iaculis eros, vel ullamcorper quam. Proin rutrum sapien eget fermentum molestie.",
-    //         due: new Date(2023, 04, 2, 10, 33, 30, 0),
-    //         alert: new Date(2023, 04, 1, 10, 33, 30, 0),
-    //         activeAlert: true,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task5",
-    //         title:"Task5",
-    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
-    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-    //         activeAlert: true,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task6",
-    //         title:"Task6",
-    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
-    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-    //         activeAlert: false,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task7",
-    //         title:"Task7",
-    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
-    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-    //         activeAlert: true,
-    //         done: false
-    //     },
-    //     {
-    //         id: "task8",
-    //         title:"Task8",
-    //         description: "Donec tempor libero nec consectetur cursus. Ut vehicula ullamcorper justo, quis placerat lorem pulvinar ut. Sed id dui id est tristique fermentum nec eu nisi. Praesent id justo et massa consequat dignissim. Ut laoreet vestibulum commodo. Etiam eget aliquet ante. Mauris placerat massa tincidunt hendrerit rutrum. Phasellus ornare arcu eget dictum auctor. Nam fermentum, eros luctus egestas facilisis, dolor odio maximus neque, ut tincidunt lectus risus et odio. Donec pharetra, arcu ut condimentum cursus, massa lectus tempus ligula, id blandit diam nisl id nisl. Mauris accumsan lectus eu suscipit ornare. Sed convallis leo facilisis, tristique eros eu, fringilla est. Cras efficitur mattis nibh, id ultricies dui ultricies et. Etiam quis mattis nulla.",
-    //         due: new Date(2022, 11, 2, 10, 33, 30, 0),
-    //         alert: new Date(2018, 11, 1, 10, 33, 30, 0),
-    //         activeAlert: true,
-    //         done: false
-    //     }
-    // ]));
 
+    //Creates test task
+    //Uncommenting will create these tasks with every reload
+    //This will override exisiting tasks!
+    // createTestTasks();
+
+    //Fetches the taskList on load and saves it to the global task list
     if(window.localStorage.getItem("taskList") != undefined) {
         taskList = JSON.parse(window.localStorage.getItem("taskList"));
     }
     
-
+    //Fetches settings
     settings = JSON.parse(window.localStorage.getItem("settings"))
 
+    //Generate the taskList and load the theme
     generateList();
-
     setTheme();
 
 });
+
+
 
 /**
  * Update theme
@@ -109,24 +69,11 @@ function setTheme() {
     document.querySelector("#theme-link").setAttribute("href", `assets/css/themes/${settings.themeColor}.css`);
 }
 
-const THEME_COLORS = {
-    green: "green",
-    blue: "blue",
-    red: "red"
-}
 
-const NOTIFICATION_SOUNDS = {
-    sound1: "got-it-done",
-    sound2: "ill-make-it-possible",
-    sound2: "relax-message",
-    sound2: "you-would-be-glad-to-know",
-    sound2: "so-proud"
-}
 let bellUnlocked = false;
 
 function setAlerts() {
     for(let i = 0; i < taskList.length; i++) {
-        console.log("new loop " + taskList[i].title)
         if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
             if(new Date(taskList[i].alert) - new Date() < 2147483647) {
                 playAlert(taskList[i].id, alertTime);
