@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="The TO-DO App helps you with organising you daily tasks">
+    <meta name="keywords" content="TO-DO, do, task, add, delete, show, mobile, local">
+    <meta name="author" content="Robin Bosch">
+
     <title>TO-DO App</title>
 
     <link rel="stylesheet" id="theme-link" href="">
@@ -18,7 +23,7 @@
         <section id="task-list-container">
             <div id="task-list-header">
                 <h2>Tasks</h2>
-                <button onclick="toggleTaskModal()" class="round-btn" alt="New button"><i class="fa-solid fa-plus"></i></i></button>
+                <button onclick="toggleTaskModal()" class="round-btn" aria-label="Add new task"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="task-list">
             </div>
@@ -27,8 +32,8 @@
             <div id="task-header">
                 <h1>ToDoApp</h1>
                 <div id="user-settings-container">
-                    <button class="btn" onclick="createNotification('Test notification', NOTIFICATION_TYPES.warning)"><i class="fa-solid fa-bell-slash"></i></button>
-                    <button class="btn" onclick="toggleSettingsModal()"><i class="fa-solid fa-gear"></i></button>
+                    <button class="btn" onclick="createNotification('Test notification', NOTIFICATION_TYPES.warning)" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
+                    <button class="btn" onclick="toggleSettingsModal()" aria-label="Open user settings"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
             </div>
@@ -36,155 +41,141 @@
                 <h2>Select one task</h2>
             </div>
         </section>
-        <section >
-            <div id="task-create-modal-container" class="modal-container">
-
-                <div id="task-create-modal" class="modal">
-                    <div id="task-modal-close-btn" onclick="toggleTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
-                    <h2 id="task-heading"></h2>
-
-                    <form action="" id="create-task-form">
-                        <div class="form-col">
-                            <label for="task-title">Title:</label>
-                            <input type="text" id="task-title" name="task-description" required>
-                        </div>
-                        
-
-                        <div class="form-col">
-                            <label for="task-description">Description:</label>
-                            <textarea name="task-description" id="task-description" cols="30" rows="10"></textarea>
-                        </div>
-                        
-
-                        <div class="form-row">
-                            <div id="task-due-date-enabler" class="enabled" onclick="toggleTaskDueDateEnabler()">
-                                <i class="fa-solid fa-toggle-on"></i>
-                            </div>
-                            <div class="">
-                                <label for="task-due-date" id="task-due-date-label">Due:</label>
-                                <input type="datetime-local" id="task-due-date" name="taks-due-date" required>
-                            </div>
-                            
-                        </div>
-                        
-
-                        <div class="form-row">
-                            <div id="task-alert-date-enabler" class="enabled" onclick="toggleTaskAlertDateEnabler()">
-                                <i class="fa-solid fa-toggle-on"></i>
-                            </div>
-                            <div class="">
-                                <label for="task-alert-date" id="task-alert-date-label" class="">Alert:</label>
-                                <input type="datetime-local" id="task-alert-date" required>
-                            </div>
-                            
-                        </div>
-
-                        <div id="form-control-container">
-                        </div>
-
-                        
-
-                    </form>
-                    
-                </div>
-
-            </div>
-
-            <div id="settings-modal-container" class="modal-container">
-                
-                <div id="settings-modal" class="modal">
-                    <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
-                    <h2>User Settings</h2>
-                    
-                    <div>
-                        <h3>Select your theme color</h3>
-                        <div id="theme-color-container">
-                            <div class="theme-color" id="theme-color-red">
-                                <input type="radio" name="theme-selection" id="theme-red" value="red">
-                                <label for="theme-red">Red</label>
-                            </div>
-                            <div class="theme-color" id="theme-color-blue">
-                                <input type="radio" name="theme-selection" id="theme-blue" value="blue">
-                                <label for="theme-blue">Blue</label>
-                            </div>
-                            <div class="theme-color" id="theme-color-green">
-                                <input type="radio" name="theme-selection" id="theme-green" value="green">
-                                <label for="theme-green">Green</label>
-                            </div>
-                            <div class="theme-color" id="theme-color-orange">
-                                <input type="radio" name="theme-selection" id="theme-orange" value="orange">
-                                <label for="theme-orange">Orange</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3>Notifications</h3>
-                        <div id="notification-active-control">
-                            <p>Switch</p>
-                            <h4>Off</h4>
-                        </div>
-                        <label for="volume-slider">Volume:</label>
-                        <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
-                    </div>
-                    <div id="notification-sounds">
-                        <div class="sound-container" id="sound-1-container">
-                            <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">
-                            <label for="sound-got-it-done" class="sound-label">
-                                <i class="fa-solid fa-music"></i>
-                                <h4>Got it done</h4>
-                            </label>
-                            <button id="sound-btn-1" class="music-btn btn">Listen</button>                            
-                        </div>
-                        <div class="sound-container" id="sound-2-container">
-                            <input type="radio" id="sound-ill-make-it-possible" name="sound-selection" value="ill-make-it-possible">
-                            <label for="sound-ill-make-it-possible" class="sound-label">
-                                <i class="fa-solid fa-music"></i>
-                                <h4>I'll make it possible</h4>
-                            </label>
-                            <button id="sound-btn-2" class="music-btn btn">Listen</button>                            
-                        </div>
-                        <div class="sound-container" id="sound-3-container">
-                            <input type="radio" id="sound-relax-message" name="sound-selection" value="relax-message">
-                            <label for="sound-relax-message" class="sound-label">
-                                <i class="fa-solid fa-music"></i>
-                                <h4>Relax message</h4>
-                            </label>
-                            <button id="sound-btn-3" class="music-btn btn">Listen</button>                            
-                        </div>
-                        <div class="sound-container" id="sound-4-container">
-                            <input type="radio" id="sound-you-would-be-glad-to-know" name="sound-selection" value="you-would-be-glad-to-know">
-                            <label for="sound-you-would-be-glad-to-know" class="sound-label">
-                                <i class="fa-solid fa-music"></i>
-                                <h4>You would be glad to know</h4>
-                            </label>
-                            <button id="sound-btn-4" class="music-btn btn">Listen</button>                            
-                        </div>
-                        <div class="sound-container" id="sound-5-container">
-                            <input type="radio" id="sound-so-proud" name="sound-selection" value="so-proud">
-                            <label for="sound-so-proud" class="sound-label">
-                                <i class="fa-solid fa-music"></i>
-                                <h4>So proud</h4>
-                            </label>
-                            <button id="sound-btn-5" class="music-btn btn">Listen</button>                            
-                        </div>
-                    </div>
-                    <div id="theme-form-control">
-                        <input type="submit" name="" id="theme-settings-save-btn" value="Save settings">
-
-                    </div>
-                </div>
-
-            </div>
-
-            
-
-        </section>
     </main>
     <div id="notification-container">
-
     </div>
+    <div id="settings-modal-container" class="modal-container">
+                
+        <div id="settings-modal" class="modal">
+            <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h2>User Settings</h2>
+            
+            <div>
+                <h3>Select your theme color</h3>
+                <div id="theme-color-container">
+                    <div class="theme-color" id="theme-color-red">
+                        <input type="radio" name="theme-selection" id="theme-red" value="red">
+                        <label for="theme-red">Red</label>
+                    </div>
+                    <div class="theme-color" id="theme-color-blue">
+                        <input type="radio" name="theme-selection" id="theme-blue" value="blue">
+                        <label for="theme-blue">Blue</label>
+                    </div>
+                    <div class="theme-color" id="theme-color-green">
+                        <input type="radio" name="theme-selection" id="theme-green" value="green">
+                        <label for="theme-green">Green</label>
+                    </div>
+                    <div class="theme-color" id="theme-color-orange">
+                        <input type="radio" name="theme-selection" id="theme-orange" value="orange">
+                        <label for="theme-orange">Orange</label>
+                    </div>
+                </div>
+            </div>
 
+            <div>
+                <h3>Notifications</h3>
+                <div id="notification-active-control">
+                    <p>Switch</p>
+                    <h4>Off</h4>
+                </div>
+                <label for="volume-slider">Volume:</label>
+                <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
+            </div>
+            <div id="notification-sounds">
+                <div class="sound-container" id="sound-1-container">
+                    <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">
+                    <label for="sound-got-it-done" class="sound-label">
+                        <i class="fa-solid fa-music"></i>
+                        <h4>Got it done</h4>
+                    </label>
+                    <button id="sound-btn-1" class="music-btn btn">Listen</button>                            
+                </div>
+                <div class="sound-container" id="sound-2-container">
+                    <input type="radio" id="sound-ill-make-it-possible" name="sound-selection" value="ill-make-it-possible">
+                    <label for="sound-ill-make-it-possible" class="sound-label">
+                        <i class="fa-solid fa-music"></i>
+                        <h4>I'll make it possible</h4>
+                    </label>
+                    <button id="sound-btn-2" class="music-btn btn">Listen</button>                            
+                </div>
+                <div class="sound-container" id="sound-3-container">
+                    <input type="radio" id="sound-relax-message" name="sound-selection" value="relax-message">
+                    <label for="sound-relax-message" class="sound-label">
+                        <i class="fa-solid fa-music"></i>
+                        <h4>Relax message</h4>
+                    </label>
+                    <button id="sound-btn-3" class="music-btn btn">Listen</button>                            
+                </div>
+                <div class="sound-container" id="sound-4-container">
+                    <input type="radio" id="sound-you-would-be-glad-to-know" name="sound-selection" value="you-would-be-glad-to-know">
+                    <label for="sound-you-would-be-glad-to-know" class="sound-label">
+                        <i class="fa-solid fa-music"></i>
+                        <h4>You would be glad to know</h4>
+                    </label>
+                    <button id="sound-btn-4" class="music-btn btn">Listen</button>                            
+                </div>
+                <div class="sound-container" id="sound-5-container">
+                    <input type="radio" id="sound-so-proud" name="sound-selection" value="so-proud">
+                    <label for="sound-so-proud" class="sound-label">
+                        <i class="fa-solid fa-music"></i>
+                        <h4>So proud</h4>
+                    </label>
+                    <button id="sound-btn-5" class="music-btn btn">Listen</button>                            
+                </div>
+            </div>
+            <div id="theme-form-control">
+                <input type="submit" name="" id="theme-settings-save-btn" value="Save settings">
+
+            </div>
+        </div>
+    </div>
+    <div id="task-create-modal-container" class="modal-container">
+
+        <div id="task-create-modal" class="modal">
+            <div id="task-modal-close-btn" onclick="toggleTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h2 id="task-heading"></h2>
+
+            <form action="" id="create-task-form">
+                <div class="form-col">
+                    <label for="task-title">Title:</label>
+                    <input type="text" id="task-title" name="task-description" required>
+                </div>
+                
+
+                <div class="form-col">
+                    <label for="task-description">Description:</label>
+                    <textarea name="task-description" id="task-description" cols="30" rows="10"></textarea>
+                </div>
+                
+
+                <div class="form-row">
+                    <div id="task-due-date-enabler" class="enabled" onclick="toggleTaskDueDateEnabler()">
+                        <i class="fa-solid fa-toggle-on"></i>
+                    </div>
+                    <div class="">
+                        <label for="task-due-date" id="task-due-date-label">Due:</label>
+                        <input type="datetime-local" id="task-due-date" name="taks-due-date" required>
+                    </div>
+                    
+                </div>
+                
+
+                <div class="form-row">
+                    <div id="task-alert-date-enabler" class="enabled" onclick="toggleTaskAlertDateEnabler()">
+                        <i class="fa-solid fa-toggle-on"></i>
+                    </div>
+                    <div class="">
+                        <label for="task-alert-date" id="task-alert-date-label" class="">Alert:</label>
+                        <input type="datetime-local" id="task-alert-date" required>
+                    </div>
+                    
+                </div>
+
+                <div id="form-control-container">
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="assets/script/script.js"></script>
     <script src="assets/script/modals.js"></script>
     <script src="assets/script/read-save-storage.js"></script>
