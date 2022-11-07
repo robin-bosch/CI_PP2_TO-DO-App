@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     generateList();
 
     setTheme();
+    setAlerts();
 
 });
 
@@ -123,20 +124,33 @@ const NOTIFICATION_SOUNDS = {
     sound2: "so-proud"
 }
 
-// function setAlerts() {
-//     for(let i = 0; i < taskList.length; i++) {
-//         if(!taskList[i].done && taskList[i].activeAlert && taskList[i].alert < Date.now()) {
-//             var eta_ms = taskList[i].alert - Date.now();
-//             let timeout = setTimeout(function(){}, taskList[i].alert - Date.now());
-//         }
-//     }
+function setAlerts() {
+    console.log("set alerts")
+    for(let i = 0; i < taskList.length; i++) {
+        if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
+            console.log("I am setting an alert for: " + taskList[i].title);
+            var alertTime = new Date(taskList[i].alert) - new Date();
+            console.log(alertTime)
+            setTimeout(playAlert, alertTime);
+        }
+    }
     
-// }
+}
 
-// function playAlert() {
+function unlockAlerts() {
+    setAlerts();
+}
 
-// }
-// function validateTask
+function playAlert(taskId) {
+    let taskItem = queryTask(taskId);
+    console.log("I am playing now for a task")
+    const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
+
+    createNotification(`Task alert: ${taskItem.task.title}`)
+
+    sound.volume = settings.volume;
+    sound.play();
+}
 
 function createTask() {
     if(validateForm()) {
@@ -147,8 +161,9 @@ function createTask() {
             id: newTaskId,
             title: document.querySelector("#task-title").value,
             description: document.querySelector("#task-description").value,
-            due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
-            alert: document.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
+            due: document.querySelector("#task-due-date").disabled ? "" : new Date(document.querySelector("#task-due-date").value),
+            alert: document.querySelector("#task-alert-date").disabled ? "" : new Date(document.querySelector("#task-alert-date").value),
+            alertActive: document.querySelector("#task-alert-date").disabled ? false : true,
             done: false
         });
         
