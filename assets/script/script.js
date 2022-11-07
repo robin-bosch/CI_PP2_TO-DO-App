@@ -157,6 +157,10 @@ function playAlert(taskId, timeOut) {
     
 }
 
+
+/**
+ * Creates a new task from the form and saves it to the storage
+ */
 function createTask() {
     if(validateForm()) {
         let newTaskId = `task${taskList.length+1}`;
@@ -171,8 +175,8 @@ function createTask() {
             done: false
         });
         
+        //Save list -> Update tasklist -> Set the added task to show -> Close the modal 
         saveList();
-
         generateList();
         showTask(newTaskId);
         toggleTaskModal();
@@ -182,28 +186,7 @@ function createTask() {
     }
  };
 
-function validateForm() {
-    if(document.querySelector("#task-title").value == "") {
 
-        createNotification("The title of the task cannot be empty", NOTIFICATION_TYPES.warning);
-        return false;
-    }
-    else if(document.querySelector("#task-due-date").disabled != true && document.querySelector("#task-due-date").value == "") {
-        createNotification("Due date was not set", NOTIFICATION_TYPES.warning);
-        return false;
-    }
-    else if(document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-alert-date").value == "") {
-        createNotification("Alert was not set", NOTIFICATION_TYPES.warning);
-        return false;
-    }
-    else if((document.querySelector("#task-alert-date").disabled != true && document.querySelector("#task-due-date").disabled != true) && (document.querySelector("#task-alert-date").value > document.querySelector("#task-due-date").value)) {
-        createNotification("The alert date cannot be after the due date", NOTIFICATION_TYPES.warning);
-        return false;
-    }
-    else {
-        return true;
-    }
-}
 
 
 /**
@@ -233,72 +216,67 @@ function updateTask(taskId) {
 };
 
 
-
+/**
+ * Updates the status of the task
+ * @param {string} taskId 
+ */
 function updateTaskStatus(taskId) {
-    let task;
-    
-    for(let i = 0; i < taskList.length; i++) {
-        if(taskList[i].id == taskId) {
-            taskList[i].done = taskList[i].done ? false : true;
-            task = taskList[i];
+    let taskElement = queryTask(taskId);
 
-            if(activeTaskElement != undefined && task.id == activeTaskElement.id) {
-                document.querySelector("#task-done-btn").innerHTML = taskList[i].done ? "Unmark" : "Mark as done";
-            }
-            break;
-        }
+    //Switch the task between done and not done in the taskList
+    taskList[taskElement.index].done = taskElement.task.done ? false : true;
+
+    //Switch the done button if the current task is shown
+    if(activeTaskElement != undefined && taskElement.task.id == activeTaskElement.id) {
+        document.querySelector("#task-done-btn").innerHTML = taskElement.task.done ? "Unmark" : "Mark as done";
     }
     
+    //Save list to storage
     saveList();
 
-    let checkBoxElement = document.querySelector(`#${taskId}-checkbox`);
-
-    if(task.done) {
-        checkBoxElement.classList.add("checked");
-        checkBoxElement.innerHTML = '<i class="fa-solid fa-check"></i>';
-    }
-    else {
-        checkBoxElement.classList.remove("checked");
-        checkBoxElement.innerHTML = "";
-    }
-    
-    
-
+    //Update the list
     generateList();
-
 }
 
+/**
+ * Show the task in the details window
+ * @param {string} taskId 
+ */
 function showTask(taskId) {
     let task = getTask(taskId);
 
 
+    //Highlights the active task in the task list
+    //Check if the current active task isn't empty
     if(activeTaskElement != undefined) {
+        //Remove active class before replacing the element with new one
         activeTaskElement.classList.remove("active");
     }
+    //Replace the current activeTaskElement and set it active
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active");
 
-    console.log(task);
-    console.log(new Date(task.alert).toLocaleString());
 
-    let alertHtml = task.activeAlert ? `
-        <div id="toggle-alert-container">
-            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
-        </div>
-    ` : `
-        <div id="toggle-alert-container">
-            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
-        </div>
-        `;
+    //Add task details html with all the data
+    //If the alert is active the text appears normal
+    //If the alert is inactive a the text is grayed out
     document.getElementById("task-details").innerHTML = `
         <button onclick="toggleTaskModal('${taskId}')" id="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
         <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">Due: ${task.due == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
-        ${alertHtml}
+        ${task.activeAlert ? `
+        <div id="toggle-alert-container">
+            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
+            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
+        </div>
+        ` : `
+        <div id="toggle-alert-container">
+            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
+            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
+        </div>
+        `}
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
             <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${task.done ? "Unmark" : "Mark as done"}</button>
@@ -306,18 +284,19 @@ function showTask(taskId) {
     `;
 }
 
+/**
+ * Toggles the alert for a single task
+ * @param {string} taskId 
+ */
 function toggleAlert(taskId) {
     let taskItem = queryTask(taskId);
 
+    //Switches the active alert in the task
     taskList[taskItem.index].activeAlert = taskList[taskItem.index].activeAlert ? false : true;
-    document.querySelector("#toggle-alert-container").innerHTML = taskItem.task.activeAlert ? `
-        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : new Date(taskItem.task.alert).toLocaleString()}</p>
-    ` : `
-        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : new Date(taskItem.task.alert).toLocaleString()}</p>
-    `;  
-    saveList();  
+
+    //Save to list and reload current task
+    saveList(); 
+    showTask(taskId);
 }
 
 
