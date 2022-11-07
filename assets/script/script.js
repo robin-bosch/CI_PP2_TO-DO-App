@@ -271,6 +271,7 @@ function showTask(taskId) {
     }
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active")
+    console.log(new Date(task.due) < new Date() )
 
     let alertHtml = task.activeAlert ? `
         <div id="toggle-alert-container">
@@ -288,7 +289,7 @@ function showTask(taskId) {
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
-        <p class="task-date-text">Due: ${task.due == "" ? "---" : task.due.toLocaleString()}</p>
+        <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">Due: ${task.due == "" ? "---" : task.due.toLocaleString()}</p>
         ${alertHtml}
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
