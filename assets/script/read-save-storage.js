@@ -17,7 +17,7 @@ function saveList() {
     }
 
     //Spawn notification here
-    createNotification("Task was not found", NOTIFICATION_TYPES.warning);
+    createNotification(`Task with id ${taskId} was not found`, NOTIFICATION_TYPES.warning);
     return "";
     
 }
@@ -33,7 +33,7 @@ function queryTask(taskId) {
     }
 
     //Spawn notification here
-    createNotification("Task was not found", NOTIFICATION_TYPES.warning);
+    createNotification(`Task with id ${taskId} was not found`, NOTIFICATION_TYPES.warning);
     return "";
 }
 

@@ -32,7 +32,7 @@
             <div id="task-header">
                 <h1>ToDoApp</h1>
                 <div id="user-settings-container">
-                    <button class="btn" onclick="createNotification('Test notification', NOTIFICATION_TYPES.warning)" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
+                    <button class="btn" id="notifications-global-setting" onclick="setAlerts()" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
                     <button class="btn" onclick="toggleSettingsModal()" aria-label="Open user settings"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
@@ -74,55 +74,54 @@
 
             <div>
                 <h3>Notifications</h3>
-                <div id="notification-active-control">
-                    <p>Switch</p>
-                    <h4>Off</h4>
+                <div>
+                    <label for="volume-slider">Volume:</label>
+                    <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
                 </div>
-                <label for="volume-slider">Volume:</label>
-                <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
-            </div>
-            <div id="notification-sounds">
-                <div class="sound-container" id="sound-1-container">
-                    <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">
-                    <label for="sound-got-it-done" class="sound-label">
-                        <i class="fa-solid fa-music"></i>
-                        <h4>Got it done</h4>
-                    </label>
-                    <button id="sound-btn-1" class="music-btn btn">Listen</button>                            
-                </div>
-                <div class="sound-container" id="sound-2-container">
-                    <input type="radio" id="sound-ill-make-it-possible" name="sound-selection" value="ill-make-it-possible">
-                    <label for="sound-ill-make-it-possible" class="sound-label">
-                        <i class="fa-solid fa-music"></i>
-                        <h4>I'll make it possible</h4>
-                    </label>
-                    <button id="sound-btn-2" class="music-btn btn">Listen</button>                            
-                </div>
-                <div class="sound-container" id="sound-3-container">
-                    <input type="radio" id="sound-relax-message" name="sound-selection" value="relax-message">
-                    <label for="sound-relax-message" class="sound-label">
-                        <i class="fa-solid fa-music"></i>
-                        <h4>Relax message</h4>
-                    </label>
-                    <button id="sound-btn-3" class="music-btn btn">Listen</button>                            
-                </div>
-                <div class="sound-container" id="sound-4-container">
-                    <input type="radio" id="sound-you-would-be-glad-to-know" name="sound-selection" value="you-would-be-glad-to-know">
-                    <label for="sound-you-would-be-glad-to-know" class="sound-label">
-                        <i class="fa-solid fa-music"></i>
-                        <h4>You would be glad to know</h4>
-                    </label>
-                    <button id="sound-btn-4" class="music-btn btn">Listen</button>                            
-                </div>
-                <div class="sound-container" id="sound-5-container">
-                    <input type="radio" id="sound-so-proud" name="sound-selection" value="so-proud">
-                    <label for="sound-so-proud" class="sound-label">
-                        <i class="fa-solid fa-music"></i>
-                        <h4>So proud</h4>
-                    </label>
-                    <button id="sound-btn-5" class="music-btn btn">Listen</button>                            
+                <div id="notification-sounds">
+                    <div class="sound-container" id="sound-1-container">
+                        <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">
+                        <label for="sound-got-it-done" class="sound-label">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>Got it done</h4>
+                        </label>
+                        <button id="sound-btn-1" class="music-btn btn">Listen</button>                            
+                    </div>
+                    <div class="sound-container" id="sound-2-container">
+                        <input type="radio" id="sound-ill-make-it-possible" name="sound-selection" value="ill-make-it-possible">
+                        <label for="sound-ill-make-it-possible" class="sound-label">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>I'll make it possible</h4>
+                        </label>
+                        <button id="sound-btn-2" class="music-btn btn">Listen</button>                            
+                    </div>
+                    <div class="sound-container" id="sound-3-container">
+                        <input type="radio" id="sound-relax-message" name="sound-selection" value="relax-message">
+                        <label for="sound-relax-message" class="sound-label">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>Relax message</h4>
+                        </label>
+                        <button id="sound-btn-3" class="music-btn btn">Listen</button>                            
+                    </div>
+                    <div class="sound-container" id="sound-4-container">
+                        <input type="radio" id="sound-you-would-be-glad-to-know" name="sound-selection" value="you-would-be-glad-to-know">
+                        <label for="sound-you-would-be-glad-to-know" class="sound-label">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>You would be glad to know</h4>
+                        </label>
+                        <button id="sound-btn-4" class="music-btn btn">Listen</button>                            
+                    </div>
+                    <div class="sound-container" id="sound-5-container">
+                        <input type="radio" id="sound-so-proud" name="sound-selection" value="so-proud">
+                        <label for="sound-so-proud" class="sound-label">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>So proud</h4>
+                        </label>
+                        <button id="sound-btn-5" class="music-btn btn">Listen</button>                            
+                    </div>
                 </div>
             </div>
+            
             <div id="theme-form-control">
                 <input type="submit" id="theme-settings-save-btn" class="btn" value="Save settings">
 

@@ -114,7 +114,7 @@ main {
     display:flex;
     align-items: center;
     gap:1rem;
-    padding:1rem;
+    /* padding:1rem; */
     transition: 0.3s;
     border-bottom: 1px solid gray;
     background-color: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);
@@ -124,6 +124,7 @@ main {
 
 .task-checkbox {
     display: flex;
+    margin-left:1rem;
     flex-shrink:0;
     justify-content: center;
     align-items: center;
@@ -135,7 +136,11 @@ main {
     border:1px solid black;
     transition: 0.5s;
 }
+
+
 .task-text {
+    padding:1rem;
+    width:100%;
     /* display: block; */
     /* width:20rem; */
 }

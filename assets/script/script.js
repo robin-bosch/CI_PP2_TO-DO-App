@@ -99,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
     generateList();
 
     setTheme();
-    setAlerts();
 
 });
 
@@ -123,39 +122,44 @@ const NOTIFICATION_SOUNDS = {
     sound2: "you-would-be-glad-to-know",
     sound2: "so-proud"
 }
+let bellUnlocked = false;
 
 function setAlerts() {
-    console.log("set alerts")
     for(let i = 0; i < taskList.length; i++) {
+        console.log("new loop " + taskList[i].title)
         if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
-            console.log("I am setting an alert for: " + taskList[i].title);
-            var alertTime = new Date(taskList[i].alert) - new Date();
-            console.log(alertTime)
-            setTimeout(playAlert, alertTime);
+            if(new Date(taskList[i].alert) - new Date() < 2147483647) {
+                playAlert(taskList[i].id, alertTime);
+            }
         }
     }
+
+    document.querySelector("#notifications-global-setting").innerHTML = bellUnlocked ? `
+        <i class="fa-solid fa-bell-slash">
+    ` :
+    `
+        <i class="fa-solid fa-bell">
+    `;
+    bellUnlocked = bellUnlocked ? false : true;    
+}
+
+function playAlert(taskId, timeOut) {
+    setTimeout(function() {
+        let taskItem = queryTask(taskId);
+        const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
+
+        createNotification(`Task alert: ${taskItem.task.title}`)
+
+        sound.volume = settings.volume;
+        sound.play();
+
+    }, timeOut);
     
-}
-
-function unlockAlerts() {
-    setAlerts();
-}
-
-function playAlert(taskId) {
-    let taskItem = queryTask(taskId);
-    console.log("I am playing now for a task")
-    const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
-
-    createNotification(`Task alert: ${taskItem.task.title}`)
-
-    sound.volume = settings.volume;
-    sound.play();
 }
 
 function createTask() {
     if(validateForm()) {
         let newTaskId = `task${taskList.length+1}`;
-
         
         taskList.push({
             id: newTaskId,
@@ -265,23 +269,27 @@ function updateTaskStatus(taskId) {
 }
 
 function showTask(taskId) {
-    let task = getTask(taskId)
+    let task = getTask(taskId);
+
+
     if(activeTaskElement != undefined) {
         activeTaskElement.classList.remove("active");
     }
     activeTaskElement = document.getElementById(taskId);
-    activeTaskElement.classList.add("active")
-    console.log(new Date(task.due) < new Date() )
+    activeTaskElement.classList.add("active");
+
+    console.log(task);
+    console.log(new Date(task.alert).toLocaleString());
 
     let alertHtml = task.activeAlert ? `
         <div id="toggle-alert-container">
             <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : task.alert.toLocaleString()}</p>
+            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
         </div>
     ` : `
         <div id="toggle-alert-container">
             <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : task.alert.toLocaleString()}</p>
+            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
         </div>
         `;
     document.getElementById("task-details").innerHTML = `
@@ -289,7 +297,7 @@ function showTask(taskId) {
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 
-        <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">Due: ${task.due == "" ? "---" : task.due.toLocaleString()}</p>
+        <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">Due: ${task.due == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
         ${alertHtml}
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
@@ -304,10 +312,10 @@ function toggleAlert(taskId) {
     taskList[taskItem.index].activeAlert = taskList[taskItem.index].activeAlert ? false : true;
     document.querySelector("#toggle-alert-container").innerHTML = taskItem.task.activeAlert ? `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : new Date(taskItem.task.alert).toLocaleString()}</p>
     ` : `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert == "" ? "---" : new Date(taskItem.task.alert).toLocaleString()}</p>
     `;  
     saveList();  
 }

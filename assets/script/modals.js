@@ -73,8 +73,8 @@ function toggleNotificationSwitch() {
             document.querySelector("#task-heading").innerHTML = "Edit task";
             document.querySelector("#task-title").value = task.title;
             document.querySelector("#task-description").value = task.description;
-            document.querySelector("#task-due-date").value = task.due.toISOString();
-            document.querySelector("#task-alert-date").value = task.alert;
+            document.querySelector("#task-due-date").value = task.due;
+            document.querySelector("#task-alert-date").value = new Date(task.alert).toISOString();
 
 
             document.querySelector("#form-control-container").innerHTML = `
@@ -121,10 +121,6 @@ function toggleSettingsModal() {
     const sound4 = new Audio("./assets/audio/you-would-be-glad-to-know.mp3");
     const sound5 = new Audio("./assets/audio/so-proud.mp3");
 
-    if(!document.querySelector("#notification-active-control").classList.contains("enabled")) {
-        document.querySelector("#notification-active-control").classList.add("enabled")
-    };
-
 
     document.querySelector(`#theme-${settings.themeColor}`).checked = true;
 
@@ -134,16 +130,6 @@ function toggleSettingsModal() {
         settings.volume = document.querySelector("#volume-slider").value / 100;
     });
 
-    document.querySelector("#notification-active-control").addEventListener("click", toggleNotificationSwitch)
-
-    document.querySelector("#notification-active-control").innerHTML = settings.notificationsOn ? `
-        <i class="fa-solid fa-toggle-on"></i>
-        <h4>On</h4>
-    ` :
-    `
-        <i class="fa-solid fa-toggle-off"></i>
-        <h4>Off</h4>
-    `
 
     document.querySelector("#sound-btn-1").addEventListener("click", function() {
         sound1.volume = settings.volume;

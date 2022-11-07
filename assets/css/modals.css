@@ -17,8 +17,16 @@
     border-radius: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+
+.sound-label:hover {
+    cursor: pointer;
+}
+
+.sound-label > h4 {
+    text-align: center;
 }
 
 .sound-container > input[type="radio"]:checked + label {
