@@ -1,10 +1,19 @@
 //Global scope vars to keep the state between functions
 let settings;
-let taskList;
+let taskList = [];
 let activeTaskElement;
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    console.log(window.localStorage.getItem("settings"));
+    if(window.localStorage.getItem("settings") == undefined) {
+        window.localStorage.setItem("settings", JSON.stringify({
+            themeColor: THEME_COLORS.blue,
+            notificationsOn: true,
+            sound: NOTIFICATION_SOUNDS.sound1,
+            volume: 0.80
+        }));
+    }
     // window.localStorage.setItem("taskList", JSON.stringify([
     //     {
     //         id: "task1",
@@ -80,15 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
     //     }
     // ]));
 
-    // window.localStorage.setItem("settings", JSON.stringify({
-    //     themeColor: THEME_COLORS.green,
-    //     notificationsOn: true,
-    //     sound: NOTIFICATION_SOUNDS.sound1,
-    //     volume: 0.80
-    // }));
-
+    if(window.localStorage.getItem("taskList") != undefined) {
+        taskList = JSON.parse(window.localStorage.getItem("taskList"));
+    }
     
-    taskList = JSON.parse(window.localStorage.getItem("taskList"));
 
     settings = JSON.parse(window.localStorage.getItem("settings"))
 
@@ -144,7 +148,7 @@ function createTask() {
             title: document.querySelector("#task-title").value,
             description: document.querySelector("#task-description").value,
             due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
-            alert: ocument.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
+            alert: document.querySelector("#task-alert-date").disabled == true ? "" : new Date(document.querySelector("#task-alert-date").value),
             done: false
         });
         
@@ -284,10 +288,10 @@ function toggleAlert(taskId) {
     taskList[taskItem.index].activeAlert = taskList[taskItem.index].activeAlert ? false : true;
     document.querySelector("#toggle-alert-container").innerHTML = taskItem.task.activeAlert ? `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-        <p id="alert-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="task-date-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
     ` : `
         <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-        <p id="alert-text" class="disabled-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
+        <p id="alert-text" class="disabled-text task-date-text">Alert: ${taskItem.task.alert.toLocaleString()}</p>
     `;  
     saveList();  
 }
