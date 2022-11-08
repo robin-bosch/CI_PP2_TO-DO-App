@@ -64,6 +64,10 @@ Modals are put into place for Creating/Editing a task or for changing user setti
 
 ### Colors
 
+The website is mainly white with black text but the accent color is a custom color.  
+The colors can changed in the user settings. The following colors are available:  
+![Color palette](docs/color-palette.png)
+
 ### Fonts
 
 ### Structure
