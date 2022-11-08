@@ -173,7 +173,18 @@ You can clone the repository by following these steps:
 
 ### Media
 
+Icons are taken from Font Awesome:  
+[FontAwesome](<https://fontawesome.com/>)
+
 ### Code
+
+CSS Reset has been used in the reset.css file.  
+It was written by Andy Bell in a blog post:  
+[Blog post](<https://piccalil.li/blog/a-modern-css-reset/>)
+
+Guides on Flexbox and Grid from CSS-Tricks, that have been used multiple times as a reference.  
+[Complete Guide to Grid](<https://css-tricks.com/snippets/css/complete-guide-grid/>)  
+[Complete Guide to Flexbox](<https://css-tricks.com/snippets/css/a-guide-to-flexbox/>)  
 
 ### Acknowledgements
 
