@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //Creates test task
     //Uncommenting will create these tasks with every reload
     //This will override exisiting tasks!
-    // createTestTasks();
+    createTestTasks();
 
     //Fetches the taskList on load and saves it to the global task list
     if(window.localStorage.getItem("taskList") != undefined) {

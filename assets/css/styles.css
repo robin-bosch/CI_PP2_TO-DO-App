@@ -9,12 +9,9 @@
 #
 */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    height:100vh;
+    min-height:100vh;
     width:100vw;
     color:var(--text-color);    
 }
@@ -173,31 +170,11 @@ background: #555;
     background-color: rgb(245, 245, 245);
 }
 
-@media only screen and (max-width: 900px) {
-    #task-list-container.extended {
-        left:calc(0vw + 2rem);
-        transition: 0.5s;
-    }
-    #task-list-container {
-        position: absolute;
-        transition: 0.5s;
-        z-index: 10;
-        left:-100vw;
-        width:calc(100vw - 2rem);
-        height:100%;
-        background-color: rgb(245, 245, 245);
-    }
-    #task-list-toggle {
-        z-index:11;
-        position: fixed;
-        top:0;
-        left:0;
-        width:2rem;
-        height:100vh;
-        background-color: var(--main-color);
-        box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.6);
-    }
+#task-list-toggle {
+    display: none;
 }
+
+
 
 
 /* task list header */
@@ -291,7 +268,10 @@ background: #555;
 
 #task-overview {
     width:100%;
-    height:100%;
+    min-height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* task container header (acts as page header */
@@ -351,11 +331,11 @@ background: #555;
     display: flex;
     flex-direction: column;
     gap:2rem;
-    padding:2rem;
+    padding:clamp(1rem, 3vw, 2rem);
 }
 
 #task-details-dates p {
-    font-size:1.5rem;
+    font-size:clamp(1rem, 2vw, 1.5rem);
 }
 .task-date-text {
     display: grid;
@@ -377,18 +357,64 @@ background: #555;
 
 #footer {
     background-color: var(--main-color);
+    color:var(--secondary-text-color);
     justify-content: center;
     align-items: center;
-    gap:3rem;
+    gap:clamp(1rem, 2vw, 3rem);
+    padding:1rem;
     display:flex;
-    height:5rem;
+    flex-wrap: wrap;
+    /* height:5rem; */
     width:100%;
 }
 
 
+@media only screen and (max-width: 900px) {
+
+    #task-list-container.extended {
+        left:calc(0vw + 2rem);
+        transition: 0.5s;
+    }
+    #task-list-container {
+        position:fixed;
+        transition: 0.5s;
+        z-index: 10;
+        left:-100vw;
+        width:calc(100vw - 2rem);
+        height:100%;
+        background-color: rgb(245, 245, 245);
+    }
+    #task-list-toggle {
+        z-index:11;
+        position: fixed;
+        top:0;
+        left:0;
+        width:2rem;
+        height:100%;
+        background-color: var(--main-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.6);
+    }
+}
+
+
 @media only screen and (max-width: 900px) { 
-    #task-header {
-        justify-content: end;
+    #user-settings-container {
+        right:0;
+    }
+    #edit-btn {
+        margin-left:80%;
+    }
+    #task-overview {
+        margin-left:2rem;
+        width:calc(100vw - 2rem);
+    }
+
+    #task-details {
+        height:auto;
+        /* min-height: calc(100% - 10rem); */
     }
 
     #user-settings-container {
