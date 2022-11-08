@@ -49,8 +49,7 @@
         <div id="settings-modal" class="modal">
             <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
             <h2>User Settings</h2>
-            
-            <div>
+            <div class="modal-section">
                 <h3>Select your theme color</h3>
                 <div id="theme-color-container">
                     <div class="theme-color" id="theme-color-red">
@@ -72,12 +71,15 @@
                 </div>
             </div>
 
-            <div>
-                <h3>Notifications</h3>
-                <div>
+            <div class="modal-section">
+                <h3>Notification volume</h3>
+                <div id="volume-container">
                     <label for="volume-slider">Volume:</label>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="volume-slider">
                 </div>
+            </div>
+            <div class="modal-section">
+                <h3>Select your notification sound</h3>
                 <div id="notification-sounds">
                     <div class="sound-container" id="sound-1-container">
                         <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">

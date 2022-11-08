@@ -80,9 +80,3 @@
     }
 }
 
-#notification-sounds {
-    display:flex;
-    
-    justify-content: space-between;
-    
-}

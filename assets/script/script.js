@@ -76,10 +76,12 @@ function setAlerts() {
     for(let i = 0; i < taskList.length; i++) {
         if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
             if(new Date(taskList[i].alert) - new Date() < 2147483647) {
-                playAlert(taskList[i].id, alertTime);
+                playAlert(taskList[i].id, new Date(taskList[i].alert) - new Date());
             }
         }
     }
+    
+    
 
     document.querySelector("#notifications-global-setting").innerHTML = bellUnlocked ? `
         <i class="fa-solid fa-bell-slash">
@@ -88,17 +90,21 @@ function setAlerts() {
         <i class="fa-solid fa-bell">
     `;
     bellUnlocked = bellUnlocked ? false : true;    
+    bellUnlocked ? createNotification("Task alerts are now active!", NOTIFICATION_TYPES.reminder) : createNotification("Task alerts are now disabled!", NOTIFICATION_TYPES.reminder);
 }
 
 function playAlert(taskId, timeOut) {
     setTimeout(function() {
-        let taskItem = queryTask(taskId);
-        const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
+        if(bellUnlocked) {
+            let taskItem = queryTask(taskId);
+            const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
 
-        createNotification(`Task alert: ${taskItem.task.title}`)
+            createNotification(`Task alert: ${taskItem.task.title}`)
 
-        sound.volume = settings.volume;
-        sound.play();
+            sound.volume = settings.volume;
+            sound.play();
+        }
+        
 
     }, timeOut);
     

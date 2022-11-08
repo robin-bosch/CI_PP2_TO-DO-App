@@ -197,7 +197,6 @@ function toggleSettingsModal() {
     document.querySelector("#theme-settings-save-btn").addEventListener("click", function() {
         settings = {
             themeColor: document.querySelector('input[name="theme-selection"]:checked').value,
-            notificationsOn: document.querySelector("#notification-active-control").classList.contains("enabled") ? true : false,
             sound: document.querySelector('input[name="sound-selection"]:checked').value,
             volume: document.querySelector("#volume-slider").value / 100,
         }
