@@ -183,6 +183,30 @@
             </form>
         </div>
     </div>
+    <div id="newsletter-modal-container" class="modal-container">
+        <div id="newsletter-modal" class="modal">
+            <div id="newsletter-modal-close-btn" onclick="toggleTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h2 id="newsletter-heading">Signup to newsletter</h2>
+
+            <form id="newsletter-form">
+                <div class="form-col">
+                    <label for="signup-name">Name:</label>
+                    <input type="text" id="signup-name" name="signup-name" required>
+                </div>
+                
+
+                <div class="form-col">
+                    <label for="signup-email">Email:</label>
+                    <input type="text" id="signup-email" name="signup-email" required>
+                </div>
+
+                <div id="form-control-container">
+                    <input type="reset" value="Reset">
+                    <input type="submit" value="Send mail" id="signup-btn">
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="assets/script/script.js"></script>
     <script src="assets/script/modals.js"></script>
     <script src="assets/script/read-save-storage.js"></script>
