@@ -39,6 +39,11 @@
     justify-content: space-between;
 }
 
+.notification .icon-btn {
+    padding:0;
+}
+
+
 .notification-timer {
     width:100%; 
     border-bottom-left-radius: 10px;
@@ -52,22 +57,12 @@
     /* animation: ; */
     transform-origin: left center;
 }
-@keyframes roundtime {
+@keyframes timer {
     to {
       transform: scaleX(0);
     }
-  }
-.close-notification-btn {
-    border: none;
-    background-color:white;
-    transition: 0.3s;
 }
 
-.close-notification-btn:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.1);
-}
 
 @keyframes notificationEnter {
     from {

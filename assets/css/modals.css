@@ -1,23 +1,111 @@
-.sound-container {
-    display: flex;
-    flex-direction: column;
+/*
+#
+# General modal design
+#
+*/
+.modal-container {
+    position:absolute;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content: center;
     align-items: center;
-    
-    gap:1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    width:100vw;
+    height: 100vh;
+    z-index:98;
+    opacity:0;
+    visibility: hidden;
+    transition:all 0.3s ease-in-out;
 }
 
-#notification-sounds {
+.modal-container.open {
     display:flex;
-    flex-wrap: wrap;
-    gap:1rem;
-    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container > .modal {
+    position:relative;
+    display: flex;
+    flex-direction: column;
     
+    z-index:99;
+    background-color: white;
+    border-radius:10px;
+    padding:min(5vw, 5rem);
+    transition:0.3s;
+    width:min(80rem, 100vw);
+    max-height: 100vh;
+    overflow: auto;
+
+    opacity: 1;
+    visibility: hidden;
+    transition:all 0.3s ease-in-out;
+}
+
+.modal-container.open > .modal{
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-section {
     display: flex;
     flex-direction: column;
     padding:2rem;
+    gap:1rem;
+}
+
+/*
+#
+# Create/Edit task modal
+#
+*/
+#create-task-form {
+    display: flex;
+    gap:1rem;
+    flex-direction: column;
+}
+
+.form-row {
+    display:flex;
+    gap:2rem;
+    width:100%;
+    align-items: center;
+}
+
+.form-col {
+    display:flex;
+    flex-direction: column;
+}
+
+#user-settings-container {
+    position: absolute;
+    margin-left: auto;
+    right:1rem;
+}
+
+
+
+
+
+
+/*
+#
+# User settings modal
+#
+*/
+#notification-sounds {
+    display:flex;
+    flex-wrap: wrap;
+    gap:1rem;
+    justify-content: center;
+}
+
+.sound-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap:1rem;
 }
 
@@ -119,17 +207,7 @@
     display:none;
 }
 
-.form-row {
-    display:flex;
-    gap:2rem;
-    width:100%;
-    align-items: center;
-}
 
-.form-col {
-    display:flex;
-    flex-direction: column;
-}
 
 
 #form-control-container {
@@ -139,24 +217,7 @@
 
 
 
-#user-settings-container {
-    position: absolute;
-    margin-left: auto;
-    right:1rem;
-}
 
-#user-settings-container > .btn {
-    font-size: 2rem;
-    background-color: transparent;
-    border:none;
-    transition: 0.3s;
-}
-
-#user-settings-container > .btn:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    transform: scale(1.1);
-}
 
 .fa-toggle-on {
     color:green;
@@ -215,51 +276,7 @@
     box-sizing: border-box;
 }
 
-.modal-container {
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    width:100vw;
-    height: 100vh;
-    z-index:98;
-    opacity:0;
-    visibility: hidden;
-    transition:all 0.3s ease-in-out;
-}
 
-.modal-container.open {
-    display:flex;
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-container > .modal {
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    
-    z-index:99;
-    background-color: white;
-    border-radius:10px;
-    padding:min(5vw, 5rem);
-    transition:0.3s;
-    width:min(80rem, 100vw);
-    max-height: 100vh;
-    overflow: auto;
-
-    opacity: 1;
-    visibility: hidden;
-    transition:all 0.3s ease-in-out;
-}
-
-.modal-container.open > .modal{
-    opacity: 1;
-    visibility: visible;
-}
 
 .modal-close-btn {
     display: flex;

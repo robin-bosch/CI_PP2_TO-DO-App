@@ -219,7 +219,7 @@ function showTask(taskId) {
     //If the alert is active the text appears normal
     //If the alert is inactive a the text is grayed out
     document.getElementById("task-details").innerHTML = `
-        <button onclick="toggleTaskModal('${taskId}')" id="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button onclick="toggleTaskModal('${taskId}')" id="edit-btn" class="icon-btn"><i class="fa-solid fa-pen-to-square"></i></button>
         <h2>${task.title}</h2>
         <p>${task.description}</p>
 

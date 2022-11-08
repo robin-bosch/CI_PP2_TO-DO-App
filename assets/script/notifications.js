@@ -38,10 +38,10 @@ function createNotification(text, type) {
         <div class="notification-content">
             ${iconHtml}
             <p>${text == "" ? "Unknown notification" : text}</p>
-            <button class="close-notification-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
+            <button class="icon-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
         </div>
         <div class="notification-timer">
-            <div style="animation: roundtime 5s linear forwards"></div>
+            <div style="animation: timer 5s linear forwards"></div>
         </div>
     `;
     document.querySelector("#notification-container").appendChild(notificationElement);
