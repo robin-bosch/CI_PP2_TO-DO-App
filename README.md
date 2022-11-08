@@ -75,6 +75,29 @@ The Inter font from Google Fonts was chosen for its visual clarity. It is easily
 
 ### Structure
 
+The structure is very simple. It is a Single Page Application with modals that pop up if user input is required.
+The top of the page allows the user to access the user settings and create new tasks.
+The main page is structured in the task list and task overview.
+
+#### Task list
+
+The task list shows the list of tasks categorised in active and done tasks. Clicking one task will show it in the overview.
+Tasks can be marked as done on the left with the checkcircle.  
+
+#### Task overview
+
+The task overview shows the details of the current selected task, such as: Title, description, due date and alert date.  
+The user can edit the task, delete it or mark it as done in the overview.  
+
+#### There are two different modals that can pop up
+
+- Add/Edit task (depending on the state)
+- User settings
+
+#### Notifications
+
+There are notification popups in the bottom right corner for warnings or reminders. They disappear after a short time or can be closed with the button.
+
 ### Wireframes
 
 ## Technologies Used  
