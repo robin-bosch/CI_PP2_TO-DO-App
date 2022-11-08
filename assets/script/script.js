@@ -14,7 +14,7 @@ const THEME_COLORS = {
     green: "green",
     blue: "blue",
     red: "red",
-    orange: "orange"
+    yellow: "yellow"
 };
 
 //List of all available notification sounds
@@ -284,7 +284,7 @@ function showHome() {
 /**
  * Deletes the task with given id from the list
  * This action is not reversible!
- * @param {*} taskId 
+ * @param {string} taskId 
  */
 function deleteTask(taskId) {
     //Ask for confirmation to delete task

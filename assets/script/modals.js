@@ -49,7 +49,7 @@ function toggleTaskDueDateEnabler() {
 /**
  * Opens or closes task modal depending on its current state
  * Defining a taskId opens the modal in edit mode
- * @param {} taskId default = 0 if not defined
+ * @param {string} taskId default = 0 if not defined
  */
  function toggleTaskModal(taskId = 0) {
     let modalContainer = document.querySelector("#task-create-modal-container");
