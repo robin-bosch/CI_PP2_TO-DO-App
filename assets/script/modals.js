@@ -108,7 +108,8 @@ function toggleTaskDueDateEnabler() {
 }
 
 /**
- * 
+ * Toggles the newsletter modal
+ * ID shortened to avoid adblock
  */
 function toggleNewsletterModal() {
     let modalContainer = document.querySelector("#newsle-modal-container");
@@ -119,6 +120,22 @@ function toggleNewsletterModal() {
     }
     else {
         modalContainer.classList.add("open");
+    }
+}
+
+/**
+ * Toggles the newsletter modal
+ * ID shortened to avoid adblock
+ */
+ function toggleMenu() {
+    let modalContainer = document.querySelector("#task-list-container");
+
+
+    if(modalContainer.classList.contains("extended")) {
+        modalContainer.classList.remove("extended");
+    }
+    else {
+        modalContainer.classList.add("extended");
     }
 }
 

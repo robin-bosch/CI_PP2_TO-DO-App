@@ -312,7 +312,7 @@ function generateList() {
             taskDoneHtml += `
                 <div id="${taskList[i].id}" class="task">
                     <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" aria-role="checkbox">${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
-                    <div class="task-text" onclick="showTask('${taskList[i].id}')" aria-role="button">
+                    <div class="task-text" onclick="showTask('${taskList[i].id}');toggleMenu();" aria-role="button">
                         <h3>${taskList[i].title}</h3>
                         <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
                     </div>
@@ -323,7 +323,7 @@ function generateList() {
             taskUndoneHtml += `
                 <div id="${taskList[i].id}" class="task">
                     <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" >${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
-                    <div class="task-text" onclick="showTask('${taskList[i].id}')">
+                    <div class="task-text" onclick="showTask('${taskList[i].id}');toggleMenu();">
                         <h3>${taskList[i].title}</h3>
                         <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
                     </div>

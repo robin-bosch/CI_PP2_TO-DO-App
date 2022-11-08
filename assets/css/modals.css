@@ -79,11 +79,7 @@
     flex-direction: column;
 }
 
-#user-settings-container {
-    position: absolute;
-    margin-left: auto;
-    right:1rem;
-}
+
 
 /*
 #
@@ -275,6 +271,8 @@
 
 .modal-close-btn {
     display: flex;
+    justify-content: center;
+    align-items: center;
     position:absolute;
     top:2rem;
     right:2rem;
@@ -286,6 +284,14 @@
     transition: 0.3s;
     transform: scale(1.05);
     cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .modal-close-btn {
+        font-size:2.5rem;
+        top:1rem;
+        right:1rem;
+    }   
 }
 
 #task-due-date-enabler, #task-alert-date-enabler {
