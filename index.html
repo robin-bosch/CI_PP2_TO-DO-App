@@ -20,27 +20,33 @@
 </head>
 <body>
     <main>
-        <section id="task-list-container">
-            <div id="task-list-header">
+        <article id="task-list-container">
+            <section id="task-list-header">
                 <h2>Tasks</h2>
                 <button onclick="toggleTaskModal()" class="round-btn" aria-label="Add new task"><i class="fa-solid fa-plus"></i></button>
-            </div>
-            <div id="task-list">
-            </div>
-        </section>
-        <section id="task-overview">
-            <div id="task-header">
+            </section>
+            <section id="task-list">
+            </section>
+        </article>
+        <article id="task-overview">
+            <header id="task-header">
                 <h1>ToDoApp</h1>
                 <div id="user-settings-container">
                     <button class="icon-btn btn" id="notifications-global-setting" onclick="setAlerts()" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
                     <button class="icon-btn btn" onclick="toggleSettingsModal()" aria-label="Open user settings"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
-            </div>
-            <div id="task-details">
+            </header>
+            <main id="task-details">
                 <h2>Select one task</h2>
-            </div>
-        </section>
+                
+            </main>
+            <footer id="footer">
+                <h2>made by Robin Bosch</h2>
+                <button class="btn" id="sign-up-modal-btn" onclick="toggleSignUpModal()">Signup to newsletter</button>
+                <a href=""> <i class="fa-brands fa-github"></i></a>
+            </footer>
+        </article>
     </main>
     <div id="notification-container">
     </div>
