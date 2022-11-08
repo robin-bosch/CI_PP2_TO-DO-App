@@ -2,7 +2,6 @@
     visibility: hidden;
     position:absolute;
     right:0;
-    height:0;
     height:100vh;
     width:min(100vw, 30rem);
     display: flex;
@@ -55,7 +54,6 @@
 }
 @keyframes roundtime {
     to {
-      /* More performant than animating `width` */
       transform: scaleX(0);
     }
   }

@@ -31,19 +31,20 @@ function createNotification(text, type) {
     let notificationId = Math.random().toString(16).slice(2);
 
     //Generate notification and add it to the notification container
-    let notificationHtml = `
-        <div class="notification" id="notification-${notificationId}">
-            <div class="notification-content">
-                ${iconHtml}
-                <p>${text == "" ? "Unknown notification" : text}</p>
-                <button class="close-notification-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
-            </div>
-            <div class="notification-timer">
-                <div style="animation: roundtime 5s linear forwards"></div>
-            </div>
+    let notificationElement = document.createElement("div");
+    notificationElement.classList.add("notification")
+    notificationElement.id = `notification-${notificationId}`;
+    notificationElement.innerHTML = `
+        <div class="notification-content">
+            ${iconHtml}
+            <p>${text == "" ? "Unknown notification" : text}</p>
+            <button class="close-notification-btn" id="close-${notificationId}-btn"><i class="fa-regular fa-circle-xmark"></i></button>
+        </div>
+        <div class="notification-timer">
+            <div style="animation: roundtime 5s linear forwards"></div>
         </div>
     `;
-    document.querySelector("#notification-container").innerHTML += notificationHtml;
+    document.querySelector("#notification-container").appendChild(notificationElement);
 
     //Attach eventlistener for closing the notification with a click and automatically after 5 seconds
     document.querySelector(`#close-${notificationId}-btn`).addEventListener("click", function() {
