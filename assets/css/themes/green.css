@@ -1,6 +1,5 @@
 :root {
     --text-color: black;
+    --secondary-text-color: white;
     --main-color: rgb(47, 116, 47);
-    --secondary-color: #10316B;
-    --inverted-color: #FDBE34;
 }

@@ -63,7 +63,7 @@ p, figcaption {
     padding:1rem;
     font-size: 1.25rem;
     border:none;
-    color:white;
+    color:var(--secondary-text-color);
     border-radius:5px;
     transition: 0.3s;
 }
@@ -106,7 +106,7 @@ main {
     padding:1rem;
     height:5rem;
     justify-content: space-between;
-    color:white;
+    color:var(--secondary-text-color);
     background-color:var(--main-color);
 
 }
@@ -180,7 +180,7 @@ main {
     align-items: center;
     justify-content: center;
     height:5rem;
-    color:white;
+    color:var(--secondary-text-color);
     background-color:var(--main-color);
 }
 
@@ -226,10 +226,10 @@ main {
     height:3rem;
     font-size:1.5rem;
     font-weight: 800;
-    color:white;
+    color:var(--secondary-text-color);
     border-radius: 50%;
     background-color: inherit;
-    border:5px solid white;
+    border:5px solid var(--secondary-text-color);
     transition: 0.3s;
 }
 
