@@ -29,23 +29,23 @@
             </section>
         </article>
         <article id="task-overview">
-            <header id="task-header">
+            <section id="task-header">
                 <h1>ToDoApp</h1>
                 <div id="user-settings-container">
                     <button class="icon-btn btn" id="notifications-global-setting" onclick="setAlerts()" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
                     <button class="icon-btn btn" onclick="toggleSettingsModal()" aria-label="Open user settings"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 
-            </header>
-            <main id="task-details">
+            </section>
+            <section id="task-details">
                 <h2>Select one task</h2>
                 
-            </main>
-            <footer id="footer">
+            </section>
+            <section id="footer">
                 <h2>made by Robin Bosch</h2>
-                <button class="btn" id="sign-up-modal-btn" onclick="toggleSignUpModal()">Signup to newsletter</button>
+                <button class="btn" id="sign-up-modal-btn" onclick="toggleNewsletterModal()">Signup to newsletter</button>
                 <a href=""> <i class="fa-brands fa-github"></i></a>
-            </footer>
+            </section>
         </article>
     </main>
     <div id="notification-container">
@@ -183,10 +183,10 @@
             </form>
         </div>
     </div>
-    <div id="newsletter-modal-container" class="modal-container">
-        <div id="newsletter-modal" class="modal">
-            <div id="newsletter-modal-close-btn" onclick="toggleTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
-            <h2 id="newsletter-heading">Signup to newsletter</h2>
+    <div id="newsle-modal-container" class="modal-container">
+        <div id="newsle-modal" class="modal">
+            <div id="newsle-modal-close-btn" onclick="toggleNewsletterModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h2 id="newsle-heading">Signup to newsletter</h2>
 
             <form id="newsletter-form">
                 <div class="form-col">
@@ -200,9 +200,9 @@
                     <input type="text" id="signup-email" name="signup-email" required>
                 </div>
 
-                <div id="form-control-container">
-                    <input type="reset" value="Reset">
-                    <input type="submit" value="Send mail" id="signup-btn">
+                <div id="newsletter-control-container">
+                    <input type="reset" value="Reset" class="btn">
+                    <input type="submit" value="Send mail" id="signup-btn" class="btn">
                 </div>
             </form>
         </div>

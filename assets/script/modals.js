@@ -108,6 +108,21 @@ function toggleTaskDueDateEnabler() {
 }
 
 /**
+ * 
+ */
+function toggleNewsletterModal() {
+    let modalContainer = document.querySelector("#newsle-modal-container");
+
+
+    if(modalContainer.classList.contains("open")) {
+        modalContainer.classList.remove("open");
+    }
+    else {
+        modalContainer.classList.add("open");
+    }
+}
+
+/**
  * Validates the form and spawns a notification if the validation wasn't successful
  * @returns boolean - if validation was successful
  */
