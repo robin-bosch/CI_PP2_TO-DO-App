@@ -59,6 +59,9 @@
 
 ### Design Choices
 
+The website is designed as a Single Page Application. It is a full width layout and focused on giving the user all they information they need.  
+Modals are put into place for Creating/Editing a task or for changing user settings.  
+
 ### Colors
 
 ### Fonts
