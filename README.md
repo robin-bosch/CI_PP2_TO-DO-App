@@ -102,13 +102,25 @@ There are notification popups in the bottom right corner for warnings or reminde
 
 ## Technologies Used  
 
-### Languages
+- HTML  
+- CSS
+- JavaScript
 
 ### Frameworks
 
+- Font Awesome
+- Google Fonts
+
 ### Tools
 
+- Git
+- GitHub
+- Visual Studio Code
+- Balsamiq
+
 ### Pages
+
+- [CSS Generators](<https://html-css-js.com/css/generator>) (to generate effects like drop shadows)
 
 ## Features
 
