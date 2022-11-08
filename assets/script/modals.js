@@ -166,45 +166,45 @@ function toggleSettingsModal() {
 
     document.querySelector("#sound-btn-1").addEventListener("click", function() {
         sound1.volume = settings.volume;
-        sound1.play()
+        sound1.play();
     });
 
     document.querySelector("#sound-btn-2").addEventListener("click", function() {
         sound2.volume = settings.volume;
-        sound2.play()
-    })
+        sound2.play();
+    });
 
     document.querySelector("#sound-btn-3").addEventListener("click", function() {
         sound3.volume = settings.volume;
-        sound3.play()
-    })
+        sound3.play();
+    });
 
     document.querySelector("#sound-btn-4").addEventListener("click", function() {
         sound4.volume = settings.volume;
-        sound4.play()
-    })
+        sound4.play();
+    });
 
     document.querySelector("#sound-btn-5").addEventListener("click", function() {
         sound5.volume = settings.volume;
-        sound5.play()
-    })
+        sound5.play();
+    });
 
     document.querySelector("#sound-btn-5").addEventListener("click", function() {
         sound5.volume = settings.volume;
-        sound5.play()
-    })
+        sound5.play();
+    });
 
     document.querySelector("#theme-settings-save-btn").addEventListener("click", function() {
         settings = {
             themeColor: document.querySelector('input[name="theme-selection"]:checked').value,
             sound: document.querySelector('input[name="sound-selection"]:checked').value,
             volume: document.querySelector("#volume-slider").value / 100,
-        }
+        };
         
         saveSettings();
         setTheme();
         toggleSettingsModal();
-    })
+    });
 
 
     if(modalContainer.classList.contains("open")) {

@@ -15,16 +15,16 @@ const THEME_COLORS = {
     blue: "blue",
     red: "red",
     orange: "orange"
-}
+};
 
 //List of all available notification sounds
 const NOTIFICATION_SOUNDS = {
     sound1: "got-it-done",
     sound2: "ill-make-it-possible",
-    sound2: "relax-message",
-    sound2: "you-would-be-glad-to-know",
-    sound2: "so-proud"
-}
+    sound3: "relax-message",
+    sound4: "you-would-be-glad-to-know",
+    sound5: "so-proud"
+};
 
 /**
  * Fetches data on load or creates new one if the user is new
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     //Fetches settings
-    settings = JSON.parse(window.localStorage.getItem("settings"))
+    settings = JSON.parse(window.localStorage.getItem("settings"));
 
     //Generate the taskList and load the theme
     generateList();
@@ -90,7 +90,12 @@ function setAlerts() {
         <i class="fa-solid fa-bell">
     `;
     bellUnlocked = bellUnlocked ? false : true;    
-    bellUnlocked ? createNotification("Task alerts are now active!", NOTIFICATION_TYPES.reminder) : createNotification("Task alerts are now disabled!", NOTIFICATION_TYPES.reminder);
+    if(bellUnlocked) {
+        createNotification("Task alerts are now active!", NOTIFICATION_TYPES.reminder);
+    }
+    else {
+        createNotification("Task alerts are now disabled!", NOTIFICATION_TYPES.reminder);
+    }
 }
 
 function playAlert(taskId, timeOut) {
@@ -99,7 +104,7 @@ function playAlert(taskId, timeOut) {
             let taskItem = queryTask(taskId);
             const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
 
-            createNotification(`Task alert: ${taskItem.task.title}`)
+            createNotification(`Task alert: ${taskItem.task.title}`);
 
             sound.volume = settings.volume;
             sound.play();
@@ -137,14 +142,14 @@ function createTask() {
     else {
 
     }
- };
+}
 
 
 
 
 /**
  * Updates the task with the given elements
- * @param {} taskId 
+ * @param {string} taskId 
  */
 function updateTask(taskId) {
     if(validateForm()) {
@@ -166,7 +171,7 @@ function updateTask(taskId) {
     else {
         
     }
-};
+}
 
 
 /**
@@ -283,6 +288,13 @@ function deleteTask(taskId) {
     }
 }
 
+function showTaskEnter(event, taskId) {
+    if (event.keyCode == 13) {
+        showTask(taskId)
+     }
+}
+
+
 /**
  * Generates HTML for all tasks and categorizes them into done and active tasks
  */
@@ -294,13 +306,13 @@ function generateList() {
         if(taskList[i].done) {
             taskDoneHtml += `
                 <div id="${taskList[i].id}" class="task">
-                    <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" >${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
-                    <div class="task-text" onclick="showTask('${taskList[i].id}')">
+                    <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" aria-role="checkbox">${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
+                    <div class="task-text" onclick="showTask('${taskList[i].id}')" onkeypress="showTaskEnter(event, '${taskList[i].id}')" aria-role="button">
                         <h3>${taskList[i].title}</h3>
                         <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
                     </div>
                 </div>
-                `
+                `;
         }
         else {
             taskUndoneHtml += `
@@ -311,7 +323,7 @@ function generateList() {
                         <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
                     </div>
                 </div>
-            `
+            `;
         }
     }
     document.getElementById("task-list").innerHTML = `
@@ -325,4 +337,3 @@ function generateList() {
         </div>
     `;
 }
-

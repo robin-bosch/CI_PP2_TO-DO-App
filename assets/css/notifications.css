@@ -4,7 +4,7 @@
     right:0;
     height:0;
     height:100vh;
-    width:30rem;
+    width:min(100vw, 30rem);
     display: flex;
     flex-direction: column;
     justify-content: end;

@@ -5,7 +5,7 @@
 const NOTIFICATION_TYPES = {
     warning: "warning",
     reminder: "reminder",
-}
+};
 
 /**
  * Spawns a notification at the bottom right, that disappears automatically or by clicking it
@@ -22,6 +22,7 @@ function createNotification(text, type) {
             break;
         case NOTIFICATION_TYPES.reminder:
             iconHtml = `<div class="notification-reminder-icon notification-icon"><i class="fa-solid fa-bell"></i></div>`;
+            break;
         default:
             iconHtml = `<div class="notification-default-icon notification-icon"><i class="fa-solid fa-exclamation"></i></div>`;
     }
@@ -72,5 +73,4 @@ function removeNotification(notificationId) {
             removeElement.remove();
         }, 400);
     }
-    
-};
+}

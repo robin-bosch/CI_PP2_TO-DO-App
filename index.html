@@ -11,7 +11,7 @@
 
     <title>TO-DO App</title>
 
-    <link rel="stylesheet" id="theme-link" href="">
+    <link rel="stylesheet" id="theme-link" href=".">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css">
@@ -47,7 +47,7 @@
     <div id="settings-modal-container" class="modal-container">
                 
         <div id="settings-modal" class="modal">
-            <div id="task-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+            <div id="user-settings-modal-close-btn" onclick="toggleSettingsModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
             <h2>User Settings</h2>
             <div class="modal-section">
                 <h3>Select your theme color</h3>
@@ -85,7 +85,7 @@
                         <input type="radio" id="sound-got-it-done" name="sound-selection" value="got-it-done">
                         <label for="sound-got-it-done" class="sound-label">
                             <i class="fa-solid fa-music"></i>
-                            <h4>Got it done</h4>
+                            <span>Got it done</span>
                         </label>
                         <button id="sound-btn-1" class="music-btn btn">Listen</button>                            
                     </div>
@@ -93,7 +93,7 @@
                         <input type="radio" id="sound-ill-make-it-possible" name="sound-selection" value="ill-make-it-possible">
                         <label for="sound-ill-make-it-possible" class="sound-label">
                             <i class="fa-solid fa-music"></i>
-                            <h4>I'll make it possible</h4>
+                            <span>I'll make it possible</span>
                         </label>
                         <button id="sound-btn-2" class="music-btn btn">Listen</button>                            
                     </div>
@@ -101,7 +101,7 @@
                         <input type="radio" id="sound-relax-message" name="sound-selection" value="relax-message">
                         <label for="sound-relax-message" class="sound-label">
                             <i class="fa-solid fa-music"></i>
-                            <h4>Relax message</h4>
+                            <span>Relax message</span>
                         </label>
                         <button id="sound-btn-3" class="music-btn btn">Listen</button>                            
                     </div>
@@ -109,7 +109,7 @@
                         <input type="radio" id="sound-you-would-be-glad-to-know" name="sound-selection" value="you-would-be-glad-to-know">
                         <label for="sound-you-would-be-glad-to-know" class="sound-label">
                             <i class="fa-solid fa-music"></i>
-                            <h4>You would be glad to know</h4>
+                            <span>You would be glad to know</span>
                         </label>
                         <button id="sound-btn-4" class="music-btn btn">Listen</button>                            
                     </div>
@@ -117,7 +117,7 @@
                         <input type="radio" id="sound-so-proud" name="sound-selection" value="so-proud">
                         <label for="sound-so-proud" class="sound-label">
                             <i class="fa-solid fa-music"></i>
-                            <h4>So proud</h4>
+                            <span>So proud</span>
                         </label>
                         <button id="sound-btn-5" class="music-btn btn">Listen</button>                            
                     </div>
@@ -134,9 +134,9 @@
 
         <div id="task-create-modal" class="modal">
             <div id="task-modal-close-btn" onclick="toggleTaskModal()" class="modal-close-btn"><i class="fa-regular fa-circle-xmark"></i></div>
-            <h2 id="task-heading"></h2>
+            <h2 id="task-heading">Create task</h2>
 
-            <form action="" id="create-task-form">
+            <form id="create-task-form">
                 <div class="form-col">
                     <label for="task-title">Title:</label>
                     <input type="text" id="task-title" name="task-description" required>
