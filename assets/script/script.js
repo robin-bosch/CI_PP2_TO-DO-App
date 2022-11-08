@@ -220,21 +220,36 @@ function showTask(taskId) {
     //If the alert is inactive a the text is grayed out
     document.getElementById("task-details").innerHTML = `
         <button onclick="toggleTaskModal('${taskId}')" id="edit-btn" class="icon-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-        <h2>${task.title}</h2>
-        <p>${task.description}</p>
 
-        <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">Due: ${task.due == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
-        ${task.activeAlert ? `
-        <div id="toggle-alert-container">
-            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
-            <p id="alert-text" class="task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
+        <div id="task-details-content">
+            <h2>${task.title}</h2>
+            <p>${task.description}</p>
+
+            <div id="task-details-dates">
+                <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">
+                    <span>Due:</span> 
+                    <span>${task.due == "" ? "---" : new Date(task.alert).toLocaleString()}</span>
+                </p>
+                ${task.activeAlert ? `
+                <div id="toggle-alert-container" class="task-date-text">
+                    <span>
+                        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
+                        <p>Alert</p>
+                    </span>
+                    <p id="alert-text" >${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
+                </div>
+                ` : `
+                <div id="toggle-alert-container" class="task-date-text">
+                    <span>
+                        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
+                        <p>Alert</p>
+                    </span>
+                    <p id="alert-text" class="disabled-text">${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
+                </div>
+                `}
+            </div>
         </div>
-        ` : `
-        <div id="toggle-alert-container">
-            <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell-slash"></i></button>
-            <p id="alert-text" class="disabled-text task-date-text">Alert: ${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
-        </div>
-        `}
+        
         <div id="task-control-container">
             <button onclick="deleteTask('${taskId}')" class="btn">Delete</button>
             <button id="task-done-btn" class="btn" onclick="updateTaskStatus('${taskId}')">${task.done ? "Unmark" : "Mark as done"}</button>
@@ -257,8 +272,6 @@ function toggleAlert(taskId) {
     showTask(taskId);
 }
 
-
-
 /**
  * Loads and displays the homescreen
  */
@@ -267,7 +280,6 @@ function showHome() {
         <h2>Select one task</h2>
     `;
 }
-
 
 /**
  * Deletes the task with given id from the list
@@ -288,13 +300,6 @@ function deleteTask(taskId) {
     }
 }
 
-function showTaskEnter(event, taskId) {
-    if (event.keyCode == 13) {
-        showTask(taskId)
-     }
-}
-
-
 /**
  * Generates HTML for all tasks and categorizes them into done and active tasks
  */
@@ -307,7 +312,7 @@ function generateList() {
             taskDoneHtml += `
                 <div id="${taskList[i].id}" class="task">
                     <div id="${taskList[i].id}-checkbox" class="task-checkbox ${taskList[i].done ? "checked" : ""}" onclick="updateTaskStatus('${taskList[i].id}')" aria-role="checkbox">${taskList[i].done ? '<i class="fa-solid fa-check"></i>' : ""}</div>
-                    <div class="task-text" onclick="showTask('${taskList[i].id}')" onkeypress="showTaskEnter(event, '${taskList[i].id}')" aria-role="button">
+                    <div class="task-text" onclick="showTask('${taskList[i].id}')" aria-role="button">
                         <h3>${taskList[i].title}</h3>
                         <p>${taskList[i].description.slice(0, 60)}${taskList[i].description.length > 60 ? "..." : ""}</p>
                     </div>

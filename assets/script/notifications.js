@@ -32,7 +32,7 @@ function createNotification(text, type) {
 
     //Generate notification and add it to the notification container
     let notificationElement = document.createElement("div");
-    notificationElement.classList.add("notification")
+    notificationElement.classList.add("notification");
     notificationElement.id = `notification-${notificationId}`;
     notificationElement.innerHTML = `
         <div class="notification-content">
