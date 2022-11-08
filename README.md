@@ -70,6 +70,9 @@ The colors can changed in the user settings. The following colors are available:
 
 ### Fonts
 
+The Inter font from Google Fonts was chosen for its visual clarity. It is easily readable and friendly to the eye. The second font is sans-serif if the font is not loading.  
+[Link to Inter font](<https://fonts.google.com/specimen/Inter>)
+
 ### Structure
 
 ### Wireframes
