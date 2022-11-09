@@ -196,7 +196,90 @@ There are notification popups in the bottom right corner for warnings or reminde
 ## Features
 
 The website has 1 page only. This one page contains three hidden modals and a notifications container that cannot be seen all the time.
-The page has 8 features in total.  
+The page has 9 features in total.
+
+### Tasklist header
+
+- Shows the task heading
+- Shows the new task button
+- User stories covered: 1, 5, 7
+
+![Task header](docs/features/tasklist-header.png)
+
+### Tasklist
+
+- Shows a list of tasks
+- Sorts task by active/done
+- Allows user to mark tasks as active or done
+- User stories covered: 6
+
+![Task list](docs/features/tasklist.png)
+
+### Task header
+
+- Shows the app heading
+- Shows the alert bell, to unlock alerts
+- Shows button to toggle the user settings modal
+- User stories covered: 4, 9
+
+![Task header](docs/features/task-header.png)
+
+### Task details
+
+- Shows the task title, description, alert date, due date
+- Shows button to edit or delete task
+- Shows button to mark the task as active/done
+- Shows the button to turn off/on the alert for the task
+- User stories covered: 2, 3, 5, 7, 8
+
+![Task details](docs/features/task-details.png)
+
+### Footer
+
+- Shows the author of the app
+- Shows the toggle to the newsletter modal
+- Shows the link to the github repository of the app
+- User stories covered: 10, 11, 12
+
+![Footer](docs/features/footer.png)
+
+### Task modal
+
+- Allows for editing or creating a new task
+- Can be reached from the new task button or the edit button in the task details
+- User stories covered: 6, 7
+
+![Create task modal](docs/features/create-task-modal.png)
+![Edit task modal](docs/features/edit-task-modal.png)
+
+### User settings modal
+
+- Allows for settings personal setting
+- The following settings can be set:
+
+  - Theme color
+  - Sound volume
+  - Sound type
+
+- Save settings or cancel
+- User stories covered: 9
+
+![Create task modal](docs/features/create-task-modal.png)
+![Edit task modal](docs/features/edit-task-modal.png)
+
+### Newsletter modal
+
+- Form with name and email
+- Allows for subscribing to the newsletter
+- User stories covered: 10
+
+![Newsletter modal](docs/features/newsletter-modal.png)
+
+### Notifications feature
+
+- Gives the user information about what is happening
+
+![Notification](docs/features/notifications.png)
 
 ## Validation and Testing
 
@@ -213,7 +296,6 @@ All HTML validation tests have been passed.
  <summary>404 page</summary>
  <img src="docs/validation/html/404-validation.png">
 </details>
-
 
 ### CSS Validation
 
