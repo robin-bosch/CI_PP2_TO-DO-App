@@ -62,9 +62,46 @@
 
 ### Target Audience
 
+- Every day people who want a small browser based To-Do-App for free
+- People who are unorganised
+- People who don't like to send their data to a server
+
 ### User Requirements and Expectations
 
+- Easy to use and easy to understand
+- Can do basic CRUD-operations (Create, Read, Update, Delete tasks)
+- Can mark tasks as done or active
+- Get notified at the alert date
+
 ### User Stories
+
+As a user I want to:
+
+1. View all my tasks
+2. See the details of one task
+3. Turn off notifications for one task
+4. Turn off all notifications
+5. Mark a task as done or active
+6. Create a new task
+7. Edit a task
+
+    - Edit only the title
+    - Edit only the description
+    - Edit only the due date
+    - Edit only the alert date
+
+8. Delete a task
+9. Change the user settings
+  
+    - Change the theme
+    - Change the alert sound
+    - Change the alert volume
+
+As a owner I want the user to
+
+10. subscribe to my newsletter
+11. know who made the website
+12. see the code and how its made
 
 ## Design
 
