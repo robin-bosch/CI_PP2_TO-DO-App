@@ -416,6 +416,149 @@ Webkit based browser (Safari) could not be tested. Chromium based and Quantum ba
 
 ### Testing user stories
 
+#### As a user I want to
+
+1. View all my tasks
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Task list|The list is to the left or can be expanded with the menu toggle on the left|Task list can be viewed|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/.png">
+</details>
+
+2. See the details of one task
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Task details|Select one task from the task list and click it|Shows the task details|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/.png">
+</details>
+
+3. Turn off alerts for one task
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Toggle bell in task details|In the details click on the bell|Turns on or off the alerts for the task|Works as expected|
+Edit task with alert off|In the details click on edit and turn of the alert box and save|Turns on or off the alerts for the task|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/.png">
+</details>
+
+
+4. Turn off all alerts.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Alert bell button|Clicking the bell|Turns on/off alerts|Works as expected (With one problem: Alerts are turned off on every reload of the page, the browser does not allow for sounds to play before an interaction with the page has taken place)|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/fourth-story.png">
+</details>
+
+5. Mark a task as done.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Circle checkbox in the task in task list|Clicking the circle checkbox will toggle the task to be active/done|The user can mark the task as done/active|Works as expected|
+Mark as done/Unmark button in task details|Clicking the button will toggle the task to be active/done|The user can mark the task as done/active|Works as expected|
+
+<details>
+ <summary>Screenshots</summary>
+ <img src="docs/user-stories/fifth-story-step-one.png">
+ <br>
+ <img src="docs/user-stories/fifth-story-step-one.png">
+</details>
+
+6. Create a new task.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Create task modal|Click on the "Plus" button to open the modal|The task modal opens to fill out the form|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/sixth-story.png">
+</details>
+
+7. Edit task.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Edit button in task details open the edit task modal|Click on the edit button and edit the task|Allows for editing the task|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/seventh-story.png">
+</details>
+
+8. Delete task.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Delete button in task details|Click the delete button and confirm the prompt|Deletes the task|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/eighth-story.png">
+</details>
+
+9. Change the user settings
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Settings modal|Click the user settings button to open the user settings modal and change the settings and save|Changes user settings|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/ninth-story.png">
+</details>
+
+#### As an owner I want the user to
+
+10. Subscribe to my newsletter
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Newsletter modal|Click the Signup to newsletter button in the footer, then enter the name and email and click subscribe|Subscribes the user to the newsletter|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/tenth-story.png">
+</details>
+
+
+11. Know who made the website
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Footer author note|Scroll to the bottom|Shows the author of the app|Works as expected|
+
+<details>
+ <summary>Screenshots</summary>
+ <img src="docs/user-stories/eleventh-story-step-one.png">
+ <br>
+ <img src="docs/user-stories/eleventh-story-step-two.png">
+</details>
+
+12. See the code
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Footer GitHub link|Click the GitHub icon at the bottom of page|Shows the repository|Works as expected|
+
+<details>
+ <summary>Screenshot</summary>
+ <img src="docs/user-stories/twelfth-story.png">
+</details>
+
 ## Bugs
 
 |Status|Bug|Fix|
