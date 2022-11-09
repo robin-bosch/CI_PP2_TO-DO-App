@@ -9,6 +9,9 @@ let taskList = [];
 //Faster than iterating over them every time a different task is selected
 let activeTaskElement;
 
+//Set the bell to locked after reloading (has to be manually unlocked)
+let bellUnlocked = false;
+
 //List of available theme colors
 const THEME_COLORS = {
     green: "green",
@@ -41,9 +44,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }));
     }
 
-    //Creates test task
+    //Creates test tasks
     //Uncommenting will create these tasks with every reload
     //This will override exisiting tasks!
+
     // createTestTasks();
 
     //Fetches the taskList on load and saves it to the global task list
@@ -69,52 +73,70 @@ function setTheme() {
     document.querySelector("#theme-link").setAttribute("href", `assets/css/themes/${settings.themeColor}.css`);
 }
 
-
-let bellUnlocked = false;
-
-function setAlerts() {
-    for(let i = 0; i < taskList.length; i++) {
-        if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
-            if(new Date(taskList[i].alert) - new Date() < 2147483647) {
-                playAlert(taskList[i].id, new Date(taskList[i].alert) - new Date());
-            }
-        }
-    }
-    
-    
-
+/**
+ * Toggle the alerts on or off
+ */
+function toggleGlobalAlerts() {
+    //Set bell to active state -> change bell unlocked variable
     document.querySelector("#notifications-global-setting").innerHTML = bellUnlocked ? `
         <i class="fa-solid fa-bell-slash">
     ` :
     `
         <i class="fa-solid fa-bell">
     `;
-    bellUnlocked = bellUnlocked ? false : true;    
+    bellUnlocked = bellUnlocked ? false : true;
+
+    //Create notification to inform the user about the alert state
     if(bellUnlocked) {
         createNotification("Task alerts are now active!", NOTIFICATION_TYPES.reminder);
     }
     else {
         createNotification("Task alerts are now disabled!", NOTIFICATION_TYPES.reminder);
     }
+
+    setAlerts();
 }
 
+/**
+ * Set alerts on unlocking the bell
+ * Alert can only be set 24 days in advance
+ */
+function setAlerts() {
+    if(bellUnlocked) {
+        for(let i = 0; i < taskList.length; i++) {
+            if(!taskList[i].done && taskList[i].activeAlert && new Date(taskList[i].alert) > new Date()) {
+                //Check if the milliseconds don't cause a buffer overflow
+                if(new Date(taskList[i].alert) - new Date() < 2147483647) {
+                    playAlert(taskList[i].id, new Date(taskList[i].alert) - new Date());
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Set alert for a task (can only be set 24 days in advance)
+ * @param {string} taskId 
+ * @param {number} timeOut 
+ */
 function playAlert(taskId, timeOut) {
+    //Wait for the alert
     setTimeout(function() {
+        //Check if the bell is still active
         if(bellUnlocked) {
             let taskItem = queryTask(taskId);
+
+            //Load sound -> Create notification -> Play sound
             const sound = new Audio(`./assets/audio/${settings.sound}.mp3`);
 
-            createNotification(`Task alert: ${taskItem.task.title}`);
+            createNotification(`Task alert: ${taskItem.task.title}`, NOTIFICATION_TYPES.reminder);
 
             sound.volume = settings.volume;
             sound.play();
         }
-        
-
     }, timeOut);
     
 }
-
 
 /**
  * Creates a new task from the form and saves it to the storage
@@ -129,15 +151,16 @@ function createTask() {
             description: document.querySelector("#task-description").value,
             due: document.querySelector("#task-due-date").disabled ? "" : new Date(document.querySelector("#task-due-date").value),
             alert: document.querySelector("#task-alert-date").disabled ? "" : new Date(document.querySelector("#task-alert-date").value),
-            alertActive: document.querySelector("#task-alert-date").disabled ? false : true,
+            activeAlert: document.querySelector("#task-alert-date").disabled ? false : true,
             done: false
         });
         
-        //Save list -> Update tasklist -> Set the added task to show -> Close the modal 
+        //Save list -> Update tasklist -> Set the added task to show -> Close the modal -> Set alerts
         saveList();
         generateList();
         showTask(newTaskId);
         toggleTaskModal();
+        setAlerts();
     }
     else {
 
@@ -154,6 +177,7 @@ function createTask() {
 function updateTask(taskId) {
     if(validateForm()) {
         taskList[queryTask(taskId).index] = {
+            id: taskId,
             title: document.querySelector("#task-title").value,
             description: document.querySelector("#task-description").value,
             due: document.querySelector("#task-due-date").disabled == true ? "" : new Date(document.querySelector("#task-due-date").value),
@@ -162,14 +186,12 @@ function updateTask(taskId) {
             done: false
         };
 
-        //Save list -> Update tasklist -> Set the updated task to show -> Close the modal 
+        //Save list -> Update tasklist -> Set the updated task to show -> Close the modal -> Set alerts
         saveList();
         generateList();
         showTask(taskId);
         toggleTaskModal();
-    }
-    else {
-        
+        setAlerts();
     }
 }
 
@@ -194,6 +216,9 @@ function updateTaskStatus(taskId) {
 
     //Update the list
     generateList();
+
+    //Set alerts
+    setAlerts();
 }
 
 /**
@@ -213,7 +238,6 @@ function showTask(taskId) {
     //Replace the current activeTaskElement and set it active
     activeTaskElement = document.getElementById(taskId);
     activeTaskElement.classList.add("active");
-
 
     //Add task details html with all the data
     //If the alert is active the text appears normal
@@ -343,12 +367,10 @@ function generateList() {
     `;
 }
 
-
 /**
- * Toggles the newsletter modal
- * ID shortened to avoid adblock
+ * Toggles the task list menu on mobile layouts
  */
- function toggleMenu() {
+function toggleMenu() {
     let modalContainer = document.querySelector("#task-list-container");
 
 
