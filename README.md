@@ -202,6 +202,23 @@ All HTML validation tests have been passed.
 
 ### Performance
 
+The lighthouse tests were good.  
+Below are all reports to every page.
+
+<details>
+ <summary>Home page</summary>
+ <img src="docs/validation/lighthouse/lighthouse-index.png">
+ <br>
+ <a href="docs/validation/lighthouse/lighthouse-report-index.pdf">Read full report to Index page (PDF)</a>
+</details>
+
+<details>
+ <summary>404 page</summary>
+ <img src="docs/validation/lighthouse/lighthouse-404.png">
+ <br>
+ <a href="docs/validation/lighthouse/report/lighthouse-404-index.pdf">Read full report to 404 page (PDF)</a>
+</details>
+
 ### Device testing
 
 The website was tested on the following devices:
