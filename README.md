@@ -181,6 +181,19 @@ The page has 8 features in total.
 
 ### HTML Validation
 
+All HTML validation tests have been passed.  
+
+<details>
+ <summary>Index</summary>
+ <img src="docs/validation/html/index-validation.png">
+</details>
+
+<details>
+ <summary>404</summary>
+ <img src="docs/validation/html/404-validation.png">
+</details>
+
+
 ### CSS Validation
 
 ### JavaScript Validation
