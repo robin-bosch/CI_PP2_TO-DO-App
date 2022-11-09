@@ -194,7 +194,7 @@
 }
 
 #theme-color-yellow > label {
-    color:var(--secondary-text-color);
+    color:black;
     background-color: rgb(255, 208, 0);
 }
 

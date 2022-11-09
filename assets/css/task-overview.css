@@ -107,6 +107,11 @@
     color:var(--secondary-text-color);
 }
 
+#footer a {
+    font-size:2rem;
+    color:var(--secondary-text-color);
+}
+
 /*
 #
 # Media query

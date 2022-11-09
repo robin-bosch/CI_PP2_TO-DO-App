@@ -219,7 +219,7 @@ function showTask(taskId) {
     //If the alert is active the text appears normal
     //If the alert is inactive a the text is grayed out
     document.getElementById("task-details").innerHTML = `
-        <button onclick="toggleTaskModal('${taskId}')" id="edit-btn" class="icon-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button onclick="toggleTaskModal('${taskId}')" id="edit-btn" class="icon-btn" aria-label="Edit task button"><i class="fa-solid fa-pen-to-square"></i></button>
 
         <div id="task-details-content">
             <h2>${task.title}</h2>
@@ -228,12 +228,12 @@ function showTask(taskId) {
             <div id="task-details-dates">
                 <p class="task-date-text ${!task.done && new Date(task.due) < new Date() ? "overdue-text" : ""}">
                     <span>Due:</span> 
-                    <span>${task.due == "" ? "---" : new Date(task.alert).toLocaleString()}</span>
+                    <span>${task.due == "" ? "---" : new Date(task.due).toLocaleString()}</span>
                 </p>
                 ${task.activeAlert ? `
                 <div id="toggle-alert-container" class="task-date-text">
                     <span>
-                        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')"><i class="fa-solid fa-bell"></i></button>
+                        <button class="icon-btn" id="toggle-alert-btn" onclick="toggleAlert('${taskId}')" aria-label="Toggle alert button"><i class="fa-solid fa-bell"></i></button>
                         <p>Alert</p>
                     </span>
                     <p id="alert-text" >${task.alert == "" ? "---" : new Date(task.alert).toLocaleString()}</p>
