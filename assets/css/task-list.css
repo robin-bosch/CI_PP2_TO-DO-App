@@ -116,6 +116,15 @@
         transition: 0.5s;
     }
 
+    #task-list-container + #task-list-toggle i {
+        transition: 0.5s;
+    }
+
+    #task-list-container.extended + #task-list-toggle i {
+        transform: rotate(180deg);
+        transition: 0.5s;
+    }
+
     #task-list-container {
         width:calc(100vw - 2rem);
         height:100%;
