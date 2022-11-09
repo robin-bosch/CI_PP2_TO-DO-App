@@ -200,6 +200,14 @@ Other screen resolutions were tested in the browser with dev tools from 2560x144
 
 ### Browser compatibility
 
+The following browser were tested:
+
+- Microsoft Edge (Chromium based version)
+- Google Chrome
+- Mozilla Firefox
+
+Webkit based browser (Safari) could not be tested. Chromium based and Quantum based browser should be working.
+
 ### Testing user stories
 
 ## Bugs
