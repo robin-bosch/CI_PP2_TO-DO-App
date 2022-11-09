@@ -191,6 +191,13 @@ The page has 8 features in total.
 
 ### Device testing
 
+The website was tested on the following devices:
+
+- Windows 11 PC (Screen resolution: 2560x1440)
+- Xiaomi MI 9 with Android 11 (Screen resolution: 1080x2280)
+
+Other screen resolutions were tested in the browser with dev tools from 2560x1440 down to 320x568.
+
 ### Browser compatibility
 
 ### Testing user stories
