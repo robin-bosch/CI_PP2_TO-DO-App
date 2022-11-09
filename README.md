@@ -197,6 +197,10 @@ The page has 8 features in total.
 
 ## Bugs
 
+|Status|Bug|Fix|
+|---|---|---|
+|Unknown|The modals occasionally flash on the screen on reload. They disappear after less than half a second after loading. The cause is unclear.||
+
 ## Deployment
 
 1. In the GitHub repository navigate to the "Settings" tab
