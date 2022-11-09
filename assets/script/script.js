@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //Creates test task
     //Uncommenting will create these tasks with every reload
     //This will override exisiting tasks!
-    createTestTasks();
+    // createTestTasks();
 
     //Fetches the taskList on load and saves it to the global task list
     if(window.localStorage.getItem("taskList") != undefined) {
@@ -341,4 +341,21 @@ function generateList() {
             ${taskDoneHtml}
         </div>
     `;
+}
+
+
+/**
+ * Toggles the newsletter modal
+ * ID shortened to avoid adblock
+ */
+ function toggleMenu() {
+    let modalContainer = document.querySelector("#task-list-container");
+
+
+    if(modalContainer.classList.contains("extended")) {
+        modalContainer.classList.remove("extended");
+    }
+    else {
+        modalContainer.classList.add("extended");
+    }
 }

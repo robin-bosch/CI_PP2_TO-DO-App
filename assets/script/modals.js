@@ -124,22 +124,6 @@ function toggleNewsletterModal() {
 }
 
 /**
- * Toggles the newsletter modal
- * ID shortened to avoid adblock
- */
- function toggleMenu() {
-    let modalContainer = document.querySelector("#task-list-container");
-
-
-    if(modalContainer.classList.contains("extended")) {
-        modalContainer.classList.remove("extended");
-    }
-    else {
-        modalContainer.classList.add("extended");
-    }
-}
-
-/**
  * Validates the form and spawns a notification if the validation wasn't successful
  * @returns boolean - if validation was successful
  */
