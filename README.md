@@ -619,6 +619,9 @@ Guides on Flexbox and Grid from CSS-Tricks, that have been used multiple times a
 
 ### Acknowledgements
 
+- A special thanks to my mentor Mo Shami for his feedback and advice, especially on the documentation.
+- A thanks to the Code Institute for the great learning resources
+
 ## License
 
 This project is published under the MIT license.  
