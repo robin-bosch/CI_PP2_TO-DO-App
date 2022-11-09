@@ -7,7 +7,7 @@
 document.querySelector("#newsletter-form").addEventListener('submit', function(event) {
    event.preventDefault();
 
-   let button = document.querySelector("#signup-btn").value = "Sending..."
+   let button = document.querySelector("#signup-btn").value = "Sending...";
 
    const serviceID = 'service_0h6v5dc';
    const templateID = 'template_u63b9wu';
@@ -16,14 +16,14 @@ document.querySelector("#newsletter-form").addEventListener('submit', function(e
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
         //Success response
-        createNotification("Subscription successful!", NOTIFICATION_TYPES.warning)
-        button.value = "Success!"
+        createNotification("Subscription successful!", NOTIFICATION_TYPES.success);
+        button.value = "Success!";
         toggleNewsletterModal();
-        button.value = "Subscribe"
+        button.value = "Subscribe";
 
     }, (err) => {
         //Error response
-        createNotification(err.message, NOTIFICATION_TYPES.warning)
+        createNotification(err.message, NOTIFICATION_TYPES.warning);
         console.log(JSON.stringify(err));
     });
 });

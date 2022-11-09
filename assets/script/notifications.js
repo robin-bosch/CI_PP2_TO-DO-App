@@ -5,6 +5,7 @@
 const NOTIFICATION_TYPES = {
     warning: "warning",
     reminder: "reminder",
+    success: "success",
 };
 
 /**
@@ -22,6 +23,9 @@ function createNotification(text, type) {
             break;
         case NOTIFICATION_TYPES.reminder:
             iconHtml = `<div class="notification-reminder-icon notification-icon"><i class="fa-solid fa-bell"></i></div>`;
+            break;
+        case NOTIFICATION_TYPES.success:
+            iconHtml = `<div class="notification-reminder-icon notification-icon"><i class="fa-solid fa-square-check"></i></div>`;
             break;
         default:
             iconHtml = `<div class="notification-default-icon notification-icon"><i class="fa-solid fa-exclamation"></i></div>`;
