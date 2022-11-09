@@ -599,6 +599,9 @@ You can clone the repository by following these steps:
 
 ### Media
 
+Sounds are from Notification Sounds  
+[Notification Sounds](<https://notificationsounds.com/>)
+
 Icons are taken from Font Awesome:  
 [FontAwesome](<https://fontawesome.com/>)
 
