@@ -22,21 +22,21 @@
 </head>
 <body>
     <main>
-        <article id="task-list-container">
+        <div id="task-list-container">
             <section id="task-list-header">
                 <h2>Tasks</h2>
                 <button onclick="toggleTaskModal()" class="round-btn" aria-label="Add new task"><i class="fa-solid fa-plus"></i></button>
             </section>
-            <section id="task-list">
-            </section>
+            <div id="task-list">
+            </div>
             
-        </article>
-        <section id="task-list-toggle" onclick="toggleMenu()">
+        </div>
+        <div id="task-list-toggle" onclick="toggleMenu()">
             <i class="fa-solid fa-chevron-right"></i>
-        </section>
-        <article id="task-overview">
+        </div>
+        <div id="task-overview">
             <section id="task-header">
-                <h1>ToDoApp</h1>
+                <h2>ToDoApp</h2>
                 <div id="user-settings-container">
                     <button class="icon-btn btn" id="notifications-global-setting" onclick="setAlerts()" aria-label="Deactivate global notifications"><i class="fa-solid fa-bell-slash"></i></button>
                     <button class="icon-btn btn" onclick="toggleSettingsModal()" aria-label="Open user settings"><i class="fa-solid fa-gear"></i></button>
@@ -45,14 +45,13 @@
             </section>
             <section id="task-details">
                 <h2>Select one task</h2>
-                
             </section>
-            <section id="footer">
+            <div id="footer">
                 <p>made by Robin Bosch</p>
                 <button class="btn" id="sign-up-modal-btn" onclick="toggleNewsletterModal()">Signup to newsletter</button>
                 <a href="https://github.com/alphaClass6143/CI_PP2_TO-DO-App" target="_blank" rel="noopener" aria-label="Open Github repository"> <i class="fa-brands fa-github"></i></a>
-            </section>
-        </article>
+            </div>
+        </div>
     </main>
     <div id="settings-modal-container" class="modal-container">
                 
@@ -216,10 +215,8 @@
     </div>
     <div id="notification-container">
     </div>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
     (function(){
         //Only a public key
         emailjs.init("IFOo3dzfRaYApLHCf");
