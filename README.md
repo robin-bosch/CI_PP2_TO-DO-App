@@ -419,13 +419,16 @@ Webkit based browser (Safari) could not be tested. Chromium based and Quantum ba
 #### As a user I want to
 
 1. View all my tasks
+
 |Feature|Action|Expected result|Actual result|
 |---|---|---|---|
 Task list|The list is to the left or can be expanded with the menu toggle on the left|Task list can be viewed|Works as expected|
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/.png">
+<img src="docs/user-stories/first-story-one.png">
+ <br>
+ <img src="docs/user-stories/first-story-two.png">
 </details>
 
 2. See the details of one task
@@ -436,7 +439,9 @@ Task details|Select one task from the task list and click it|Shows the task deta
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/.png">
+ <img src="docs/user-stories/second-story-one.png">
+ <br>
+ <img src="docs/user-stories/second-story-two.png">
 </details>
 
 3. Turn off alerts for one task
@@ -444,11 +449,10 @@ Task details|Select one task from the task list and click it|Shows the task deta
 |Feature|Action|Expected result|Actual result|
 |---|---|---|---|
 Toggle bell in task details|In the details click on the bell|Turns on or off the alerts for the task|Works as expected|
-Edit task with alert off|In the details click on edit and turn of the alert box and save|Turns on or off the alerts for the task|Works as expected|
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/.png">
+ <img src="docs/user-stories/third-story.png">
 </details>
 
 
@@ -472,9 +476,7 @@ Mark as done/Unmark button in task details|Clicking the button will toggle the t
 
 <details>
  <summary>Screenshots</summary>
- <img src="docs/user-stories/fifth-story-step-one.png">
- <br>
- <img src="docs/user-stories/fifth-story-step-one.png">
+ <img src="docs/user-stories/fifth-story.png">
 </details>
 
 6. Create a new task.
@@ -485,7 +487,9 @@ Create task modal|Click on the "Plus" button to open the modal|The task modal op
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/sixth-story.png">
+  <img src="docs/user-stories/sixth-story-one.png">
+ <br>
+ <img src="docs/user-stories/sixth-story-two.png">
 </details>
 
 7. Edit task.
@@ -496,7 +500,9 @@ Edit button in task details open the edit task modal|Click on the edit button an
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/seventh-story.png">
+  <img src="docs/user-stories/seventh-story-one.png">
+ <br>
+ <img src="docs/user-stories/seventh-story-two.png">
 </details>
 
 8. Delete task.
@@ -518,7 +524,9 @@ Settings modal|Click the user settings button to open the user settings modal an
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/ninth-story.png">
+  <img src="docs/user-stories/ninth-story-one.png">
+ <br>
+ <img src="docs/user-stories/ninth-story-two.png">
 </details>
 
 #### As an owner I want the user to
@@ -531,7 +539,9 @@ Newsletter modal|Click the Signup to newsletter button in the footer, then enter
 
 <details>
  <summary>Screenshot</summary>
- <img src="docs/user-stories/tenth-story.png">
+  <img src="docs/user-stories/tenth-story-one.png">
+ <br>
+ <img src="docs/user-stories/tenth-story-two.png">
 </details>
 
 
@@ -543,9 +553,7 @@ Footer author note|Scroll to the bottom|Shows the author of the app|Works as exp
 
 <details>
  <summary>Screenshots</summary>
- <img src="docs/user-stories/eleventh-story-step-one.png">
- <br>
- <img src="docs/user-stories/eleventh-story-step-two.png">
+ <img src="docs/user-stories/eleventh-story.png">
 </details>
 
 12. See the code
