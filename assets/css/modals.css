@@ -33,7 +33,7 @@
     z-index:99;
     background-color: white;
     border-radius:10px;
-    padding:min(5vw, 5rem);
+    padding:min(7vw, 5rem) min(5vw, 5rem);
     width:min(80rem, 100vw);
     max-height: 100vh;
     overflow: auto;

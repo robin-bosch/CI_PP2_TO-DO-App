@@ -1,0 +1,139 @@
+/*
+#
+# task container
+#
+*/
+#task-overview {
+    width:100%;
+    min-height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* task container header (acts as page header */
+#task-header {
+    width:100%;
+    height:5rem;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color:var(--secondary-text-color);
+    background-color:var(--main-color);
+}
+
+#user-settings-container {
+    position: absolute;
+    margin-left: auto;
+    right:1rem;
+}
+
+#task-header > h1 {
+    margin:0 auto;
+}
+
+/* show tasks */
+#task-details {
+    width:100%;
+    height:calc(100% - 10rem);
+
+    margin:0 auto;
+    padding:2rem 5vw;
+    gap:2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#task-details-content {
+    width:clamp(10rem, 100%, 80rem);
+}
+
+#edit-btn {
+    font-size: 3rem;
+    margin-left: 100%;
+}
+
+#toggle-alert-btn {
+    padding:0;
+}
+
+#task-details-dates {
+    padding:clamp(1rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+#task-details-dates p {
+    font-size:clamp(1rem, 2vw, 1.5rem);
+}
+
+.task-date-text {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 100px 1fr;
+}
+
+.task-date-text > span:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#task-control-container {
+    width:100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+#footer {
+    width:100%;
+    padding:1rem;
+
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:clamp(1rem, 2vw, 3rem);
+
+    background-color: var(--main-color);
+    color:var(--secondary-text-color);
+}
+
+/*
+#
+# Media query
+#
+*/
+@media only screen and (max-width: 900px) { 
+    #user-settings-container {
+        right:0;
+    }
+    #edit-btn {
+        margin-left:80%;
+    }
+    #task-overview {
+        margin-left:2rem;
+        width:calc(100vw - 2rem);
+    }
+
+    #task-details {
+        height:auto;
+    }
+
+    #user-settings-container {
+        position: relative;
+        margin-left: 0;
+    }
+
+    #task-header > h1 {
+        margin:0;
+    }
+}
