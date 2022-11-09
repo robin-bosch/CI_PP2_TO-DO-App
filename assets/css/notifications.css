@@ -1,6 +1,6 @@
 #notification-container {
     visibility: hidden;
-    position:fixed;
+    position:absolute;
     right:0;
     top:0;
     height:100vh;
@@ -53,9 +53,8 @@
 }
 
 .notification-timer div {
-    background-color:#0B409C;
+    background-color:var(--main-color);
     height:5px;
-    /* animation: ; */
     transform-origin: left center;
 }
 @keyframes timer {

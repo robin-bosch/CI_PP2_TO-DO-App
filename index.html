@@ -52,8 +52,6 @@
             </section>
         </article>
     </main>
-    <div id="notification-container">
-    </div>
     <div id="settings-modal-container" class="modal-container">
                 
         <div id="settings-modal" class="modal">
@@ -195,26 +193,38 @@
             <form id="newsletter-form">
                 <div class="form-col">
                     <label for="signup-name">Name:</label>
-                    <input type="text" id="signup-name" name="signup-name" required>
+                    <input type="text" id="signup-name" name="name" required>
                 </div>
                 
 
                 <div class="form-col">
                     <label for="signup-email">Email:</label>
-                    <input type="text" id="signup-email" name="signup-email" required>
+                    <input type="text" id="signup-email" name="email" required>
                 </div>
 
                 <div id="newsletter-control-container">
                     <input type="reset" value="Reset" class="btn">
-                    <input type="submit" value="Send mail" id="signup-btn" class="btn">
+                    <input type="submit" value="Subscribe" id="signup-btn" class="btn">
                 </div>
             </form>
         </div>
     </div>
+    <div id="notification-container">
+    </div>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        //Only a public key
+        emailjs.init("IFOo3dzfRaYApLHCf");
+    })();
+    </script>
     <script src="assets/script/script.js"></script>
     <script src="assets/script/modals.js"></script>
     <script src="assets/script/read-save-storage.js"></script>
     <script src="assets/script/notifications.js"></script>
+    <script src="assets/script/mail.js"></script>
     <script src="assets/script/testing.js"></script>
 </body>
 </html>
