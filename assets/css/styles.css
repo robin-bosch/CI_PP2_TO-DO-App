@@ -156,6 +156,21 @@ background: #555;
 .disabled-text {
     text-decoration: line-through;
 }
+/*
+#
+# 404 page 
+#
+*/
+#main-404 {
+    height:calc(100vh - 10rem);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+}
+#main-404 i {
+    font-size:3rem;
+}
 
 /*
 #
