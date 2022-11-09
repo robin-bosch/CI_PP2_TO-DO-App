@@ -184,12 +184,12 @@ The page has 8 features in total.
 All HTML validation tests have been passed.  
 
 <details>
- <summary>Index</summary>
+ <summary>Index page</summary>
  <img src="docs/validation/html/index-validation.png">
 </details>
 
 <details>
- <summary>404</summary>
+ <summary>404 page</summary>
  <img src="docs/validation/html/404-validation.png">
 </details>
 
@@ -200,13 +200,26 @@ All HTML validation tests have been passed.
 
 ### Accessibility
 
+All Wave accessibility tests pass with a few alerts.
+
+<details>
+ <summary>Index page</summary>
+ <img src="docs/validation/wave/index-wave.png">
+</details>
+
+<details>
+ <summary>404 page</summary>
+ <img src="docs/validation/wave/404-wave.png">
+</details>
+
+
 ### Performance
 
 The lighthouse tests were good.  
 Below are all reports to every page.
 
 <details>
- <summary>Home page</summary>
+ <summary>Index page</summary>
  <img src="docs/validation/lighthouse/lighthouse-index.png">
  <br>
  <a href="docs/validation/lighthouse/lighthouse-report-index.pdf">Read full report to Index page (PDF)</a>
