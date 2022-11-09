@@ -150,6 +150,27 @@ There are notification popups in the bottom right corner for warnings or reminde
 
 ### Wireframes
 
+<details>
+ <summary>Home</summary>
+ <img src="docs/wireframes/home.png">
+</details>
+<details>
+ <summary>Create/Edit task modal</summary>
+ <img src="docs/wireframes/task-modal.png">
+</details>
+<details>
+ <summary>User settings modal</summary>
+ <img src="docs/wireframes/user-settings-modal.png">
+</details>
+<details>
+ <summary>Newsletter modal</summary>
+ <img src="docs/wireframes/newsletter-modal.png">
+</details>
+<details>
+ <summary>404 page</summary>
+ <img src="docs/wireframes/404.png">
+</details>
+
 ## Technologies Used  
 
 - HTML  
