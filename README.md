@@ -107,8 +107,8 @@ As a owner I want the user to
 
 ### Design Choices
 
-The website is designed as a Single Page Application. It is a full width layout and focused on giving the user all they information they need.  
-Modals are put into place for Creating/Editing a task or for changing user settings.  
+The website is designed as a Single Page Application. It is a full width layout and focused on giving the user all the information they need.  
+Modals are put into place for Creating/Editing a task, for changing user settings or to subscribe to the newsletter.  
 
 ### Colors
 
@@ -123,9 +123,10 @@ The Inter font from Google Fonts was chosen for its visual clarity. It is easily
 
 ### Structure
 
-The structure is very simple. It is a Single Page Application with modals that pop up if user input is required.
-The top of the page allows the user to access the user settings and create new tasks.
-The main page is structured in the task list and task overview.
+The structure is very simple. It is a Single Page Application with modals that pop up if user input is required.  
+The top of the page allows the user to access the user settings and create new tasks.  
+The main page is structured in the task list and task overview.  
+There is a small section at the bottom, to subscribe to the newsletter and visit the github repository.
 
 #### Task list
 
@@ -137,10 +138,11 @@ Tasks can be marked as done on the left with the checkcircle.
 The task overview shows the details of the current selected task, such as: Title, description, due date and alert date.  
 The user can edit the task, delete it or mark it as done in the overview.  
 
-#### There are two different modals that can pop up
+#### There are three different modals that can pop up
 
 - Add/Edit task (depending on the state)
 - User settings
+- Newsletter (Only pops up when prompted at the bottom)
 
 #### Notifications
 
@@ -172,8 +174,8 @@ There are notification popups in the bottom right corner for warnings or reminde
 
 ## Features
 
-The website has 1 page only. This one page contains two hidden modals and a notifications that cannot be seen all the time.
-The page has 8 feature in total.  
+The website has 1 page only. This one page contains three hidden modals and a notifications container that cannot be seen all the time.
+The page has 8 features in total.  
 
 ## Validation and Testing
 
