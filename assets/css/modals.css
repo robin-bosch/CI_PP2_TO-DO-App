@@ -80,7 +80,7 @@
 # Create/Edit task modal
 #
 */
-#create-task-form {
+#create-task-form, #newsletter-form {
     display: flex;
     gap:1rem;
     flex-direction: column;
@@ -106,7 +106,7 @@
     flex-direction: column;
 }
 
-#form-control-container {
+#form-control-container, #newsletter-control-container {
     display: flex;
     justify-content: space-between;
 }

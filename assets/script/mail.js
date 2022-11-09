@@ -17,6 +17,7 @@ document.querySelector("#newsletter-form").addEventListener('submit', function(e
         createNotification("Subscription successful!", NOTIFICATION_TYPES.warning)
         button.value = "Success!"
         toggleNewsletterModal();
+        button.value = "Subscribe"
 
     }, (err) => {
       createNotification(err.message, NOTIFICATION_TYPES.warning)

@@ -34,7 +34,7 @@ function toggleTaskDueDateEnabler() {
         document.querySelector("#task-due-date-label").classList.add("disabled-text");
         dueDateSwitch.classList.remove("enabled");
 
-        //Disables
+        //Disables the alerts too
         document.querySelector("#task-alert-date-enabler").innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
         document.querySelector("#task-alert-date-label").classList.add("disabled-text");
         document.querySelector("#task-alert-date").disabled = true;
@@ -57,6 +57,7 @@ function toggleTaskDueDateEnabler() {
 
     if(modalContainer.classList.contains("open")) {
         modalContainer.classList.remove("open");
+        document.querySelector("#create-task-form").reset();
     }
     else {
         modalContainer.classList.add("open");
