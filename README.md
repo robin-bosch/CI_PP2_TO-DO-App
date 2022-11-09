@@ -335,6 +335,32 @@ Variables can't be validated, they show up as warnings.
 
 ### JavaScript Validation
 
+Running JSHint directly in the browser results in unused variables which are all functions used in the DOM.  
+Running JSHint locally results in no errors.  
+JSHint was run locally from the command line. The config for the command line tool is in the repository which just contains the ES-version.
+
+#### Reproduce JavaScript validation locally
+
+1. Install JSHint globally with npm to use as command line tool
+
+```
+npm install -g jshint
+```
+
+2. Change directory to the script folder
+3. Run the following command:
+
+```
+npx jshint . --config ../../.jshintrc
+```
+
+This will run jshint with the config from the repository
+
+<details>
+ <summary>Script validation from the browser</summary>
+ <img src="docs/validation/script-validation.png">
+</details>
+
 ### Accessibility
 
 All Wave accessibility tests pass with a few alerts.
