@@ -47,6 +47,17 @@
 
 ### User Goals
 
+- Have a small To-Do-App to track tasks
+- Create tasks, Read them, Update them, Delete them
+- Mark tasks as done or active
+- Use To-Do-App locally
+
+### Site Owner Goals
+
+- Help user with a small To-Do-App
+- Show off repository
+- Get the user to subscribe to the newsletter
+
 ## User Experience
 
 ### Target Audience
