@@ -4,7 +4,7 @@
 
 ![Mockup image](docs/mockup-preview.png)
 
-[Live webpage](https://alphaclass6143.github.io/WhatsMyPC/)
+[Live webpage](https://alphaclass6143.github.io/CI_PP2_TO-DO-App/)
 
 ## Table of Content
 
@@ -172,6 +172,8 @@ There are notification popups in the bottom right corner for warnings or reminde
 </details>
 
 ## Technologies Used  
+
+### Languages
 
 - HTML  
 - CSS
