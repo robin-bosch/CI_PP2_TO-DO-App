@@ -4,7 +4,7 @@
 
 ![Mockup image](docs/mockup-preview.png)
 
-[Live webpage](https://alphaclass6143.github.io/CI_PP2_TO-DO-App/)
+[Live webpage](https://robin-bosch.github.io/CI_PP2_TO-DO-App/)
 
 ## Table of Content
 
@@ -573,14 +573,15 @@ Footer GitHub link|Click the GitHub icon at the bottom of page|Shows the reposit
 
 |Status|Bug|Fix|
 |---|---|---|
-|Unknown|The modals occasionally flash on the screen on reload. They disappear after less than half a second after loading. The cause is unclear.||
+|Unknown (likely fixed)|The modals occasionally flash on the screen on reload. They disappear after less than half a second after loading. The cause is unclear.|Most likely fixed during the redevelopment of the modals.|
+|Fixed|Incorrect input type for the email input on the newsletter signup|Changed the input type to email|
 
 ## Deployment
 
 1. In the GitHub repository navigate to the "Settings" tab
 2. On the left hand menu select "Pages"
 3. For the source select Branch: master
-4. After the webpage refreshes automatically you will see a box at the top saying: "Your site is live at <https://alphaclass6143.github.io/CI_PP2_TO-DO-App/>"
+4. After the webpage refreshes automatically you will see a box at the top saying: "Your site is live at <https://robin-bosch.github.io/CI_PP2_TO-DO-App/>"
 
 You can fork the repository by following these steps:
 
